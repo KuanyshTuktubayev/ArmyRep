@@ -1,0 +1,18 @@
+C:\Users\KuanyshMadina\Documents\SharpDevelop Projects\ArmyRep\ArmyRep\bin\Debug\ArmyRep.exe.config
+C:\Users\KuanyshMadina\Documents\SharpDevelop Projects\ArmyRep\ArmyRep\bin\Debug\ArmyRep.exe
+C:\Users\KuanyshMadina\Documents\SharpDevelop Projects\ArmyRep\ArmyRep\bin\Debug\ArmyRep.pdb
+C:\Users\KuanyshMadina\Documents\SharpDevelop Projects\ArmyRep\ArmyRep\obj\Debug\ArmyRep.exe
+C:\Users\KuanyshMadina\Documents\SharpDevelop Projects\ArmyRep\ArmyRep\obj\Debug\ArmyRep.pdb
+C:\Users\KuanyshMadina\Documents\SharpDevelop Projects\ArmyRep\ArmyRep\obj\Debug\ArmyRep.csproj.GenerateResource.Cache
+C:\Users\KuanyshMadina\Documents\SharpDevelop Projects\ArmyRep\ArmyRep\obj\Debug\ArmyRep.frmMain.resources
+C:\Users\KuanyshMadina\Documents\SharpDevelop Projects\ArmyRep\ArmyRep\obj\Debug\ArmyRep.frmLogin.resources
+C:\Users\KuanyshMadina\Documents\SharpDevelop Projects\ArmyRep\ArmyRep\obj\Debug\ArmyRep.csprojResolveAssemblyReference.cache
+C:\Users\ktuktubaev\Downloads\My\ArmyRep\ArmyRep\obj\Debug\ArmyRep.frmLogin.resources
+C:\Users\ktuktubaev\Downloads\My\ArmyRep\ArmyRep\obj\Debug\ArmyRep.frmMain.resources
+C:\Users\ktuktubaev\Downloads\My\ArmyRep\ArmyRep\obj\Debug\ArmyRep.csproj.GenerateResource.Cache
+C:\Users\ktuktubaev\Downloads\My\ArmyRep\ArmyRep\obj\Debug\ArmyRep.exe
+C:\Users\ktuktubaev\Downloads\My\ArmyRep\ArmyRep\obj\Debug\ArmyRep.pdb
+C:\Users\ktuktubaev\Downloads\My\ArmyRep\ArmyRep\bin\Debug\ArmyRep.exe.config
+C:\Users\ktuktubaev\Downloads\My\ArmyRep\ArmyRep\bin\Debug\ArmyRep.exe
+C:\Users\ktuktubaev\Downloads\My\ArmyRep\ArmyRep\bin\Debug\ArmyRep.pdb
+C:\Users\ktuktubaev\Downloads\My\ArmyRep\ArmyRep\obj\Debug\ArmyRep.csprojResolveAssemblyReference.cache
