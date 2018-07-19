@@ -1641,7 +1641,17 @@ namespace ArmyRep
 						prod.ProdCount = 0;
 					}
 					prod.ProdCategory = aToWHCat.Find(elem => elem.CatName == cbToWHCat.SelectedItem.ToString());
-					prod.InvNum = txToWHInvNum.Text;
+					
+					//TODO: check the value of IDUsingType in this condition:
+					if (aToWHProdTypesList.Find(element => element.TypeName == item).IDUsingType == 1)
+					{
+						prod.InvNum = txToWHInvNum.Text;
+					}
+					else
+					{
+						prod.InvNum = "";
+					}
+					
 					aToWHChoicedProdsList.Add(prod);
 					dgvToWHChoicedProds.Rows.Add(prod.ProdType.ID, prod.ProdType.TypeName, prod.ProdCount, prod.ProdPrice, prod.InvNum, prod.ProdCategory.CatName, prod.FromDep.DepName, prod.ToDep.DepTypeName + "(" + prod.ToDep.DepName + ")", prod.ActNum, prod.ActDate);
 					prod = null;
@@ -2133,48 +2143,45 @@ namespace ArmyRep
 		}
 		void BtnToWHChoiceDelClick(object sender, EventArgs e)
 		{
-			//TODO: make functionality to delete selected row and delete it from array
 			foreach (DataGridViewRow rw in dgvToWHChoicedProds.SelectedRows)
 			{
 				if (rw.Selected)
 				{
 					foreach (GivingProd pr in aToWHChoicedProdsList)
 					{
-						if ((rw.Cells["ActNum"].Value.ToString() == pr.ActNum) &&
-						    (rw.Cells["ActDate"].Value.ToString() == pr.ActDate.ToShortDateString()) &&
-						    (rw.Cells["ProdTypeName"].Value.ToString() == pr.ProdType.TypeName)
+						string sActN = Convert.ToString(rw.Cells["ActNum"].Value);
+						string sActD = Convert.ToDateTime(rw.Cells["ActDate"].Value).ToShortDateString();
+						string sPTName = Convert.ToString(rw.Cells["ProdTypeName"].Value);
+						int nPCnt = Convert.ToInt16(rw.Cells["ProdCount"].Value);
+						string sInvN = Convert.ToString(rw.Cells["InvNum"].Value);
+						
+						string sPrActN = pr.ActNum;
+						string sPrActD = pr.ActDate.ToShortDateString();
+						string sPrPTName = pr.ProdType.TypeName;
+						int nPrPCnt = pr.ProdCount;
+						string sPrInvN = "";
+						if (pr.InvNum == null)
+						{
+							sPrInvN = "";
+						}
+						else
+						{
+							sPrInvN = pr.InvNum;
+						}
+						if ((sActN == sPrActN) &&
+						    (sActD == sPrActD) &&
+						    (sPTName == sPrPTName) &&
+						    (nPCnt == nPrPCnt) &&
+						    (sInvN == sPrInvN)
 						   )
 						{
 							aToWHChoicedProdsList.Remove(pr);
+							dgvToWHChoicedProds.Rows.Remove(rw);
+							break;
 						}
 					}
 				}
 			}
-		}
-		void TxToWHActNumLeave(object sender, EventArgs e)
-		{
-			string sSQL = "select ap.* from tActProd ap where ap.IDAct in (select a.id from tAct a where a.ActNum = '" + txToWHActNum.Text + "' and a.ActDate = CDate('"+dtpToWHActDate.Value.ToShortDateString()+"'))";
-			OleDbDataAdapter adapter = new OleDbDataAdapter(sSQL, connectionDB);
-			DbDataReader datareaderObject = adapter.SelectCommand.ExecuteReader();
-			if (datareaderObject.Read())
-			{
-				string sID = datareaderObject["ID"].ToString();
-				string sIDProd = datareaderObject["DepName"].ToString();
-				Department curPart = new Department();
-				curPart.ItemIndex = cbFromWHCat.Items.IndexOf(sName);
-				curPart.ID = Int32.Parse(sID);
-				curPart.DepName = sName;
-				prod.FromDep = curPart;
-				curPart = null;
-			}
-			if (!datareaderObject.IsClosed && datareaderObject != null)
-			{
-				datareaderObject.Close();
-			}
-			datareaderObject = null;
-			adapter.Dispose();
-			adapter = null;
-			
 		}
 	}
 }

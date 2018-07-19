@@ -1931,7 +1931,6 @@ namespace ArmyRep
 			this.txToWHActNum.Name = "txToWHActNum";
 			this.txToWHActNum.Size = new System.Drawing.Size(120, 20);
 			this.txToWHActNum.TabIndex = 39;
-			this.txToWHActNum.Leave += new System.EventHandler(this.TxToWHActNumLeave);
 			// 
 			// lbToWHFindProd
 			// 
@@ -2052,9 +2051,9 @@ namespace ArmyRep
 			// 
 			this.BtnToWHChoiceDel.Location = new System.Drawing.Point(262, 14);
 			this.BtnToWHChoiceDel.Name = "BtnToWHChoiceDel";
-			this.BtnToWHChoiceDel.Size = new System.Drawing.Size(75, 23);
+			this.BtnToWHChoiceDel.Size = new System.Drawing.Size(141, 23);
 			this.BtnToWHChoiceDel.TabIndex = 39;
-			this.BtnToWHChoiceDel.Text = "button1";
+			this.BtnToWHChoiceDel.Text = "Удалить выделенные";
 			this.BtnToWHChoiceDel.UseVisualStyleBackColor = true;
 			this.BtnToWHChoiceDel.Click += new System.EventHandler(this.BtnToWHChoiceDelClick);
 			// 
