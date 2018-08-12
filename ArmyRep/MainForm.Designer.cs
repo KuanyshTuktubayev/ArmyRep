@@ -1820,16 +1820,6 @@ namespace ArmyRep
 			// 
 			this.udToWHProdCount.AllowDrop = true;
 			this.udToWHProdCount.Items.Add("0");
-			this.udToWHProdCount.Items.Add("1");
-			this.udToWHProdCount.Items.Add("2");
-			this.udToWHProdCount.Items.Add("3");
-			this.udToWHProdCount.Items.Add("4");
-			this.udToWHProdCount.Items.Add("5");
-			this.udToWHProdCount.Items.Add("6");
-			this.udToWHProdCount.Items.Add("7");
-			this.udToWHProdCount.Items.Add("8");
-			this.udToWHProdCount.Items.Add("9");
-			this.udToWHProdCount.Items.Add("10");
 			this.udToWHProdCount.Location = new System.Drawing.Point(140, 267);
 			this.udToWHProdCount.Name = "udToWHProdCount";
 			this.udToWHProdCount.Size = new System.Drawing.Size(120, 20);
