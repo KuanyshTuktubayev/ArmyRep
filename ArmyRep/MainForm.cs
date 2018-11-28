@@ -1954,11 +1954,11 @@ namespace ArmyRep
 			if (aToWHProdTypesList.Count > 0)
 			{
 				//dgvFromWHChoicedProds.Rows.Clear();
-				if (dgvFromWHChoicedProds.ColumnCount <= 8)
+				if (dgvFromWHChoicedProds.ColumnCount <= 10)
 				{
 					//dgvFromWHChoicedProds.Columns.Clear();
 					int nCol = dgvFromWHChoicedProds.ColumnCount;
-					while (dgvFromWHChoicedProds.ColumnCount < 8)
+					while (dgvFromWHChoicedProds.ColumnCount < 10)
 					{
 						switch (nCol)
 						{
@@ -1986,6 +1986,12 @@ namespace ArmyRep
 							case 7:
 								dgvFromWHChoicedProds.Columns.Add("ToDepName", "Получатель");
 								break;
+							case 8:
+								dgvFromWHChoicedProds.Columns.Add("ActNum", "Номер акта");
+								break;
+							case 9:
+								dgvFromWHChoicedProds.Columns.Add("ActDate", "Дата акта");
+								break;
 							default:
 								dgvFromWHChoicedProds.Columns.Add("Column"+nCol.ToString(), "Столбец"+nCol.ToString());
 								break;
@@ -1999,6 +2005,7 @@ namespace ArmyRep
 					prod.ProdType = aToWHProdTypesList.Find(element => element.TypeName == item);
 					if (double.TryParse(mtxFromWHPrice.Text, out prod.ProdPrice) == false)
 					{
+						MessageBox.Show("Неправильно указана цена <" + mtxFromWHPrice.Text + ">");
 						prod.ProdPrice = 0;
 					}
 					prod.ActNum = txFromWHActNum.Text;
@@ -2006,7 +2013,8 @@ namespace ArmyRep
 					prod.ToDep = aFromWHToList.Find(element => element.DepName == cbFromWHToDep.SelectedItem.ToString());
 					
 					//current part (department)
-					string sSQLCurrentPart = "select * from tDep d where d.id = " + sIDPartCurrent;
+					//string sSQLCurrentPart = "select * from tDep d where d.id = " + sIDPartCurrent;
+					string sSQLCurrentPart = "select d.*, dt.TypeName from tDep d left join tDepType dt on dt.ID = d.IDDepType where d.idParent = " + sIDPartCurrent;
 					OleDbDataAdapter adapter = new OleDbDataAdapter(sSQLCurrentPart, connectionDB);
 					DbDataReader datareaderObject = adapter.SelectCommand.ExecuteReader();
 					if (datareaderObject.Read())
@@ -2030,12 +2038,21 @@ namespace ArmyRep
 					
 					if (!int.TryParse(udFromWHProdCount.Text, out prod.ProdCount))
 					{
+						MessageBox.Show("Цена указана неправильно!");
 						prod.ProdCount = 0;
 					}
 					prod.ProdCategory = aFromWHCat.Find(elem => elem.CatName == cbFromWHCat.SelectedItem.ToString());
-					prod.InvNum = txFromWHInvNum.Text;
+					//prod.InvNum = txFromWHInvNum.Text;
+					if (aToWHProdTypesList.Find(element => element.TypeName == item).IDUsingType == 1)
+					{
+						prod.InvNum = txFromWHInvNum.Text;
+					}
+					else
+					{
+						prod.InvNum = "";
+					}
 					aFromWHChoicedProdsList.Add(prod);
-					dgvFromWHChoicedProds.Rows.Add(prod.ProdType.ID, prod.ProdType.TypeName, prod.ProdCount, prod.ProdPrice, prod.InvNum, prod.ProdCategory.CatName, prod.FromDep.DepName, prod.ToDep.DepTypeName);
+					dgvFromWHChoicedProds.Rows.Add(prod.ProdType.ID, prod.ProdType.TypeName, prod.ProdCount, prod.ProdPrice, prod.InvNum, prod.ProdCategory.CatName, prod.FromDep.DepName, prod.ToDep.DepTypeName + "(" + prod.ToDep.DepName + ")", prod.ActNum, prod.ActDate);
 					prod = null;
 				}
 			}
@@ -2202,6 +2219,48 @@ namespace ArmyRep
 						{
 							aToWHChoicedProdsList.Remove(pr);
 							dgvToWHChoicedProds.Rows.Remove(rw);
+							break;
+						}
+					}
+				}
+			}
+		}
+		void BtnFromWHChoiceDelClick(object sender, EventArgs e)
+		{
+			foreach (DataGridViewRow rw in dgvFromWHChoicedProds.SelectedRows)
+			{
+				if (rw.Selected)
+				{
+					foreach (GivingProd pr in aToWHChoicedProdsList) //do we realy can use one array?
+					{
+						string sActN = Convert.ToString(rw.Cells["ActNum"].Value);
+						string sActD = Convert.ToDateTime(rw.Cells["ActDate"].Value).ToShortDateString();
+						string sPTName = Convert.ToString(rw.Cells["ProdTypeName"].Value);
+						int nPCnt = Convert.ToInt16(rw.Cells["ProdCount"].Value);
+						string sInvN = Convert.ToString(rw.Cells["InvNum"].Value);
+						
+						string sPrActN = pr.ActNum;
+						string sPrActD = pr.ActDate.ToShortDateString();
+						string sPrPTName = pr.ProdType.TypeName;
+						int nPrPCnt = pr.ProdCount;
+						string sPrInvN = "";
+						if (pr.InvNum == null)
+						{
+							sPrInvN = "";
+						}
+						else
+						{
+							sPrInvN = pr.InvNum;
+						}
+						if ((sActN == sPrActN) &&
+						    (sActD == sPrActD) &&
+						    (sPTName == sPrPTName) &&
+						    (nPCnt == nPrPCnt) &&
+						    (sInvN == sPrInvN)
+						   )
+						{
+							aToWHChoicedProdsList.Remove(pr);
+							dgvFromWHChoicedProds.Rows.Remove(rw);
 							break;
 						}
 					}

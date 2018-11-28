@@ -15,3 +15,4 @@ C:\Users\ktuktubaev\Downloads\My\ArmyRep\ArmyRep\obj\Debug\ArmyRep.pdb
 C:\Users\ktuktubaev\Downloads\My\ArmyRep\ArmyRep\bin\Debug\ArmyRep.exe.config
 C:\Users\ktuktubaev\Downloads\My\ArmyRep\ArmyRep\bin\Debug\ArmyRep.exe
 C:\Users\ktuktubaev\Downloads\My\ArmyRep\ArmyRep\bin\Debug\ArmyRep.pdb
+C:\Users\ktuktubaev\Downloads\My\ArmyRep\ArmyRep\obj\Debug\ArmyRep.csprojResolveAssemblyReference.cache
