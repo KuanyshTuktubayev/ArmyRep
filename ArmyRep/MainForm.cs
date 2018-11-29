@@ -53,15 +53,14 @@ namespace ArmyRep
 		 Поэтому приходится использовать нижеперечисленные массивы (коллекции объектов).
 		 Это приведет к расходованию ОЗУ, но куда деваться? Придется сразу очищать память от ненужных данных.
 		 */
-		List<Department> aDepList = new List<Department>();
-		List<Department> aPartList = new List<Department>();
-		List<Department> aLoginPartList = new List<Department>();
-		List<Rank> aRankList = new List<Rank>();
-		List<DepType> aDeptypeList = new List<DepType>();
-		List<Category> aCatList = new List<Category>();
-		List<ProductType> aProdtypeList = new List<ProductType>();
-		List<UsingType> aUsingtypeList = new List<UsingType>();
-		List<Person> aPersonList = new List<Person>();
+		List<Department> aEditDepList = new List<Department>();
+		List<Department> aEditPartList = new List<Department>();
+		List<Rank> aEditRankList = new List<Rank>();
+		List<DepType> aEditDeptypeList = new List<DepType>();
+		List<Category> aEditCatList = new List<Category>();
+		List<ProductType> aEditProdtypeList = new List<ProductType>();
+		List<UsingType> aEditUsingtypeList = new List<UsingType>();
+		List<Person> aEditPersonList = new List<Person>();
 		
 		List<Department> aToWHFromList = new List<Department>();
 		List<Department> aFromWHToList = new List<Department>();
@@ -269,6 +268,10 @@ namespace ArmyRep
 			MakeDataReader("drEditPart", sSQLEditPart);
 			//Человек
 			MakeDataReader("drEditPerson", sSQLEditPerson);
+			
+			tpDepType.Hide();
+			tpUsingType.Hide();
+			tpCategory.Hide();
 		}
 		void MakeDataReader(string datareaderName, string sSQL)
 		{
@@ -277,7 +280,7 @@ namespace ArmyRep
 			if (datareaderName == "drEditDep")
 			{
 				lsbEditDepList.Items.Clear();
-				aDepList.Clear();
+				aEditDepList.Clear();
 				while (datareaderObject.Read())
 				{
 					string sID = datareaderObject["ID"].ToString();
@@ -289,14 +292,31 @@ namespace ArmyRep
 					dep.ItemIndex = lsbEditDepList.Items.IndexOf(txEditDepName.Text);
 					dep.ID = Int32.Parse(sID);
 					dep.DepName = sName;
-					aDepList.Add(dep);
+					aEditDepList.Add(dep);
 					dep = null;
 				}
+			
+			var adapterDepTypes = new OleDbDataAdapter(sSQLEditDeptype, connectionDB);
+			DbDataReader drObjectDepTypes = adapterDepTypes.SelectCommand.ExecuteReader();
+			while (drObjectDepTypes.Read())
+			{
+				string sID = drObjectDepTypes["ID"].ToString();
+				string sUsingTypeName = drObjectDepTypes["TypeName"].ToString();
+				cbEditDepDeptype.Items.Add(sUsingTypeName);
+				lbEditDepDeptypeID.Text = sID;
+			}
+			if (!drObjectDepTypes.IsClosed && drObjectDepTypes != null)
+			{
+				drObjectDepTypes.Close();
+			}
+			drObjectDepTypes = null;
+			adapterDepTypes.Dispose();
+			adapterDepTypes = null;
 			}
 			else if (datareaderName == "drEditPart")
 			{
 				lsbEditPartList.Items.Clear();
-				aPartList.Clear();
+				aEditPartList.Clear();
 				while (datareaderObject.Read())
 				{
 					string sID = datareaderObject["ID"].ToString();
@@ -308,14 +328,14 @@ namespace ArmyRep
 					dep.ItemIndex = lsbEditPartList.Items.IndexOf(txEditPartName.Text);
 					dep.ID = Int32.Parse(sID);
 					dep.DepName = sName;
-					aPartList.Add(dep);
+					aEditPartList.Add(dep);
 					dep = null;
 				}
 			}
 			else if (datareaderName == "drEditRank")
 			{
 				lsbEditRankList.Items.Clear();
-				aRankList.Clear();
+				aEditRankList.Clear();
 				while (datareaderObject.Read())
 				{
 					string sID = datareaderObject["ID"].ToString();
@@ -327,14 +347,14 @@ namespace ArmyRep
 					rank.ItemIndex = lsbEditRankList.Items.IndexOf(txEditRankName.Text);
 					rank.ID = Int32.Parse(sID);
 					rank.RankName = sName;
-					aRankList.Add(rank);
+					aEditRankList.Add(rank);
 					rank = null;
 				}
 			}
 			else if (datareaderName == "drEditDeptype")
 			{
 				lsbEditDeptypeList.Items.Clear();
-				aDeptypeList.Clear();
+				aEditDeptypeList.Clear();
 				while (datareaderObject.Read())
 				{
 					string sID = datareaderObject["ID"].ToString();
@@ -346,14 +366,14 @@ namespace ArmyRep
 					deptype.ItemIndex = lsbEditDeptypeList.Items.IndexOf(txEditDeptypeName.Text);
 					deptype.ID = Int32.Parse(sID);
 					deptype.TypeName = sName;
-					aDeptypeList.Add(deptype);
+					aEditDeptypeList.Add(deptype);
 					deptype = null;
 				}
 			}
 			else if (datareaderName == "drEditCat")
 			{
 				lsbEditCatList.Items.Clear();
-				aCatList.Clear();
+				aEditCatList.Clear();
 				while (datareaderObject.Read())
 				{
 					string sID = datareaderObject["ID"].ToString();
@@ -365,14 +385,14 @@ namespace ArmyRep
 					cat.ItemIndex = lsbEditCatList.Items.IndexOf(txEditCatName.Text);
 					cat.ID = Int32.Parse(sID);
 					cat.CatName = sName;
-					aCatList.Add(cat);
+					aEditCatList.Add(cat);
 					cat = null;
 				}
 			}
 			else if (datareaderName == "drEditUsingtype")
 			{
 				lsbEditUsingtypeList.Items.Clear();
-				aUsingtypeList.Clear();
+				aEditUsingtypeList.Clear();
 				while (datareaderObject.Read())
 				{
 					string sID = datareaderObject["ID"].ToString();
@@ -384,7 +404,7 @@ namespace ArmyRep
 					ut.ItemIndex = lsbEditUsingtypeList.Items.IndexOf(txEditUsingtypeName.Text);
 					ut.ID = Int32.Parse(sID);
 					ut.TypeName = sName;
-					aUsingtypeList.Add(ut);
+					aEditUsingtypeList.Add(ut);
 					ut = null;
 				}
 			}
@@ -392,7 +412,7 @@ namespace ArmyRep
 			{
 				lsbEditProdtypeList.Items.Clear();
 				cbEditPTUsingtypeName.Items.Clear();
-				aProdtypeList.Clear();
+				aEditProdtypeList.Clear();
 				
 				OleDbDataAdapter adapterUsingTypes = new OleDbDataAdapter(sSQLEditUsingtype, connectionDB);
 				DbDataReader drObjectUsingTypes = adapterUsingTypes.SelectCommand.ExecuteReader();
@@ -429,14 +449,14 @@ namespace ArmyRep
 					prodtype.IDUsingType = Int32.Parse(sIDUsingType);
 					prodtype.UsingTypeItemIndex = cbEditPTUsingtypeName.Items.IndexOf(sUsingTypeName);
 					prodtype.UsingTypeName = sUsingTypeName;
-					aProdtypeList.Add(prodtype);
+					aEditProdtypeList.Add(prodtype);
 					prodtype = null;
 				}
 			}
 			else if (datareaderName == "drEditPerson")
 			{
 				lsbEditPersonList.Items.Clear();
-				aPersonList.Clear();
+				aEditPersonList.Clear();
 				dgvEditPersonList.Rows.Clear();
 				if (dgvEditPersonList.ColumnCount <= 9)
 				{
@@ -554,7 +574,7 @@ namespace ArmyRep
 					person.IDRank = int.Parse(sIDRankOfPerson);
 					person.RankName = sRankNameOfPerson;
 					person.RankDateFrom = dtRankDateOfPerson.Date;
-					aPersonList.Add(person);
+					aEditPersonList.Add(person);
 					person = null;
 				}
 			}
@@ -594,14 +614,14 @@ namespace ArmyRep
 		}
 		void CloseDataReadsOfEdit()
 		{
-			aPartList.Clear();
-			aDepList.Clear();
-			aDeptypeList.Clear();
-			aUsingtypeList.Clear();
-			aRankList.Clear();
-			aCatList.Clear();
-			aProdtypeList.Clear();
-			aPersonList.Clear();
+			aEditPartList.Clear();
+			aEditDepList.Clear();
+			aEditDeptypeList.Clear();
+			aEditUsingtypeList.Clear();
+			aEditRankList.Clear();
+			aEditCatList.Clear();
+			aEditProdtypeList.Clear();
+			aEditPersonList.Clear();
 		}
 		void CloseDataReadsOfWH()
 		{
@@ -631,7 +651,7 @@ namespace ArmyRep
 		void LsbDepListSelectedIndexChanged(object sender, EventArgs e)
 		{
 			Department dep = new Department();
-			dep = aDepList.Find(item => item.ItemIndex == lsbEditDepList.SelectedIndex);
+			dep = aEditDepList.Find(item => item.ItemIndex == lsbEditDepList.SelectedIndex);
 			lbEditIDDep.Text = dep.ID.ToString();
 			txEditDepName.Text = dep.DepName;
 			dep = null;
@@ -790,13 +810,13 @@ namespace ArmyRep
 				adapter.UpdateCommand.ExecuteScalar();
 				adapter = null;
 				/*
-				aPersonList.Find(item => item.ID.ToString() == lbEditIDPerson.Text).LastName = txEditPersonLastname.Text;
-				aPersonList.Find(item => item.ID.ToString() == lbEditIDPerson.Text).FirstName = txEditPersonFirstname.Text;
-				aPersonList.Find(item => item.ID.ToString() == lbEditIDPerson.Text).Patronymic = txEditPersonPatronymic.Text;
-				aPersonList.Find(item => item.ID.ToString() == lbEditIDPerson.Text).Birthdate = dtpEditPersonBirthdate.Value.Date;
+				aEditPersonList.Find(item => item.ID.ToString() == lbEditIDPerson.Text).LastName = txEditPersonLastname.Text;
+				aEditPersonList.Find(item => item.ID.ToString() == lbEditIDPerson.Text).FirstName = txEditPersonFirstname.Text;
+				aEditPersonList.Find(item => item.ID.ToString() == lbEditIDPerson.Text).Patronymic = txEditPersonPatronymic.Text;
+				aEditPersonList.Find(item => item.ID.ToString() == lbEditIDPerson.Text).Birthdate = dtpEditPersonBirthdate.Value.Date;
 				if (chbEditPersonDeath.Checked)
 				{
-					aPersonList.Find(item => item.ID.ToString() == lbEditIDPerson.Text).Deathdate = dtpEditPersonDeathdate.Value.Date;
+					aEditPersonList.Find(item => item.ID.ToString() == lbEditIDPerson.Text).Deathdate = dtpEditPersonDeathdate.Value.Date;
 				}
 				*/
 				bool isNeedUpdateIDRank = false;
@@ -968,7 +988,7 @@ namespace ArmyRep
 		void LsbEditRankListSelectedIndexChanged(object sender, EventArgs e)
 		{
 			Rank rank = new Rank();
-			rank = aRankList.Find(item => item.ItemIndex == lsbEditRankList.SelectedIndex);
+			rank = aEditRankList.Find(item => item.ItemIndex == lsbEditRankList.SelectedIndex);
 			lbEditIDRank.Text = rank.ID.ToString();
 			txEditRankName.Text = rank.RankName;
 			rank = null;
@@ -976,7 +996,7 @@ namespace ArmyRep
 		void LsbEditPartListSelectedIndexChanged(object sender, EventArgs e)
 		{
 			Department part = new Department();
-			part = aPartList.Find(item => item.ItemIndex == lsbEditPartList.SelectedIndex);
+			part = aEditPartList.Find(item => item.ItemIndex == lsbEditPartList.SelectedIndex);
 			lbEditIDPart.Text = part.ID.ToString();
 			txEditPartName.Text = part.DepName;
 			part = null;
@@ -984,7 +1004,7 @@ namespace ArmyRep
 		void LsbEditDeptypeListSelectedIndexChanged(object sender, EventArgs e)
 		{
 			DepType deptype = new DepType();
-			deptype = aDeptypeList.Find(item => item.ItemIndex == lsbEditDeptypeList.SelectedIndex);
+			deptype = aEditDeptypeList.Find(item => item.ItemIndex == lsbEditDeptypeList.SelectedIndex);
 			lbEditIDDeptype.Text = deptype.ID.ToString();
 			txEditDeptypeName.Text = deptype.TypeName;
 			deptype = null;
@@ -1067,7 +1087,7 @@ namespace ArmyRep
 			if (lbEditIDProdtype.Text == "")
 			{
 				//insert new record
-				string sSelectedIDUsingType = aProdtypeList.Find(item => item.UsingTypeName == cbEditPTUsingtypeName.SelectedItem.ToString()).IDUsingType.ToString();
+				string sSelectedIDUsingType = aEditProdtypeList.Find(item => item.UsingTypeName == cbEditPTUsingtypeName.SelectedItem.ToString()).IDUsingType.ToString();
 				OleDbDataAdapter adapter = new OleDbDataAdapter(sSQL, connectionDB);
 				adapter.MissingSchemaAction = MissingSchemaAction.AddWithKey;
 				adapter.InsertCommand = new OleDbCommand(
@@ -1080,7 +1100,7 @@ namespace ArmyRep
 			else
 			{
 				//update this record
-				Int32 nIDUsingType = aProdtypeList.Find(item => item.UsingTypeName == cbEditPTUsingtypeName.SelectedItem.ToString()).IDUsingType;
+				Int32 nIDUsingType = aEditProdtypeList.Find(item => item.UsingTypeName == cbEditPTUsingtypeName.SelectedItem.ToString()).IDUsingType;
 				OleDbDataAdapter adapter = new OleDbDataAdapter(sSQL, connectionDB);
 				adapter.MissingSchemaAction = MissingSchemaAction.AddWithKey;
 				adapter.UpdateCommand = new OleDbCommand(
@@ -1096,7 +1116,7 @@ namespace ArmyRep
 		void LsbEditProdtypeListSelectedIndexChanged(object sender, EventArgs e)
 		{
 			ProductType prodtype = new ProductType();
-			prodtype = aProdtypeList.Find(item => item.ItemIndex == lsbEditProdtypeList.SelectedIndex);
+			prodtype = aEditProdtypeList.Find(item => item.ItemIndex == lsbEditProdtypeList.SelectedIndex);
 			lbEditIDProdtype.Text = prodtype.ID.ToString();
 			txEditProdtypeName.Text = prodtype.TypeName;
 			cbEditPTUsingtypeName.SelectedIndex = prodtype.UsingTypeItemIndex;
@@ -1105,12 +1125,12 @@ namespace ArmyRep
 		}
 		void CbEditUsingtypeNameSelectedIndexChanged(object sender, EventArgs e)
 		{
-			if (aProdtypeList != null && aProdtypeList.Count > 0)
+			if (aEditProdtypeList != null && aEditProdtypeList.Count > 0)
 			{
 				string ssss = cbEditPTUsingtypeName.SelectedItem.ToString();
 				ProductType pt = new ProductType();
-				pt = aProdtypeList.Find(item => item.UsingTypeName == cbEditPTUsingtypeName.SelectedItem.ToString());
-				lbEditPTIDUsingtype.Text = (pt == null) ? aProdtypeList[0].IDUsingType.ToString() : pt.IDUsingType.ToString();
+				pt = aEditProdtypeList.Find(item => item.UsingTypeName == cbEditPTUsingtypeName.SelectedItem.ToString());
+				lbEditPTIDUsingtype.Text = (pt == null) ? aEditProdtypeList[0].IDUsingType.ToString() : pt.IDUsingType.ToString();
 			}
 		}
 		void BtnWHClick(object sender, EventArgs e)
@@ -1182,7 +1202,7 @@ namespace ArmyRep
 		void LsbEditUsingtypeListSelectedIndexChanged(object sender, EventArgs e)
 		{
 			UsingType ut = new UsingType();
-			ut = aUsingtypeList.Find(item => item.ItemIndex == lsbEditUsingtypeList.SelectedIndex);
+			ut = aEditUsingtypeList.Find(item => item.ItemIndex == lsbEditUsingtypeList.SelectedIndex);
 			lbEditIDUsingtype.Text = ut.ID.ToString();
 			txEditUsingtypeName.Text = ut.TypeName;
 			ut = null;
@@ -1221,7 +1241,7 @@ namespace ArmyRep
 		{
 			//TODO: dont clear array, we must just filter array and show result. we dont need to use db if we have an array with db-data
 			
-			List<Person> aFoundPersons = aPersonList.FindAll(item => item.LastName.Contains(txEditPersonLastname.Text) && item.FirstName.Contains(txEditPersonFirstname.Text) && item.Patronymic.Contains(txEditPersonPatronymic.Text));
+			List<Person> aFoundPersons = aEditPersonList.FindAll(item => item.LastName.Contains(txEditPersonLastname.Text) && item.FirstName.Contains(txEditPersonFirstname.Text) && item.Patronymic.Contains(txEditPersonPatronymic.Text));
 			dgvEditPersonList.Rows.Clear();
 			foreach (Person p in aFoundPersons)
 			{
@@ -1246,7 +1266,7 @@ namespace ArmyRep
 				+ " and p.gender = " + ((rbEditPersonGenderM.Checked) ? "true " : "false ");
 			OleDbDataAdapter adapter = new OleDbDataAdapter(sSQL, connectionDB);
 			DbDataReader drObjectPerson = adapter.SelectCommand.ExecuteReader();
-			aPersonList.Clear();
+			aEditPersonList.Clear();
 			dgvEditPersonList.Rows.Clear();
 			while (drObjectPerson.Read())
 			{
@@ -1565,7 +1585,7 @@ namespace ArmyRep
 		void LsbEditCatListSelectedIndexChanged(object sender, EventArgs e)
 		{
 			Category category = new Category();
-			category = aCatList.Find(item => item.ItemIndex == lsbEditCatList.SelectedIndex);
+			category = aEditCatList.Find(item => item.ItemIndex == lsbEditCatList.SelectedIndex);
 			lbEditIDCat.Text = category.ID.ToString();
 			txEditCatName.Text = category.CatName;
 			category = null;
@@ -1706,11 +1726,11 @@ namespace ArmyRep
 		}
 		void LsbEditPersonListSelectedIndexChanged(object sender, EventArgs e)
 		{
-			lbEditIDPerson.Text = aPersonList.Find(item => item.ItemIndex == lsbEditPersonList.SelectedIndex).ID.ToString();
-			txEditPersonLastname.Text = aPersonList.Find(item => item.ItemIndex == lsbEditPersonList.SelectedIndex).LastName;
-			txEditPersonFirstname.Text = aPersonList.Find(item => item.ItemIndex == lsbEditPersonList.SelectedIndex).FirstName;
-			txEditPersonPatronymic.Text = aPersonList.Find(item => item.ItemIndex == lsbEditPersonList.SelectedIndex).Patronymic;
-			if (aPersonList.Find(item => item.ItemIndex == lsbEditPersonList.SelectedIndex).Gender.Equals(true))
+			lbEditIDPerson.Text = aEditPersonList.Find(item => item.ItemIndex == lsbEditPersonList.SelectedIndex).ID.ToString();
+			txEditPersonLastname.Text = aEditPersonList.Find(item => item.ItemIndex == lsbEditPersonList.SelectedIndex).LastName;
+			txEditPersonFirstname.Text = aEditPersonList.Find(item => item.ItemIndex == lsbEditPersonList.SelectedIndex).FirstName;
+			txEditPersonPatronymic.Text = aEditPersonList.Find(item => item.ItemIndex == lsbEditPersonList.SelectedIndex).Patronymic;
+			if (aEditPersonList.Find(item => item.ItemIndex == lsbEditPersonList.SelectedIndex).Gender.Equals(true))
 			{
 				rbEditPersonGenderM.Checked = true;
 			}
@@ -1718,8 +1738,8 @@ namespace ArmyRep
 			{
 				rbEditPersonGenderF.Checked = true;
 			}
-			dtpEditPersonBirthdate.Value = aPersonList.Find(item => item.ItemIndex == lsbEditPersonList.SelectedIndex).Birthdate;
-			if (aPersonList.Find(item => item.ItemIndex == lsbEditPersonList.SelectedIndex).Deathdate.ToString().Equals(string.Empty))
+			dtpEditPersonBirthdate.Value = aEditPersonList.Find(item => item.ItemIndex == lsbEditPersonList.SelectedIndex).Birthdate;
+			if (aEditPersonList.Find(item => item.ItemIndex == lsbEditPersonList.SelectedIndex).Deathdate.ToString().Equals(string.Empty))
 			{
 				dtpEditPersonDeathdate.Value = dtpEditPersonDeathdate.MaxDate;
 				dtpEditPersonDeathdate.Visible = false;
@@ -1727,7 +1747,7 @@ namespace ArmyRep
 			}
 			else
 			{
-				dtpEditPersonDeathdate.Value = aPersonList.Find(item => item.ItemIndex == lsbEditPersonList.SelectedIndex).Deathdate;
+				dtpEditPersonDeathdate.Value = aEditPersonList.Find(item => item.ItemIndex == lsbEditPersonList.SelectedIndex).Deathdate;
 				if (dtpEditPersonDeathdate.Value <= DateTime.Today)
 				{
 					dtpEditPersonDeathdate.Visible = true;
@@ -1739,32 +1759,32 @@ namespace ArmyRep
 					chbEditPersonDeath.Checked = false;	
 				}
 			}
-			int nIDRank = aPersonList.Find(items => items.ItemIndex == lsbEditPersonList.SelectedIndex).IDRank;
-			cbEditPersonRankName.SelectedIndex = aRankList.Find(item => item.ID.Equals(nIDRank)).ItemIndex;
+			int nIDRank = aEditPersonList.Find(items => items.ItemIndex == lsbEditPersonList.SelectedIndex).IDRank;
+			cbEditPersonRankName.SelectedIndex = aEditRankList.Find(item => item.ID.Equals(nIDRank)).ItemIndex;
 			lbEditPIDRank.Text = nIDRank.ToString();
-			dtpEditPersonRankDatefrom.Value = aPersonList.Find(items => items.ItemIndex == lsbEditPersonList.SelectedIndex).RankDateFrom;
+			dtpEditPersonRankDatefrom.Value = aEditPersonList.Find(items => items.ItemIndex == lsbEditPersonList.SelectedIndex).RankDateFrom;
 		}
 		void CbEditPersonRankNameSelectedIndexChanged(object sender, EventArgs e)
 		{
-			lbEditPIDRank.Text = aRankList.Find(item => item.RankName.Equals(cbEditPersonRankName.SelectedItem.ToString())).ID.ToString();
+			lbEditPIDRank.Text = aEditRankList.Find(item => item.RankName.Equals(cbEditPersonRankName.SelectedItem.ToString())).ID.ToString();
 		}
 		void DgvEditPersonListSelectionChanged(object sender, EventArgs e)
 		{
-			if (aPersonList.Count > 0)
+			if (aEditPersonList.Count > 0)
 			{
-				//lbEditIDPerson.Text = aPersonList.Find(item => item.ItemIndex == lsbEditPersonList.SelectedIndex).ID.ToString();
-				lbEditIDPerson.Text = aPersonList.Find(item => item.ID == Convert.ToInt32(dgvEditPersonList.CurrentRow.Cells["IDPerson"].Value)).ID.ToString();
+				//lbEditIDPerson.Text = aEditPersonList.Find(item => item.ItemIndex == lsbEditPersonList.SelectedIndex).ID.ToString();
+				lbEditIDPerson.Text = aEditPersonList.Find(item => item.ID == Convert.ToInt32(dgvEditPersonList.CurrentRow.Cells["IDPerson"].Value)).ID.ToString();
 				
-				//txEditPersonLastname.Text = aPersonList.Find(item => item.ItemIndex == lsbEditPersonList.SelectedIndex).LastName;
-				txEditPersonLastname.Text = aPersonList.Find(item => item.ID == Convert.ToInt32(dgvEditPersonList.CurrentRow.Cells["IDPerson"].Value)).LastName;
+				//txEditPersonLastname.Text = aEditPersonList.Find(item => item.ItemIndex == lsbEditPersonList.SelectedIndex).LastName;
+				txEditPersonLastname.Text = aEditPersonList.Find(item => item.ID == Convert.ToInt32(dgvEditPersonList.CurrentRow.Cells["IDPerson"].Value)).LastName;
 				
-				//txEditPersonFirstname.Text = aPersonList.Find(item => item.ItemIndex == lsbEditPersonList.SelectedIndex).FirstName;
-				txEditPersonFirstname.Text = aPersonList.Find(item => item.ID == Convert.ToInt32(dgvEditPersonList.CurrentRow.Cells["IDPerson"].Value)).FirstName;
+				//txEditPersonFirstname.Text = aEditPersonList.Find(item => item.ItemIndex == lsbEditPersonList.SelectedIndex).FirstName;
+				txEditPersonFirstname.Text = aEditPersonList.Find(item => item.ID == Convert.ToInt32(dgvEditPersonList.CurrentRow.Cells["IDPerson"].Value)).FirstName;
 				
-				//txEditPersonPatronymic.Text = aPersonList.Find(item => item.ItemIndex == lsbEditPersonList.SelectedIndex).Patronymic;
-				txEditPersonPatronymic.Text = aPersonList.Find(item => item.ID == Convert.ToInt32(dgvEditPersonList.CurrentRow.Cells["IDPerson"].Value)).Patronymic; //Convert.ToString(dgvEditPersonList.CurrentRow.Cells["Patronymic"].Value);
+				//txEditPersonPatronymic.Text = aEditPersonList.Find(item => item.ItemIndex == lsbEditPersonList.SelectedIndex).Patronymic;
+				txEditPersonPatronymic.Text = aEditPersonList.Find(item => item.ID == Convert.ToInt32(dgvEditPersonList.CurrentRow.Cells["IDPerson"].Value)).Patronymic; //Convert.ToString(dgvEditPersonList.CurrentRow.Cells["Patronymic"].Value);
 				
-				/*if (aPersonList.Find(item => item.ItemIndex == lsbEditPersonList.SelectedIndex).Gender.Equals(true))
+				/*if (aEditPersonList.Find(item => item.ItemIndex == lsbEditPersonList.SelectedIndex).Gender.Equals(true))
 				{
 					rbEditPersonGenderM.Checked = true;
 				}
@@ -1772,7 +1792,7 @@ namespace ArmyRep
 				{
 					rbEditPersonGenderF.Checked = true;
 				}*/
-				if (aPersonList.Find(item => item.ID == Convert.ToInt32(dgvEditPersonList.CurrentRow.Cells["IDPerson"].Value)).Gender.Equals(true))
+				if (aEditPersonList.Find(item => item.ID == Convert.ToInt32(dgvEditPersonList.CurrentRow.Cells["IDPerson"].Value)).Gender.Equals(true))
 					//(Convert.ToString(dgvEditPersonList.CurrentRow.Cells["Gender"].Value.Equals("М")))
 				{
 					rbEditPersonGenderM.Checked = true;
@@ -1782,10 +1802,10 @@ namespace ArmyRep
 					rbEditPersonGenderF.Checked = true;
 				}
 				
-				//dtpEditPersonBirthdate.Value = aPersonList.Find(item => item.ItemIndex == lsbEditPersonList.SelectedIndex).Birthdate;
-				dtpEditPersonBirthdate.Value = aPersonList.Find(item => item.ID == Convert.ToInt32(dgvEditPersonList.CurrentRow.Cells["IDPerson"].Value)).Birthdate;
+				//dtpEditPersonBirthdate.Value = aEditPersonList.Find(item => item.ItemIndex == lsbEditPersonList.SelectedIndex).Birthdate;
+				dtpEditPersonBirthdate.Value = aEditPersonList.Find(item => item.ID == Convert.ToInt32(dgvEditPersonList.CurrentRow.Cells["IDPerson"].Value)).Birthdate;
 				
-				/*if (aPersonList.Find(item => item.ItemIndex == lsbEditPersonList.SelectedIndex).Deathdate.ToString().Equals(string.Empty))
+				/*if (aEditPersonList.Find(item => item.ItemIndex == lsbEditPersonList.SelectedIndex).Deathdate.ToString().Equals(string.Empty))
 				{
 					dtpEditPersonDeathdate.Value = dtpEditPersonDeathdate.MaxDate;
 					dtpEditPersonDeathdate.Visible = false;
@@ -1793,7 +1813,7 @@ namespace ArmyRep
 				}
 				else
 				{
-					dtpEditPersonDeathdate.Value = aPersonList.Find(item => item.ItemIndex == lsbEditPersonList.SelectedIndex).Deathdate;
+					dtpEditPersonDeathdate.Value = aEditPersonList.Find(item => item.ItemIndex == lsbEditPersonList.SelectedIndex).Deathdate;
 					if (dtpEditPersonDeathdate.Value <= DateTime.Today)
 					{
 						dtpEditPersonDeathdate.Visible = true;
@@ -1805,7 +1825,7 @@ namespace ArmyRep
 						chbEditPersonDeath.Checked = false;	
 					}
 				}*/
-				if (aPersonList.Find(item => item.ID == Convert.ToInt32(dgvEditPersonList.CurrentRow.Cells["IDPerson"].Value)).Deathdate.ToString().Equals(string.Empty))
+				if (aEditPersonList.Find(item => item.ID == Convert.ToInt32(dgvEditPersonList.CurrentRow.Cells["IDPerson"].Value)).Deathdate.ToString().Equals(string.Empty))
 					//(Convert.ToDateTime(dgvEditPersonList.CurrentRow.Cells["Deathdate"].Value).Date > DateTime.Today)
 				{
 					dtpEditPersonDeathdate.Value = dtpEditPersonDeathdate.MaxDate.Date;
@@ -1814,7 +1834,7 @@ namespace ArmyRep
 				}
 				else
 				{
-					dtpEditPersonDeathdate.Value = aPersonList.Find(item => item.ID == Convert.ToInt32(dgvEditPersonList.CurrentRow.Cells["IDPerson"].Value)).Deathdate;
+					dtpEditPersonDeathdate.Value = aEditPersonList.Find(item => item.ID == Convert.ToInt32(dgvEditPersonList.CurrentRow.Cells["IDPerson"].Value)).Deathdate;
 					if (dtpEditPersonDeathdate.Value <= DateTime.Today)
 					{
 						dtpEditPersonDeathdate.Visible = true;
@@ -1827,19 +1847,19 @@ namespace ArmyRep
 					}
 				}
 				
-				//int nIDRank = aPersonList.Find(items => items.ItemIndex == lsbEditPersonList.SelectedIndex).IDRank;
-				int nIDRank = aPersonList.Find(items => items.ID == Convert.ToInt32(dgvEditPersonList.CurrentRow.Cells["IDPerson"].Value)).IDRank;
+				//int nIDRank = aEditPersonList.Find(items => items.ItemIndex == lsbEditPersonList.SelectedIndex).IDRank;
+				int nIDRank = aEditPersonList.Find(items => items.ID == Convert.ToInt32(dgvEditPersonList.CurrentRow.Cells["IDPerson"].Value)).IDRank;
 				
-				cbEditPersonRankName.SelectedIndex = aRankList.Find(item => item.ID.Equals(nIDRank)).ItemIndex;
+				cbEditPersonRankName.SelectedIndex = aEditRankList.Find(item => item.ID.Equals(nIDRank)).ItemIndex;
 				lbEditPIDRank.Text = nIDRank.ToString();
-				//dtpEditPersonRankDatefrom.Value = aPersonList.Find(items => items.ItemIndex == lsbEditPersonList.SelectedIndex).RankDateFrom;
-				dtpEditPersonRankDatefrom.Value = aPersonList.Find(items => items.ID == Convert.ToInt32(dgvEditPersonList.CurrentRow.Cells["IDPerson"].Value)).RankDateFrom;
+				//dtpEditPersonRankDatefrom.Value = aEditPersonList.Find(items => items.ItemIndex == lsbEditPersonList.SelectedIndex).RankDateFrom;
+				dtpEditPersonRankDatefrom.Value = aEditPersonList.Find(items => items.ID == Convert.ToInt32(dgvEditPersonList.CurrentRow.Cells["IDPerson"].Value)).RankDateFrom;
 			}
 		}
 		void LsbEditDepListSelectedIndexChanged(object sender, EventArgs e)
 		{
 			Department department = new Department();
-			department = aDepList.Find(item => item.ItemIndex == lsbEditDepList.SelectedIndex);
+			department = aEditDepList.Find(item => item.ItemIndex == lsbEditDepList.SelectedIndex);
 			lbEditIDDep.Text = department.ID.ToString();
 			txEditDepName.Text = department.DepName;
 			department = null;
@@ -1849,10 +1869,11 @@ namespace ArmyRep
 			txEditProdtypeName.Text = "";
 			lbEditIDProdtype.Text = "";
 			cbEditPTUsingtypeName.SelectedIndex = 0;
-			lbEditPTIDUsingtype.Text = aUsingtypeList.Find(item => item.ItemIndex == cbEditPTUsingtypeName.SelectedIndex).ID.ToString();;
+			lbEditPTIDUsingtype.Text = aEditUsingtypeList.Find(item => item.ItemIndex == cbEditPTUsingtypeName.SelectedIndex).ID.ToString();;
 		}
 		void BtnEditUsingtypesEditClick(object sender, EventArgs e)
 		{
+			tpUsingType.Show();
 			tcEdit.SelectedTab = tpUsingType;
 		}
 		void BtnReportClick(object sender, EventArgs e)
@@ -1913,9 +1934,9 @@ namespace ArmyRep
 		}
 		void CbEditPTUsingtypeNameSelectedIndexChanged(object sender, EventArgs e)
 		{
-			if (aUsingtypeList.Count > 0)
+			if (aEditUsingtypeList.Count > 0)
 			{
-				lbEditPTIDUsingtype.Text = aUsingtypeList.Find(item => item.ItemIndex == cbEditPTUsingtypeName.SelectedIndex).ID.ToString();
+				lbEditPTIDUsingtype.Text = aEditUsingtypeList.Find(item => item.ItemIndex == cbEditPTUsingtypeName.SelectedIndex).ID.ToString();
 			}
 			else
 			{
@@ -2265,6 +2286,15 @@ namespace ArmyRep
 						}
 					}
 				}
+			}
+		}
+		void TcEditSelectedIndexChanged(object sender, EventArgs e)
+		{
+			if ((tcEdit.SelectedTab != tpDepType) && (tcEdit.SelectedTab != tpUsingType) && (tcEdit.SelectedTab != tpCategory))
+			{
+				tpDepType.Hide();
+				tpUsingType.Hide();
+				tpCategory.Hide();
 			}
 		}
 	}

@@ -208,6 +208,10 @@ namespace ArmyRep
 		private System.Windows.Forms.SplitContainer scFromWH;
 		private System.Windows.Forms.SplitContainer scFromWHChoicedList;
 		private System.Windows.Forms.Button btnFromWHChoiceDel;
+		private System.Windows.Forms.Button button1;
+		private System.Windows.Forms.ComboBox cbEditDepDeptype;
+		private System.Windows.Forms.Label lbEditDepDeptype;
+		private System.Windows.Forms.Label lbEditDepDeptypeID;
 		
 		
 		/// <summary>
@@ -276,6 +280,10 @@ namespace ArmyRep
 			this.txEditPersonLastname = new System.Windows.Forms.TextBox();
 			this.lbEditPersonLastname = new System.Windows.Forms.Label();
 			this.tpDep = new System.Windows.Forms.TabPage();
+			this.lbEditDepDeptypeID = new System.Windows.Forms.Label();
+			this.button1 = new System.Windows.Forms.Button();
+			this.cbEditDepDeptype = new System.Windows.Forms.ComboBox();
+			this.lbEditDepDeptype = new System.Windows.Forms.Label();
 			this.btnEditDepNew = new System.Windows.Forms.Button();
 			this.btnEditDepDelete = new System.Windows.Forms.Button();
 			this.btnEditDepSave = new System.Windows.Forms.Button();
@@ -562,6 +570,7 @@ namespace ArmyRep
 			this.tcEdit.SelectedIndex = 0;
 			this.tcEdit.Size = new System.Drawing.Size(300, 200);
 			this.tcEdit.TabIndex = 1;
+			this.tcEdit.SelectedIndexChanged += new System.EventHandler(this.TcEditSelectedIndexChanged);
 			// 
 			// tpPerson
 			// 
@@ -818,7 +827,7 @@ namespace ArmyRep
 			this.chbEditPersonDeath.Name = "chbEditPersonDeath";
 			this.chbEditPersonDeath.Size = new System.Drawing.Size(104, 24);
 			this.chbEditPersonDeath.TabIndex = 10;
-			this.chbEditPersonDeath.Text = "Умер?";
+			this.chbEditPersonDeath.Text = "Исключить";
 			this.chbEditPersonDeath.UseVisualStyleBackColor = true;
 			this.chbEditPersonDeath.CheckedChanged += new System.EventHandler(this.ChbEditPersonDeathCheckedChanged);
 			// 
@@ -905,6 +914,10 @@ namespace ArmyRep
 			// tpDep
 			// 
 			this.tpDep.BackColor = System.Drawing.Color.Transparent;
+			this.tpDep.Controls.Add(this.lbEditDepDeptypeID);
+			this.tpDep.Controls.Add(this.button1);
+			this.tpDep.Controls.Add(this.cbEditDepDeptype);
+			this.tpDep.Controls.Add(this.lbEditDepDeptype);
 			this.tpDep.Controls.Add(this.btnEditDepNew);
 			this.tpDep.Controls.Add(this.btnEditDepDelete);
 			this.tpDep.Controls.Add(this.btnEditDepSave);
@@ -915,13 +928,46 @@ namespace ArmyRep
 			this.tpDep.Location = new System.Drawing.Point(4, 22);
 			this.tpDep.Name = "tpDep";
 			this.tpDep.Padding = new System.Windows.Forms.Padding(3);
-			this.tpDep.Size = new System.Drawing.Size(292, 174);
+			this.tpDep.Size = new System.Drawing.Size(958, 536);
 			this.tpDep.TabIndex = 0;
 			this.tpDep.Text = "Подразделение";
 			// 
+			// lbEditDepDeptypeID
+			// 
+			this.lbEditDepDeptypeID.Location = new System.Drawing.Point(6, 81);
+			this.lbEditDepDeptypeID.Name = "lbEditDepDeptypeID";
+			this.lbEditDepDeptypeID.Size = new System.Drawing.Size(19, 23);
+			this.lbEditDepDeptypeID.TabIndex = 10;
+			this.lbEditDepDeptypeID.Text = "0";
+			// 
+			// button1
+			// 
+			this.button1.Location = new System.Drawing.Point(297, 55);
+			this.button1.Name = "button1";
+			this.button1.Size = new System.Drawing.Size(25, 23);
+			this.button1.TabIndex = 9;
+			this.button1.Text = "...";
+			this.button1.UseVisualStyleBackColor = true;
+			// 
+			// cbEditDepDeptype
+			// 
+			this.cbEditDepDeptype.FormattingEnabled = true;
+			this.cbEditDepDeptype.Location = new System.Drawing.Point(158, 58);
+			this.cbEditDepDeptype.Name = "cbEditDepDeptype";
+			this.cbEditDepDeptype.Size = new System.Drawing.Size(140, 21);
+			this.cbEditDepDeptype.TabIndex = 8;
+			// 
+			// lbEditDepDeptype
+			// 
+			this.lbEditDepDeptype.Location = new System.Drawing.Point(6, 58);
+			this.lbEditDepDeptype.Name = "lbEditDepDeptype";
+			this.lbEditDepDeptype.Size = new System.Drawing.Size(146, 23);
+			this.lbEditDepDeptype.TabIndex = 7;
+			this.lbEditDepDeptype.Text = "Тип подразделения";
+			// 
 			// btnEditDepNew
 			// 
-			this.btnEditDepNew.Location = new System.Drawing.Point(60, 44);
+			this.btnEditDepNew.Location = new System.Drawing.Point(60, 93);
 			this.btnEditDepNew.Name = "btnEditDepNew";
 			this.btnEditDepNew.Size = new System.Drawing.Size(75, 23);
 			this.btnEditDepNew.TabIndex = 6;
@@ -931,7 +977,7 @@ namespace ArmyRep
 			// 
 			// btnEditDepDelete
 			// 
-			this.btnEditDepDelete.Location = new System.Drawing.Point(142, 44);
+			this.btnEditDepDelete.Location = new System.Drawing.Point(142, 93);
 			this.btnEditDepDelete.Name = "btnEditDepDelete";
 			this.btnEditDepDelete.Size = new System.Drawing.Size(75, 23);
 			this.btnEditDepDelete.TabIndex = 5;
@@ -941,7 +987,7 @@ namespace ArmyRep
 			// 
 			// btnEditDepSave
 			// 
-			this.btnEditDepSave.Location = new System.Drawing.Point(223, 44);
+			this.btnEditDepSave.Location = new System.Drawing.Point(223, 93);
 			this.btnEditDepSave.Name = "btnEditDepSave";
 			this.btnEditDepSave.Size = new System.Drawing.Size(75, 23);
 			this.btnEditDepSave.TabIndex = 4;
@@ -961,7 +1007,7 @@ namespace ArmyRep
 			// 
 			this.lsbEditDepList.FormattingEnabled = true;
 			this.lsbEditDepList.HorizontalScrollbar = true;
-			this.lsbEditDepList.Location = new System.Drawing.Point(6, 89);
+			this.lsbEditDepList.Location = new System.Drawing.Point(6, 138);
 			this.lsbEditDepList.Name = "lsbEditDepList";
 			this.lsbEditDepList.ScrollAlwaysVisible = true;
 			this.lsbEditDepList.Size = new System.Drawing.Size(292, 199);
@@ -995,7 +1041,7 @@ namespace ArmyRep
 			this.tpCategory.Controls.Add(this.lbEditCatName);
 			this.tpCategory.Location = new System.Drawing.Point(4, 22);
 			this.tpCategory.Name = "tpCategory";
-			this.tpCategory.Size = new System.Drawing.Size(292, 174);
+			this.tpCategory.Size = new System.Drawing.Size(958, 536);
 			this.tpCategory.TabIndex = 2;
 			this.tpCategory.Text = "Категории";
 			// 
@@ -1077,9 +1123,9 @@ namespace ArmyRep
 			this.tpProductType.Controls.Add(this.lbEditProdtypeName);
 			this.tpProductType.Location = new System.Drawing.Point(4, 22);
 			this.tpProductType.Name = "tpProductType";
-			this.tpProductType.Size = new System.Drawing.Size(292, 174);
+			this.tpProductType.Size = new System.Drawing.Size(958, 536);
 			this.tpProductType.TabIndex = 5;
-			this.tpProductType.Text = "Типы активов";
+			this.tpProductType.Text = "Виды предметов";
 			// 
 			// btnEditUsingtypesEdit
 			// 
@@ -1190,7 +1236,7 @@ namespace ArmyRep
 			this.tpUsingType.Controls.Add(this.lbEditUsingtypeName);
 			this.tpUsingType.Location = new System.Drawing.Point(4, 22);
 			this.tpUsingType.Name = "tpUsingType";
-			this.tpUsingType.Size = new System.Drawing.Size(292, 174);
+			this.tpUsingType.Size = new System.Drawing.Size(958, 536);
 			this.tpUsingType.TabIndex = 6;
 			this.tpUsingType.Text = "Виды пользования";
 			// 
@@ -1269,7 +1315,7 @@ namespace ArmyRep
 			this.tpRank.Location = new System.Drawing.Point(4, 22);
 			this.tpRank.Name = "tpRank";
 			this.tpRank.Padding = new System.Windows.Forms.Padding(3);
-			this.tpRank.Size = new System.Drawing.Size(292, 174);
+			this.tpRank.Size = new System.Drawing.Size(958, 536);
 			this.tpRank.TabIndex = 1;
 			this.tpRank.Text = "Звания";
 			// 
@@ -1349,7 +1395,7 @@ namespace ArmyRep
 			this.tpDepType.Controls.Add(this.lbEditDeptypeName);
 			this.tpDepType.Location = new System.Drawing.Point(4, 22);
 			this.tpDepType.Name = "tpDepType";
-			this.tpDepType.Size = new System.Drawing.Size(292, 174);
+			this.tpDepType.Size = new System.Drawing.Size(958, 536);
 			this.tpDepType.TabIndex = 4;
 			this.tpDepType.Text = "Типы подразделений";
 			// 
@@ -1427,7 +1473,7 @@ namespace ArmyRep
 			this.tpPart.Controls.Add(this.lbEditPartName);
 			this.tpPart.Location = new System.Drawing.Point(4, 22);
 			this.tpPart.Name = "tpPart";
-			this.tpPart.Size = new System.Drawing.Size(292, 174);
+			this.tpPart.Size = new System.Drawing.Size(958, 536);
 			this.tpPart.TabIndex = 7;
 			this.tpPart.Text = "Военчасть";
 			// 
@@ -1760,11 +1806,10 @@ namespace ArmyRep
 			this.tcWH.Controls.Add(this.tpToWH);
 			this.tcWH.Controls.Add(this.tpFromWH);
 			this.tcWH.Controls.Add(this.tpWHWriteoff);
-			this.tcWH.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.tcWH.Location = new System.Drawing.Point(157, 0);
+			this.tcWH.Location = new System.Drawing.Point(250, 250);
 			this.tcWH.Name = "tcWH";
 			this.tcWH.SelectedIndex = 0;
-			this.tcWH.Size = new System.Drawing.Size(966, 562);
+			this.tcWH.Size = new System.Drawing.Size(300, 200);
 			this.tcWH.TabIndex = 4;
 			// 
 			// tpToWH
@@ -1774,7 +1819,7 @@ namespace ArmyRep
 			this.tpToWH.Location = new System.Drawing.Point(4, 22);
 			this.tpToWH.Name = "tpToWH";
 			this.tpToWH.Padding = new System.Windows.Forms.Padding(3);
-			this.tpToWH.Size = new System.Drawing.Size(958, 536);
+			this.tpToWH.Size = new System.Drawing.Size(292, 174);
 			this.tpToWH.TabIndex = 1;
 			this.tpToWH.Text = "Приход на склад";
 			// 
@@ -1818,8 +1863,8 @@ namespace ArmyRep
 			// 
 			this.scToWH.Panel2.AutoScroll = true;
 			this.scToWH.Panel2.Controls.Add(this.scToWHChoicedList);
-			this.scToWH.Size = new System.Drawing.Size(952, 530);
-			this.scToWH.SplitterDistance = 419;
+			this.scToWH.Size = new System.Drawing.Size(286, 168);
+			this.scToWH.SplitterDistance = 139;
 			this.scToWH.TabIndex = 46;
 			// 
 			// lbToWHCat
@@ -1899,7 +1944,7 @@ namespace ArmyRep
 			this.lbToWHActDate.Name = "lbToWHActDate";
 			this.lbToWHActDate.Size = new System.Drawing.Size(165, 23);
 			this.lbToWHActDate.TabIndex = 41;
-			this.lbToWHActDate.Text = "Дата акта приема-передачи";
+			this.lbToWHActDate.Text = "Дата документа";
 			// 
 			// lsbToWHProdtypes
 			// 
@@ -1919,7 +1964,7 @@ namespace ArmyRep
 			this.lbToWHActNum.Name = "lbToWHActNum";
 			this.lbToWHActNum.Size = new System.Drawing.Size(178, 23);
 			this.lbToWHActNum.TabIndex = 40;
-			this.lbToWHActNum.Text = "Номер Акта приема-передачи";
+			this.lbToWHActNum.Text = "Номер документа";
 			// 
 			// txToWHFindProd
 			// 
@@ -2047,8 +2092,8 @@ namespace ArmyRep
 			// 
 			this.scToWHChoicedList.Panel2.AutoScroll = true;
 			this.scToWHChoicedList.Panel2.Controls.Add(this.dgvToWHChoicedProds);
-			this.scToWHChoicedList.Size = new System.Drawing.Size(952, 107);
-			this.scToWHChoicedList.SplitterDistance = 48;
+			this.scToWHChoicedList.Size = new System.Drawing.Size(286, 25);
+			this.scToWHChoicedList.SplitterDistance = 25;
 			this.scToWHChoicedList.TabIndex = 0;
 			// 
 			// BtnToWHChoiceDel
@@ -2087,7 +2132,7 @@ namespace ArmyRep
 			this.dgvToWHChoicedProds.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.dgvToWHChoicedProds.Location = new System.Drawing.Point(0, 0);
 			this.dgvToWHChoicedProds.Name = "dgvToWHChoicedProds";
-			this.dgvToWHChoicedProds.Size = new System.Drawing.Size(950, 53);
+			this.dgvToWHChoicedProds.Size = new System.Drawing.Size(284, 23);
 			this.dgvToWHChoicedProds.TabIndex = 43;
 			// 
 			// tpFromWH
@@ -2097,7 +2142,7 @@ namespace ArmyRep
 			this.tpFromWH.Location = new System.Drawing.Point(4, 22);
 			this.tpFromWH.Name = "tpFromWH";
 			this.tpFromWH.Padding = new System.Windows.Forms.Padding(3);
-			this.tpFromWH.Size = new System.Drawing.Size(958, 536);
+			this.tpFromWH.Size = new System.Drawing.Size(292, 174);
 			this.tpFromWH.TabIndex = 0;
 			this.tpFromWH.Text = "Выдача со склада";
 			// 
@@ -2138,8 +2183,8 @@ namespace ArmyRep
 			// scFromWH.Panel2
 			// 
 			this.scFromWH.Panel2.Controls.Add(this.scFromWHChoicedList);
-			this.scFromWH.Size = new System.Drawing.Size(952, 530);
-			this.scFromWH.SplitterDistance = 420;
+			this.scFromWH.Size = new System.Drawing.Size(286, 168);
+			this.scFromWH.SplitterDistance = 139;
 			this.scFromWH.TabIndex = 29;
 			// 
 			// lbFromWHCat
@@ -2366,8 +2411,8 @@ namespace ArmyRep
 			// scFromWHChoicedList.Panel2
 			// 
 			this.scFromWHChoicedList.Panel2.Controls.Add(this.dgvFromWHChoicedProds);
-			this.scFromWHChoicedList.Size = new System.Drawing.Size(952, 106);
-			this.scFromWHChoicedList.SplitterDistance = 49;
+			this.scFromWHChoicedList.Size = new System.Drawing.Size(286, 25);
+			this.scFromWHChoicedList.SplitterDistance = 25;
 			this.scFromWHChoicedList.TabIndex = 0;
 			// 
 			// btnFromWHChoiceDel
@@ -2406,7 +2451,7 @@ namespace ArmyRep
 			this.dgvFromWHChoicedProds.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.dgvFromWHChoicedProds.Location = new System.Drawing.Point(0, 0);
 			this.dgvFromWHChoicedProds.Name = "dgvFromWHChoicedProds";
-			this.dgvFromWHChoicedProds.Size = new System.Drawing.Size(952, 53);
+			this.dgvFromWHChoicedProds.Size = new System.Drawing.Size(286, 25);
 			this.dgvFromWHChoicedProds.TabIndex = 26;
 			// 
 			// tpWHWriteoff
@@ -2414,7 +2459,7 @@ namespace ArmyRep
 			this.tpWHWriteoff.BackColor = System.Drawing.Color.Transparent;
 			this.tpWHWriteoff.Location = new System.Drawing.Point(4, 22);
 			this.tpWHWriteoff.Name = "tpWHWriteoff";
-			this.tpWHWriteoff.Size = new System.Drawing.Size(958, 536);
+			this.tpWHWriteoff.Size = new System.Drawing.Size(292, 174);
 			this.tpWHWriteoff.TabIndex = 2;
 			this.tpWHWriteoff.Text = "Списание";
 			// 
@@ -2423,10 +2468,10 @@ namespace ArmyRep
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(1123, 562);
-			this.Controls.Add(this.tcWH);
 			this.Controls.Add(this.tcEdit);
-			this.Controls.Add(this.tcDep);
+			this.Controls.Add(this.tcWH);
 			this.Controls.Add(this.tcUse);
+			this.Controls.Add(this.tcDep);
 			this.Controls.Add(this.pnMenu);
 			this.Name = "frmMain";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
