@@ -127,17 +127,14 @@ namespace ArmyRep
 		private System.Windows.Forms.Label lbToWHInvNum;
 		private System.Windows.Forms.Label lbToWHProdCount;
 		private System.Windows.Forms.Label lbToWHProdtypes;
-		private System.Windows.Forms.Label lbToWHFindProd;
 		private System.Windows.Forms.TextBox txToWHFindProd;
 		private System.Windows.Forms.ListBox lsbToWHProdtypes;
-		private System.Windows.Forms.Label lbToWHChoicedProds;
 		private System.Windows.Forms.ComboBox cbToWHCat;
 		private System.Windows.Forms.Label lbToWHCat;
 		private System.Windows.Forms.Label lbToWHPrice;
 		private System.Windows.Forms.Label lbToWHFromIDDep;
 		private System.Windows.Forms.Label lbToWHIDCat;
 		private System.Windows.Forms.Button btnFromWHChoiceProd;
-		private System.Windows.Forms.Label lbFromWHChoicedProds;
 		private System.Windows.Forms.Label lbFromWHPrice;
 		private System.Windows.Forms.TextBox txFromWHInvNum;
 		private System.Windows.Forms.Label lbFromWHInvNum;
@@ -145,7 +142,6 @@ namespace ArmyRep
 		private System.Windows.Forms.TextBox txFromWHFindProd;
 		private System.Windows.Forms.ListBox lsbFromWHProdTypes;
 		private System.Windows.Forms.Label lbFromWHProdCount;
-		private System.Windows.Forms.Label lbFromWHFindProd;
 		private System.Windows.Forms.Label lbFromWHToIDDep;
 		private System.Windows.Forms.Label lbFromWHToDep;
 		private System.Windows.Forms.RadioButton rbFromWHtoDep;
@@ -212,6 +208,20 @@ namespace ArmyRep
 		private System.Windows.Forms.ComboBox cbEditDepDeptype;
 		private System.Windows.Forms.Label lbEditDepDeptype;
 		private System.Windows.Forms.Label lbEditDepDeptypeID;
+		private System.Windows.Forms.RadioButton rbToWHFindPrice;
+		private System.Windows.Forms.RadioButton rbToWHFindProd;
+		private System.Windows.Forms.TextBox textBox1;
+		private System.Windows.Forms.Label lbToWHFindInDB;
+		private System.Windows.Forms.RadioButton rbFromWHFindPrice;
+		private System.Windows.Forms.RadioButton rbFromWHFindProd;
+		private System.Windows.Forms.TextBox textBox2;
+		private System.Windows.Forms.Label lbFromWHFindInDB;
+		private System.Windows.Forms.Label label1;
+		private System.Windows.Forms.MaskedTextBox maskedTextBox2;
+		private System.Windows.Forms.MaskedTextBox maskedTextBox1;
+		private System.Windows.Forms.Label label2;
+		private System.Windows.Forms.MaskedTextBox maskedTextBox3;
+		private System.Windows.Forms.MaskedTextBox maskedTextBox4;
 		
 		
 		/// <summary>
@@ -386,7 +396,6 @@ namespace ArmyRep
 			this.lbToWHActNum = new System.Windows.Forms.Label();
 			this.txToWHFindProd = new System.Windows.Forms.TextBox();
 			this.txToWHActNum = new System.Windows.Forms.TextBox();
-			this.lbToWHFindProd = new System.Windows.Forms.Label();
 			this.lbToWHFromIDDep = new System.Windows.Forms.Label();
 			this.lbToWHProdtypes = new System.Windows.Forms.Label();
 			this.lbToWHIDCat = new System.Windows.Forms.Label();
@@ -398,8 +407,14 @@ namespace ArmyRep
 			this.btnToWHChoiceProd = new System.Windows.Forms.Button();
 			this.lbToWHPrice = new System.Windows.Forms.Label();
 			this.scToWHChoicedList = new System.Windows.Forms.SplitContainer();
+			this.label1 = new System.Windows.Forms.Label();
+			this.maskedTextBox2 = new System.Windows.Forms.MaskedTextBox();
+			this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
+			this.rbToWHFindPrice = new System.Windows.Forms.RadioButton();
+			this.rbToWHFindProd = new System.Windows.Forms.RadioButton();
+			this.textBox1 = new System.Windows.Forms.TextBox();
+			this.lbToWHFindInDB = new System.Windows.Forms.Label();
 			this.BtnToWHChoiceDel = new System.Windows.Forms.Button();
-			this.lbToWHChoicedProds = new System.Windows.Forms.Label();
 			this.btnToWHChoiceSave = new System.Windows.Forms.Button();
 			this.dgvToWHChoicedProds = new System.Windows.Forms.DataGridView();
 			this.tpFromWH = new System.Windows.Forms.TabPage();
@@ -418,7 +433,6 @@ namespace ArmyRep
 			this.lbFromWHActDate = new System.Windows.Forms.Label();
 			this.lbFromWHToIDDep = new System.Windows.Forms.Label();
 			this.lbFromWHActNum = new System.Windows.Forms.Label();
-			this.lbFromWHFindProd = new System.Windows.Forms.Label();
 			this.btnFromWHChoiceProd = new System.Windows.Forms.Button();
 			this.lbFromWHProdCount = new System.Windows.Forms.Label();
 			this.lsbFromWHProdTypes = new System.Windows.Forms.ListBox();
@@ -428,8 +442,14 @@ namespace ArmyRep
 			this.lbFromWHProdTypes = new System.Windows.Forms.Label();
 			this.lbFromWHInvNum = new System.Windows.Forms.Label();
 			this.scFromWHChoicedList = new System.Windows.Forms.SplitContainer();
+			this.label2 = new System.Windows.Forms.Label();
+			this.maskedTextBox3 = new System.Windows.Forms.MaskedTextBox();
+			this.maskedTextBox4 = new System.Windows.Forms.MaskedTextBox();
+			this.rbFromWHFindPrice = new System.Windows.Forms.RadioButton();
+			this.rbFromWHFindProd = new System.Windows.Forms.RadioButton();
+			this.textBox2 = new System.Windows.Forms.TextBox();
+			this.lbFromWHFindInDB = new System.Windows.Forms.Label();
 			this.btnFromWHChoiceDel = new System.Windows.Forms.Button();
-			this.lbFromWHChoicedProds = new System.Windows.Forms.Label();
 			this.btnFromWHChoiceSave = new System.Windows.Forms.Button();
 			this.dgvFromWHChoicedProds = new System.Windows.Forms.DataGridView();
 			this.tpWHWriteoff = new System.Windows.Forms.TabPage();
@@ -491,68 +511,74 @@ namespace ArmyRep
 			// 
 			// btnWriteoff
 			// 
+			this.btnWriteoff.BackColor = System.Drawing.Color.DarkSalmon;
 			this.btnWriteoff.Dock = System.Windows.Forms.DockStyle.Top;
 			this.btnWriteoff.Location = new System.Drawing.Point(0, 200);
 			this.btnWriteoff.Name = "btnWriteoff";
 			this.btnWriteoff.Size = new System.Drawing.Size(157, 40);
-			this.btnWriteoff.TabIndex = 5;
+			this.btnWriteoff.TabIndex = 0;
 			this.btnWriteoff.Text = "Списание";
-			this.btnWriteoff.UseVisualStyleBackColor = true;
+			this.btnWriteoff.UseVisualStyleBackColor = false;
 			this.btnWriteoff.Click += new System.EventHandler(this.BtnWriteoffClick);
 			// 
 			// btnReport
 			// 
+			this.btnReport.BackColor = System.Drawing.Color.DarkSalmon;
 			this.btnReport.Dock = System.Windows.Forms.DockStyle.Top;
 			this.btnReport.Location = new System.Drawing.Point(0, 160);
 			this.btnReport.Name = "btnReport";
 			this.btnReport.Size = new System.Drawing.Size(157, 40);
 			this.btnReport.TabIndex = 4;
 			this.btnReport.Text = "Отчеты";
-			this.btnReport.UseVisualStyleBackColor = true;
+			this.btnReport.UseVisualStyleBackColor = false;
 			this.btnReport.Click += new System.EventHandler(this.BtnReportClick);
 			// 
 			// btnUse
 			// 
+			this.btnUse.BackColor = System.Drawing.Color.DarkSalmon;
 			this.btnUse.Dock = System.Windows.Forms.DockStyle.Top;
 			this.btnUse.Location = new System.Drawing.Point(0, 120);
 			this.btnUse.Name = "btnUse";
 			this.btnUse.Size = new System.Drawing.Size(157, 40);
 			this.btnUse.TabIndex = 3;
 			this.btnUse.Text = "Эксплуатация";
-			this.btnUse.UseVisualStyleBackColor = true;
+			this.btnUse.UseVisualStyleBackColor = false;
 			this.btnUse.Click += new System.EventHandler(this.BtnUseClick);
 			// 
 			// btnDep
 			// 
+			this.btnDep.BackColor = System.Drawing.Color.DarkSalmon;
 			this.btnDep.Dock = System.Windows.Forms.DockStyle.Top;
 			this.btnDep.Location = new System.Drawing.Point(0, 80);
 			this.btnDep.Name = "btnDep";
 			this.btnDep.Size = new System.Drawing.Size(157, 40);
 			this.btnDep.TabIndex = 2;
 			this.btnDep.Text = "Подразделение";
-			this.btnDep.UseVisualStyleBackColor = true;
+			this.btnDep.UseVisualStyleBackColor = false;
 			this.btnDep.Click += new System.EventHandler(this.BtnDepClick);
 			// 
 			// btnWH
 			// 
+			this.btnWH.BackColor = System.Drawing.Color.DarkSalmon;
 			this.btnWH.Dock = System.Windows.Forms.DockStyle.Top;
 			this.btnWH.Location = new System.Drawing.Point(0, 40);
 			this.btnWH.Name = "btnWH";
 			this.btnWH.Size = new System.Drawing.Size(157, 40);
 			this.btnWH.TabIndex = 1;
 			this.btnWH.Text = "Склад";
-			this.btnWH.UseVisualStyleBackColor = true;
+			this.btnWH.UseVisualStyleBackColor = false;
 			this.btnWH.Click += new System.EventHandler(this.BtnWHClick);
 			// 
 			// btnEdit
 			// 
+			this.btnEdit.BackColor = System.Drawing.Color.DarkSalmon;
 			this.btnEdit.Dock = System.Windows.Forms.DockStyle.Top;
 			this.btnEdit.Location = new System.Drawing.Point(0, 0);
 			this.btnEdit.Name = "btnEdit";
 			this.btnEdit.Size = new System.Drawing.Size(157, 40);
 			this.btnEdit.TabIndex = 0;
 			this.btnEdit.Text = "Ввод-редактирование";
-			this.btnEdit.UseVisualStyleBackColor = true;
+			this.btnEdit.UseVisualStyleBackColor = false;
 			this.btnEdit.Click += new System.EventHandler(this.BtnEditClick);
 			// 
 			// tcEdit
@@ -574,7 +600,7 @@ namespace ArmyRep
 			// 
 			// tpPerson
 			// 
-			this.tpPerson.BackColor = System.Drawing.Color.Transparent;
+			this.tpPerson.BackColor = System.Drawing.Color.YellowGreen;
 			this.tpPerson.Controls.Add(this.dgvEditPersonList);
 			this.tpPerson.Controls.Add(this.rbEditPersonGenderF);
 			this.tpPerson.Controls.Add(this.rbEditPersonGenderM);
@@ -913,7 +939,7 @@ namespace ArmyRep
 			// 
 			// tpDep
 			// 
-			this.tpDep.BackColor = System.Drawing.Color.Transparent;
+			this.tpDep.BackColor = System.Drawing.Color.YellowGreen;
 			this.tpDep.Controls.Add(this.lbEditDepDeptypeID);
 			this.tpDep.Controls.Add(this.button1);
 			this.tpDep.Controls.Add(this.cbEditDepDeptype);
@@ -928,7 +954,7 @@ namespace ArmyRep
 			this.tpDep.Location = new System.Drawing.Point(4, 22);
 			this.tpDep.Name = "tpDep";
 			this.tpDep.Padding = new System.Windows.Forms.Padding(3);
-			this.tpDep.Size = new System.Drawing.Size(958, 536);
+			this.tpDep.Size = new System.Drawing.Size(292, 174);
 			this.tpDep.TabIndex = 0;
 			this.tpDep.Text = "Подразделение";
 			// 
@@ -1031,7 +1057,7 @@ namespace ArmyRep
 			// 
 			// tpCategory
 			// 
-			this.tpCategory.BackColor = System.Drawing.Color.Transparent;
+			this.tpCategory.BackColor = System.Drawing.Color.YellowGreen;
 			this.tpCategory.Controls.Add(this.lbEditIDCat);
 			this.tpCategory.Controls.Add(this.btnEditCatNew);
 			this.tpCategory.Controls.Add(this.btnEditCatDelete);
@@ -1041,7 +1067,7 @@ namespace ArmyRep
 			this.tpCategory.Controls.Add(this.lbEditCatName);
 			this.tpCategory.Location = new System.Drawing.Point(4, 22);
 			this.tpCategory.Name = "tpCategory";
-			this.tpCategory.Size = new System.Drawing.Size(958, 536);
+			this.tpCategory.Size = new System.Drawing.Size(292, 174);
 			this.tpCategory.TabIndex = 2;
 			this.tpCategory.Text = "Категории";
 			// 
@@ -1109,7 +1135,7 @@ namespace ArmyRep
 			// 
 			// tpProductType
 			// 
-			this.tpProductType.BackColor = System.Drawing.Color.Transparent;
+			this.tpProductType.BackColor = System.Drawing.Color.YellowGreen;
 			this.tpProductType.Controls.Add(this.btnEditUsingtypesEdit);
 			this.tpProductType.Controls.Add(this.lbEditPTIDUsingtype);
 			this.tpProductType.Controls.Add(this.cbEditPTUsingtypeName);
@@ -1123,7 +1149,7 @@ namespace ArmyRep
 			this.tpProductType.Controls.Add(this.lbEditProdtypeName);
 			this.tpProductType.Location = new System.Drawing.Point(4, 22);
 			this.tpProductType.Name = "tpProductType";
-			this.tpProductType.Size = new System.Drawing.Size(958, 536);
+			this.tpProductType.Size = new System.Drawing.Size(292, 174);
 			this.tpProductType.TabIndex = 5;
 			this.tpProductType.Text = "Виды предметов";
 			// 
@@ -1226,7 +1252,7 @@ namespace ArmyRep
 			// 
 			// tpUsingType
 			// 
-			this.tpUsingType.BackColor = System.Drawing.Color.Transparent;
+			this.tpUsingType.BackColor = System.Drawing.Color.YellowGreen;
 			this.tpUsingType.Controls.Add(this.lsbEditUsingtypeList);
 			this.tpUsingType.Controls.Add(this.btnEditUsingtypeNew);
 			this.tpUsingType.Controls.Add(this.btnEditUsingtypeDel);
@@ -1236,7 +1262,7 @@ namespace ArmyRep
 			this.tpUsingType.Controls.Add(this.lbEditUsingtypeName);
 			this.tpUsingType.Location = new System.Drawing.Point(4, 22);
 			this.tpUsingType.Name = "tpUsingType";
-			this.tpUsingType.Size = new System.Drawing.Size(958, 536);
+			this.tpUsingType.Size = new System.Drawing.Size(292, 174);
 			this.tpUsingType.TabIndex = 6;
 			this.tpUsingType.Text = "Виды пользования";
 			// 
@@ -1304,7 +1330,7 @@ namespace ArmyRep
 			// 
 			// tpRank
 			// 
-			this.tpRank.BackColor = System.Drawing.Color.Transparent;
+			this.tpRank.BackColor = System.Drawing.Color.YellowGreen;
 			this.tpRank.Controls.Add(this.lbEditIDRank);
 			this.tpRank.Controls.Add(this.btnEditRankNew);
 			this.tpRank.Controls.Add(this.btnEditRankDelete);
@@ -1315,7 +1341,7 @@ namespace ArmyRep
 			this.tpRank.Location = new System.Drawing.Point(4, 22);
 			this.tpRank.Name = "tpRank";
 			this.tpRank.Padding = new System.Windows.Forms.Padding(3);
-			this.tpRank.Size = new System.Drawing.Size(958, 536);
+			this.tpRank.Size = new System.Drawing.Size(292, 174);
 			this.tpRank.TabIndex = 1;
 			this.tpRank.Text = "Звания";
 			// 
@@ -1385,7 +1411,7 @@ namespace ArmyRep
 			// 
 			// tpDepType
 			// 
-			this.tpDepType.BackColor = System.Drawing.Color.Transparent;
+			this.tpDepType.BackColor = System.Drawing.Color.YellowGreen;
 			this.tpDepType.Controls.Add(this.lsbEditDeptypeList);
 			this.tpDepType.Controls.Add(this.btnEditDeptypeNew);
 			this.tpDepType.Controls.Add(this.btnEditDeptypeDel);
@@ -1395,7 +1421,7 @@ namespace ArmyRep
 			this.tpDepType.Controls.Add(this.lbEditDeptypeName);
 			this.tpDepType.Location = new System.Drawing.Point(4, 22);
 			this.tpDepType.Name = "tpDepType";
-			this.tpDepType.Size = new System.Drawing.Size(958, 536);
+			this.tpDepType.Size = new System.Drawing.Size(292, 174);
 			this.tpDepType.TabIndex = 4;
 			this.tpDepType.Text = "Типы подразделений";
 			// 
@@ -1463,7 +1489,7 @@ namespace ArmyRep
 			// 
 			// tpPart
 			// 
-			this.tpPart.BackColor = System.Drawing.Color.Transparent;
+			this.tpPart.BackColor = System.Drawing.Color.YellowGreen;
 			this.tpPart.Controls.Add(this.lbEditIDPart);
 			this.tpPart.Controls.Add(this.btnEditPartNew);
 			this.tpPart.Controls.Add(this.btnEditPartDelete);
@@ -1473,7 +1499,7 @@ namespace ArmyRep
 			this.tpPart.Controls.Add(this.lbEditPartName);
 			this.tpPart.Location = new System.Drawing.Point(4, 22);
 			this.tpPart.Name = "tpPart";
-			this.tpPart.Size = new System.Drawing.Size(958, 536);
+			this.tpPart.Size = new System.Drawing.Size(292, 174);
 			this.tpPart.TabIndex = 7;
 			this.tpPart.Text = "Военчасть";
 			// 
@@ -1551,7 +1577,7 @@ namespace ArmyRep
 			// 
 			// tpDepToDep
 			// 
-			this.tpDepToDep.BackColor = System.Drawing.Color.Transparent;
+			this.tpDepToDep.BackColor = System.Drawing.Color.SkyBlue;
 			this.tpDepToDep.Controls.Add(this.dgvDepToDepChoicedProds);
 			this.tpDepToDep.Controls.Add(this.btnDepToDepSave);
 			this.tpDepToDep.Controls.Add(this.btnDepToDepChoice);
@@ -1734,7 +1760,7 @@ namespace ArmyRep
 			// 
 			// tpDepFromDep
 			// 
-			this.tpDepFromDep.BackColor = System.Drawing.Color.Transparent;
+			this.tpDepFromDep.BackColor = System.Drawing.Color.SkyBlue;
 			this.tpDepFromDep.Location = new System.Drawing.Point(4, 22);
 			this.tpDepFromDep.Name = "tpDepFromDep";
 			this.tpDepFromDep.Padding = new System.Windows.Forms.Padding(3);
@@ -1744,7 +1770,7 @@ namespace ArmyRep
 			// 
 			// tpUseToDep
 			// 
-			this.tpUseToDep.BackColor = System.Drawing.Color.Transparent;
+			this.tpUseToDep.BackColor = System.Drawing.Color.AntiqueWhite;
 			this.tpUseToDep.Controls.Add(this.cbUseToDepCat);
 			this.tpUseToDep.Controls.Add(this.lbUseToDepCat);
 			this.tpUseToDep.Location = new System.Drawing.Point(4, 22);
@@ -1752,7 +1778,7 @@ namespace ArmyRep
 			this.tpUseToDep.Padding = new System.Windows.Forms.Padding(3);
 			this.tpUseToDep.Size = new System.Drawing.Size(292, 174);
 			this.tpUseToDep.TabIndex = 0;
-			this.tpUseToDep.Text = "Приход на подразделение";
+			this.tpUseToDep.Text = "Возврат в подразделение";
 			// 
 			// cbUseToDepCat
 			// 
@@ -1783,7 +1809,7 @@ namespace ArmyRep
 			// 
 			// tpUseToUse
 			// 
-			this.tpUseToUse.BackColor = System.Drawing.Color.Transparent;
+			this.tpUseToUse.BackColor = System.Drawing.Color.AntiqueWhite;
 			this.tpUseToUse.Location = new System.Drawing.Point(4, 22);
 			this.tpUseToUse.Name = "tpUseToUse";
 			this.tpUseToUse.Padding = new System.Windows.Forms.Padding(3);
@@ -1793,7 +1819,7 @@ namespace ArmyRep
 			// 
 			// tpUseToWH
 			// 
-			this.tpUseToWH.BackColor = System.Drawing.Color.Transparent;
+			this.tpUseToWH.BackColor = System.Drawing.Color.AntiqueWhite;
 			this.tpUseToWH.Location = new System.Drawing.Point(4, 22);
 			this.tpUseToWH.Name = "tpUseToWH";
 			this.tpUseToWH.Padding = new System.Windows.Forms.Padding(3);
@@ -1806,20 +1832,22 @@ namespace ArmyRep
 			this.tcWH.Controls.Add(this.tpToWH);
 			this.tcWH.Controls.Add(this.tpFromWH);
 			this.tcWH.Controls.Add(this.tpWHWriteoff);
-			this.tcWH.Location = new System.Drawing.Point(250, 250);
+			this.tcWH.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.tcWH.Location = new System.Drawing.Point(157, 0);
 			this.tcWH.Name = "tcWH";
 			this.tcWH.SelectedIndex = 0;
-			this.tcWH.Size = new System.Drawing.Size(300, 200);
+			this.tcWH.Size = new System.Drawing.Size(966, 562);
 			this.tcWH.TabIndex = 4;
 			// 
 			// tpToWH
 			// 
-			this.tpToWH.BackColor = System.Drawing.Color.Transparent;
+			this.tpToWH.AutoScroll = true;
+			this.tpToWH.BackColor = System.Drawing.Color.LightGoldenrodYellow;
 			this.tpToWH.Controls.Add(this.scToWH);
 			this.tpToWH.Location = new System.Drawing.Point(4, 22);
 			this.tpToWH.Name = "tpToWH";
 			this.tpToWH.Padding = new System.Windows.Forms.Padding(3);
-			this.tpToWH.Size = new System.Drawing.Size(292, 174);
+			this.tpToWH.Size = new System.Drawing.Size(958, 536);
 			this.tpToWH.TabIndex = 1;
 			this.tpToWH.Text = "Приход на склад";
 			// 
@@ -1847,7 +1875,6 @@ namespace ArmyRep
 			this.scToWH.Panel1.Controls.Add(this.lbToWHActNum);
 			this.scToWH.Panel1.Controls.Add(this.txToWHFindProd);
 			this.scToWH.Panel1.Controls.Add(this.txToWHActNum);
-			this.scToWH.Panel1.Controls.Add(this.lbToWHFindProd);
 			this.scToWH.Panel1.Controls.Add(this.lbToWHFromIDDep);
 			this.scToWH.Panel1.Controls.Add(this.lbToWHProdtypes);
 			this.scToWH.Panel1.Controls.Add(this.lbToWHIDCat);
@@ -1863,15 +1890,15 @@ namespace ArmyRep
 			// 
 			this.scToWH.Panel2.AutoScroll = true;
 			this.scToWH.Panel2.Controls.Add(this.scToWHChoicedList);
-			this.scToWH.Size = new System.Drawing.Size(286, 168);
-			this.scToWH.SplitterDistance = 139;
+			this.scToWH.Size = new System.Drawing.Size(952, 530);
+			this.scToWH.SplitterDistance = 306;
 			this.scToWH.TabIndex = 46;
 			// 
 			// lbToWHCat
 			// 
-			this.lbToWHCat.Location = new System.Drawing.Point(10, 12);
+			this.lbToWHCat.Location = new System.Drawing.Point(10, 10);
 			this.lbToWHCat.Name = "lbToWHCat";
-			this.lbToWHCat.Size = new System.Drawing.Size(100, 23);
+			this.lbToWHCat.Size = new System.Drawing.Size(120, 23);
 			this.lbToWHCat.TabIndex = 33;
 			this.lbToWHCat.Text = "Категория";
 			// 
@@ -1879,16 +1906,17 @@ namespace ArmyRep
 			// 
 			this.udToWHProdCount.AllowDrop = true;
 			this.udToWHProdCount.Items.Add("0");
-			this.udToWHProdCount.Location = new System.Drawing.Point(140, 267);
+			this.udToWHProdCount.Location = new System.Drawing.Point(262, 130);
 			this.udToWHProdCount.Name = "udToWHProdCount";
 			this.udToWHProdCount.Size = new System.Drawing.Size(120, 20);
 			this.udToWHProdCount.TabIndex = 45;
 			this.udToWHProdCount.Text = "0";
+			this.udToWHProdCount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.UdToWHProdCountKeyPress);
 			// 
 			// rbToWHFromPart
 			// 
 			this.rbToWHFromPart.AccessibleName = "";
-			this.rbToWHFromPart.Location = new System.Drawing.Point(10, 53);
+			this.rbToWHFromPart.Location = new System.Drawing.Point(341, 10);
 			this.rbToWHFromPart.Name = "rbToWHFromPart";
 			this.rbToWHFromPart.Size = new System.Drawing.Size(122, 24);
 			this.rbToWHFromPart.TabIndex = 17;
@@ -1899,7 +1927,7 @@ namespace ArmyRep
 			// 
 			// mtxToWHPrice
 			// 
-			this.mtxToWHPrice.Location = new System.Drawing.Point(140, 322);
+			this.mtxToWHPrice.Location = new System.Drawing.Point(262, 175);
 			this.mtxToWHPrice.Mask = "000000000";
 			this.mtxToWHPrice.Name = "mtxToWHPrice";
 			this.mtxToWHPrice.PromptChar = ' ';
@@ -1912,7 +1940,7 @@ namespace ArmyRep
 			// 
 			this.rbToWHFromDep.AccessibleName = "";
 			this.rbToWHFromDep.Checked = true;
-			this.rbToWHFromDep.Location = new System.Drawing.Point(152, 52);
+			this.rbToWHFromDep.Location = new System.Drawing.Point(481, 10);
 			this.rbToWHFromDep.Name = "rbToWHFromDep";
 			this.rbToWHFromDep.Size = new System.Drawing.Size(185, 24);
 			this.rbToWHFromDep.TabIndex = 18;
@@ -1925,14 +1953,14 @@ namespace ArmyRep
 			// dtpToWHActDate
 			// 
 			this.dtpToWHActDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-			this.dtpToWHActDate.Location = new System.Drawing.Point(208, 154);
+			this.dtpToWHActDate.Location = new System.Drawing.Point(136, 75);
 			this.dtpToWHActDate.Name = "dtpToWHActDate";
 			this.dtpToWHActDate.Size = new System.Drawing.Size(120, 20);
 			this.dtpToWHActDate.TabIndex = 42;
 			// 
 			// lbToWHFromName
 			// 
-			this.lbToWHFromName.Location = new System.Drawing.Point(10, 89);
+			this.lbToWHFromName.Location = new System.Drawing.Point(341, 45);
 			this.lbToWHFromName.Name = "lbToWHFromName";
 			this.lbToWHFromName.Size = new System.Drawing.Size(75, 23);
 			this.lbToWHFromName.TabIndex = 19;
@@ -1940,9 +1968,9 @@ namespace ArmyRep
 			// 
 			// lbToWHActDate
 			// 
-			this.lbToWHActDate.Location = new System.Drawing.Point(10, 154);
+			this.lbToWHActDate.Location = new System.Drawing.Point(10, 75);
 			this.lbToWHActDate.Name = "lbToWHActDate";
-			this.lbToWHActDate.Size = new System.Drawing.Size(165, 23);
+			this.lbToWHActDate.Size = new System.Drawing.Size(120, 23);
 			this.lbToWHActDate.TabIndex = 41;
 			this.lbToWHActDate.Text = "Дата документа";
 			// 
@@ -1950,72 +1978,64 @@ namespace ArmyRep
 			// 
 			this.lsbToWHProdtypes.FormattingEnabled = true;
 			this.lsbToWHProdtypes.HorizontalScrollbar = true;
-			this.lsbToWHProdtypes.Location = new System.Drawing.Point(10, 265);
+			this.lsbToWHProdtypes.Location = new System.Drawing.Point(10, 155);
 			this.lsbToWHProdtypes.Name = "lsbToWHProdtypes";
 			this.lsbToWHProdtypes.ScrollAlwaysVisible = true;
 			this.lsbToWHProdtypes.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
-			this.lsbToWHProdtypes.Size = new System.Drawing.Size(120, 134);
+			this.lsbToWHProdtypes.Size = new System.Drawing.Size(246, 134);
 			this.lsbToWHProdtypes.TabIndex = 20;
 			this.lsbToWHProdtypes.SelectedIndexChanged += new System.EventHandler(this.LsbToWHProdtypesSelectedIndexChanged);
 			// 
 			// lbToWHActNum
 			// 
-			this.lbToWHActNum.Location = new System.Drawing.Point(10, 130);
+			this.lbToWHActNum.Location = new System.Drawing.Point(10, 45);
 			this.lbToWHActNum.Name = "lbToWHActNum";
-			this.lbToWHActNum.Size = new System.Drawing.Size(178, 23);
+			this.lbToWHActNum.Size = new System.Drawing.Size(120, 23);
 			this.lbToWHActNum.TabIndex = 40;
 			this.lbToWHActNum.Text = "Номер документа";
 			// 
 			// txToWHFindProd
 			// 
-			this.txToWHFindProd.Location = new System.Drawing.Point(10, 215);
+			this.txToWHFindProd.Location = new System.Drawing.Point(10, 130);
 			this.txToWHFindProd.Name = "txToWHFindProd";
-			this.txToWHFindProd.Size = new System.Drawing.Size(120, 20);
+			this.txToWHFindProd.Size = new System.Drawing.Size(246, 20);
 			this.txToWHFindProd.TabIndex = 21;
 			this.txToWHFindProd.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TxToWHFindProdKeyUp);
 			// 
 			// txToWHActNum
 			// 
-			this.txToWHActNum.Location = new System.Drawing.Point(208, 127);
+			this.txToWHActNum.Location = new System.Drawing.Point(136, 45);
 			this.txToWHActNum.Name = "txToWHActNum";
 			this.txToWHActNum.Size = new System.Drawing.Size(120, 20);
 			this.txToWHActNum.TabIndex = 39;
 			// 
-			// lbToWHFindProd
-			// 
-			this.lbToWHFindProd.Location = new System.Drawing.Point(10, 189);
-			this.lbToWHFindProd.Name = "lbToWHFindProd";
-			this.lbToWHFindProd.Size = new System.Drawing.Size(100, 23);
-			this.lbToWHFindProd.TabIndex = 22;
-			this.lbToWHFindProd.Text = "Найти:";
-			// 
 			// lbToWHFromIDDep
 			// 
-			this.lbToWHFromIDDep.Location = new System.Drawing.Point(378, 87);
+			this.lbToWHFromIDDep.Location = new System.Drawing.Point(709, 45);
 			this.lbToWHFromIDDep.Name = "lbToWHFromIDDep";
-			this.lbToWHFromIDDep.Size = new System.Drawing.Size(100, 23);
+			this.lbToWHFromIDDep.Size = new System.Drawing.Size(32, 23);
 			this.lbToWHFromIDDep.TabIndex = 37;
 			this.lbToWHFromIDDep.Text = "0";
 			// 
 			// lbToWHProdtypes
 			// 
-			this.lbToWHProdtypes.Location = new System.Drawing.Point(10, 242);
+			this.lbToWHProdtypes.Location = new System.Drawing.Point(10, 110);
 			this.lbToWHProdtypes.Name = "lbToWHProdtypes";
-			this.lbToWHProdtypes.Size = new System.Drawing.Size(100, 23);
+			this.lbToWHProdtypes.Size = new System.Drawing.Size(120, 23);
 			this.lbToWHProdtypes.TabIndex = 23;
-			this.lbToWHProdtypes.Text = "Виды ценностей:";
+			this.lbToWHProdtypes.Text = "Виды предметов";
 			// 
 			// lbToWHIDCat
 			// 
-			this.lbToWHIDCat.Location = new System.Drawing.Point(286, 12);
+			this.lbToWHIDCat.Location = new System.Drawing.Point(308, 10);
 			this.lbToWHIDCat.Name = "lbToWHIDCat";
-			this.lbToWHIDCat.Size = new System.Drawing.Size(100, 23);
+			this.lbToWHIDCat.Size = new System.Drawing.Size(32, 23);
 			this.lbToWHIDCat.TabIndex = 36;
 			this.lbToWHIDCat.Text = "0";
 			// 
 			// lbToWHProdCount
 			// 
-			this.lbToWHProdCount.Location = new System.Drawing.Point(140, 242);
+			this.lbToWHProdCount.Location = new System.Drawing.Point(262, 110);
 			this.lbToWHProdCount.Name = "lbToWHProdCount";
 			this.lbToWHProdCount.Size = new System.Drawing.Size(100, 23);
 			this.lbToWHProdCount.TabIndex = 25;
@@ -2024,7 +2044,7 @@ namespace ArmyRep
 			// cbToWHCat
 			// 
 			this.cbToWHCat.FormattingEnabled = true;
-			this.cbToWHCat.Location = new System.Drawing.Point(114, 12);
+			this.cbToWHCat.Location = new System.Drawing.Point(136, 10);
 			this.cbToWHCat.Name = "cbToWHCat";
 			this.cbToWHCat.Size = new System.Drawing.Size(170, 21);
 			this.cbToWHCat.TabIndex = 35;
@@ -2032,7 +2052,7 @@ namespace ArmyRep
 			// 
 			// lbToWHInvNum
 			// 
-			this.lbToWHInvNum.Location = new System.Drawing.Point(267, 242);
+			this.lbToWHInvNum.Location = new System.Drawing.Point(389, 110);
 			this.lbToWHInvNum.Name = "lbToWHInvNum";
 			this.lbToWHInvNum.Size = new System.Drawing.Size(100, 23);
 			this.lbToWHInvNum.TabIndex = 26;
@@ -2041,7 +2061,7 @@ namespace ArmyRep
 			// cbToWHFromName
 			// 
 			this.cbToWHFromName.FormattingEnabled = true;
-			this.cbToWHFromName.Location = new System.Drawing.Point(91, 89);
+			this.cbToWHFromName.Location = new System.Drawing.Point(422, 45);
 			this.cbToWHFromName.Name = "cbToWHFromName";
 			this.cbToWHFromName.Size = new System.Drawing.Size(282, 21);
 			this.cbToWHFromName.TabIndex = 34;
@@ -2049,24 +2069,24 @@ namespace ArmyRep
 			// 
 			// txToWHInvNum
 			// 
-			this.txToWHInvNum.Location = new System.Drawing.Point(267, 268);
+			this.txToWHInvNum.Location = new System.Drawing.Point(389, 130);
 			this.txToWHInvNum.Name = "txToWHInvNum";
 			this.txToWHInvNum.Size = new System.Drawing.Size(100, 20);
 			this.txToWHInvNum.TabIndex = 27;
 			// 
 			// btnToWHChoiceProd
 			// 
-			this.btnToWHChoiceProd.Location = new System.Drawing.Point(140, 360);
+			this.btnToWHChoiceProd.Location = new System.Drawing.Point(262, 209);
 			this.btnToWHChoiceProd.Name = "btnToWHChoiceProd";
-			this.btnToWHChoiceProd.Size = new System.Drawing.Size(75, 23);
+			this.btnToWHChoiceProd.Size = new System.Drawing.Size(100, 23);
 			this.btnToWHChoiceProd.TabIndex = 28;
-			this.btnToWHChoiceProd.Text = "Выбрать";
+			this.btnToWHChoiceProd.Text = "Выбрать ->";
 			this.btnToWHChoiceProd.UseVisualStyleBackColor = true;
 			this.btnToWHChoiceProd.Click += new System.EventHandler(this.BtnToWHChoiceProdClick);
 			// 
 			// lbToWHPrice
 			// 
-			this.lbToWHPrice.Location = new System.Drawing.Point(140, 298);
+			this.lbToWHPrice.Location = new System.Drawing.Point(262, 155);
 			this.lbToWHPrice.Name = "lbToWHPrice";
 			this.lbToWHPrice.Size = new System.Drawing.Size(100, 23);
 			this.lbToWHPrice.TabIndex = 31;
@@ -2084,41 +2104,97 @@ namespace ArmyRep
 			// scToWHChoicedList.Panel1
 			// 
 			this.scToWHChoicedList.Panel1.AutoScroll = true;
+			this.scToWHChoicedList.Panel1.BackColor = System.Drawing.Color.Beige;
+			this.scToWHChoicedList.Panel1.Controls.Add(this.label1);
+			this.scToWHChoicedList.Panel1.Controls.Add(this.maskedTextBox2);
+			this.scToWHChoicedList.Panel1.Controls.Add(this.maskedTextBox1);
+			this.scToWHChoicedList.Panel1.Controls.Add(this.rbToWHFindPrice);
+			this.scToWHChoicedList.Panel1.Controls.Add(this.rbToWHFindProd);
+			this.scToWHChoicedList.Panel1.Controls.Add(this.textBox1);
+			this.scToWHChoicedList.Panel1.Controls.Add(this.lbToWHFindInDB);
 			this.scToWHChoicedList.Panel1.Controls.Add(this.BtnToWHChoiceDel);
-			this.scToWHChoicedList.Panel1.Controls.Add(this.lbToWHChoicedProds);
 			this.scToWHChoicedList.Panel1.Controls.Add(this.btnToWHChoiceSave);
 			// 
 			// scToWHChoicedList.Panel2
 			// 
 			this.scToWHChoicedList.Panel2.AutoScroll = true;
 			this.scToWHChoicedList.Panel2.Controls.Add(this.dgvToWHChoicedProds);
-			this.scToWHChoicedList.Size = new System.Drawing.Size(286, 25);
-			this.scToWHChoicedList.SplitterDistance = 25;
+			this.scToWHChoicedList.Size = new System.Drawing.Size(952, 220);
+			this.scToWHChoicedList.SplitterDistance = 128;
 			this.scToWHChoicedList.TabIndex = 0;
+			// 
+			// label1
+			// 
+			this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.label1.Location = new System.Drawing.Point(154, 35);
+			this.label1.Name = "label1";
+			this.label1.Size = new System.Drawing.Size(15, 21);
+			this.label1.TabIndex = 46;
+			this.label1.Text = "...";
+			// 
+			// maskedTextBox2
+			// 
+			this.maskedTextBox2.Location = new System.Drawing.Point(171, 35);
+			this.maskedTextBox2.Name = "maskedTextBox2";
+			this.maskedTextBox2.Size = new System.Drawing.Size(85, 20);
+			this.maskedTextBox2.TabIndex = 45;
+			// 
+			// maskedTextBox1
+			// 
+			this.maskedTextBox1.Location = new System.Drawing.Point(68, 35);
+			this.maskedTextBox1.Name = "maskedTextBox1";
+			this.maskedTextBox1.Size = new System.Drawing.Size(85, 20);
+			this.maskedTextBox1.TabIndex = 44;
+			// 
+			// rbToWHFindPrice
+			// 
+			this.rbToWHFindPrice.Location = new System.Drawing.Point(262, 35);
+			this.rbToWHFindPrice.Name = "rbToWHFindPrice";
+			this.rbToWHFindPrice.Size = new System.Drawing.Size(104, 24);
+			this.rbToWHFindPrice.TabIndex = 43;
+			this.rbToWHFindPrice.TabStop = true;
+			this.rbToWHFindPrice.Text = "по цене";
+			this.rbToWHFindPrice.UseVisualStyleBackColor = true;
+			// 
+			// rbToWHFindProd
+			// 
+			this.rbToWHFindProd.Location = new System.Drawing.Point(262, 10);
+			this.rbToWHFindProd.Name = "rbToWHFindProd";
+			this.rbToWHFindProd.Size = new System.Drawing.Size(104, 24);
+			this.rbToWHFindProd.TabIndex = 42;
+			this.rbToWHFindProd.TabStop = true;
+			this.rbToWHFindProd.Text = "по предмету";
+			this.rbToWHFindProd.UseVisualStyleBackColor = true;
+			// 
+			// textBox1
+			// 
+			this.textBox1.Location = new System.Drawing.Point(68, 10);
+			this.textBox1.Name = "textBox1";
+			this.textBox1.Size = new System.Drawing.Size(188, 20);
+			this.textBox1.TabIndex = 41;
+			// 
+			// lbToWHFindInDB
+			// 
+			this.lbToWHFindInDB.Location = new System.Drawing.Point(10, 10);
+			this.lbToWHFindInDB.Name = "lbToWHFindInDB";
+			this.lbToWHFindInDB.Size = new System.Drawing.Size(52, 23);
+			this.lbToWHFindInDB.TabIndex = 40;
+			this.lbToWHFindInDB.Text = "Найти";
 			// 
 			// BtnToWHChoiceDel
 			// 
-			this.BtnToWHChoiceDel.Location = new System.Drawing.Point(262, 14);
+			this.BtnToWHChoiceDel.Location = new System.Drawing.Point(115, 91);
 			this.BtnToWHChoiceDel.Name = "BtnToWHChoiceDel";
 			this.BtnToWHChoiceDel.Size = new System.Drawing.Size(141, 23);
 			this.BtnToWHChoiceDel.TabIndex = 39;
-			this.BtnToWHChoiceDel.Text = "Удалить выделенные";
+			this.BtnToWHChoiceDel.Text = "Убрать выделенные";
 			this.BtnToWHChoiceDel.UseVisualStyleBackColor = true;
 			this.BtnToWHChoiceDel.Click += new System.EventHandler(this.BtnToWHChoiceDelClick);
-			// 
-			// lbToWHChoicedProds
-			// 
-			this.lbToWHChoicedProds.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.lbToWHChoicedProds.Location = new System.Drawing.Point(10, 14);
-			this.lbToWHChoicedProds.Name = "lbToWHChoicedProds";
-			this.lbToWHChoicedProds.Size = new System.Drawing.Size(100, 23);
-			this.lbToWHChoicedProds.TabIndex = 30;
-			this.lbToWHChoicedProds.Text = "Выбранные:";
 			// 
 			// btnToWHChoiceSave
 			// 
 			this.btnToWHChoiceSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.btnToWHChoiceSave.Location = new System.Drawing.Point(140, 14);
+			this.btnToWHChoiceSave.Location = new System.Drawing.Point(10, 91);
 			this.btnToWHChoiceSave.Name = "btnToWHChoiceSave";
 			this.btnToWHChoiceSave.Size = new System.Drawing.Size(100, 23);
 			this.btnToWHChoiceSave.TabIndex = 38;
@@ -2128,16 +2204,17 @@ namespace ArmyRep
 			// 
 			// dgvToWHChoicedProds
 			// 
+			this.dgvToWHChoicedProds.BackgroundColor = System.Drawing.Color.White;
 			this.dgvToWHChoicedProds.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 			this.dgvToWHChoicedProds.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.dgvToWHChoicedProds.Location = new System.Drawing.Point(0, 0);
 			this.dgvToWHChoicedProds.Name = "dgvToWHChoicedProds";
-			this.dgvToWHChoicedProds.Size = new System.Drawing.Size(284, 23);
+			this.dgvToWHChoicedProds.Size = new System.Drawing.Size(950, 86);
 			this.dgvToWHChoicedProds.TabIndex = 43;
 			// 
 			// tpFromWH
 			// 
-			this.tpFromWH.BackColor = System.Drawing.Color.Transparent;
+			this.tpFromWH.BackColor = System.Drawing.Color.LightGoldenrodYellow;
 			this.tpFromWH.Controls.Add(this.scFromWH);
 			this.tpFromWH.Location = new System.Drawing.Point(4, 22);
 			this.tpFromWH.Name = "tpFromWH";
@@ -2170,7 +2247,6 @@ namespace ArmyRep
 			this.scFromWH.Panel1.Controls.Add(this.lbFromWHActDate);
 			this.scFromWH.Panel1.Controls.Add(this.lbFromWHToIDDep);
 			this.scFromWH.Panel1.Controls.Add(this.lbFromWHActNum);
-			this.scFromWH.Panel1.Controls.Add(this.lbFromWHFindProd);
 			this.scFromWH.Panel1.Controls.Add(this.btnFromWHChoiceProd);
 			this.scFromWH.Panel1.Controls.Add(this.lbFromWHProdCount);
 			this.scFromWH.Panel1.Controls.Add(this.lsbFromWHProdTypes);
@@ -2184,12 +2260,12 @@ namespace ArmyRep
 			// 
 			this.scFromWH.Panel2.Controls.Add(this.scFromWHChoicedList);
 			this.scFromWH.Size = new System.Drawing.Size(286, 168);
-			this.scFromWH.SplitterDistance = 139;
+			this.scFromWH.SplitterDistance = 301;
 			this.scFromWH.TabIndex = 29;
 			// 
 			// lbFromWHCat
 			// 
-			this.lbFromWHCat.Location = new System.Drawing.Point(3, 9);
+			this.lbFromWHCat.Location = new System.Drawing.Point(10, 10);
 			this.lbFromWHCat.Name = "lbFromWHCat";
 			this.lbFromWHCat.Size = new System.Drawing.Size(85, 23);
 			this.lbFromWHCat.TabIndex = 0;
@@ -2209,7 +2285,7 @@ namespace ArmyRep
 			this.udFromWHProdCount.Items.Add("9");
 			this.udFromWHProdCount.Items.Add("10");
 			this.udFromWHProdCount.Items.Add("11");
-			this.udFromWHProdCount.Location = new System.Drawing.Point(130, 275);
+			this.udFromWHProdCount.Location = new System.Drawing.Point(262, 130);
 			this.udFromWHProdCount.Name = "udFromWHProdCount";
 			this.udFromWHProdCount.Size = new System.Drawing.Size(120, 20);
 			this.udFromWHProdCount.TabIndex = 28;
@@ -2218,15 +2294,15 @@ namespace ArmyRep
 			// cbFromWHCat
 			// 
 			this.cbFromWHCat.FormattingEnabled = true;
-			this.cbFromWHCat.Location = new System.Drawing.Point(94, 6);
+			this.cbFromWHCat.Location = new System.Drawing.Point(136, 10);
 			this.cbFromWHCat.Name = "cbFromWHCat";
-			this.cbFromWHCat.Size = new System.Drawing.Size(151, 21);
+			this.cbFromWHCat.Size = new System.Drawing.Size(170, 21);
 			this.cbFromWHCat.TabIndex = 1;
 			this.cbFromWHCat.SelectedIndexChanged += new System.EventHandler(this.CbFromWHCatSelectedIndexChanged);
 			// 
 			// mtxFromWHPrice
 			// 
-			this.mtxFromWHPrice.Location = new System.Drawing.Point(130, 325);
+			this.mtxFromWHPrice.Location = new System.Drawing.Point(262, 175);
 			this.mtxFromWHPrice.Mask = "000000000";
 			this.mtxFromWHPrice.Name = "mtxFromWHPrice";
 			this.mtxFromWHPrice.Size = new System.Drawing.Size(100, 20);
@@ -2234,7 +2310,7 @@ namespace ArmyRep
 			// 
 			// lbFromWHIDCat
 			// 
-			this.lbFromWHIDCat.Location = new System.Drawing.Point(251, 10);
+			this.lbFromWHIDCat.Location = new System.Drawing.Point(308, 10);
 			this.lbFromWHIDCat.Name = "lbFromWHIDCat";
 			this.lbFromWHIDCat.Size = new System.Drawing.Size(32, 23);
 			this.lbFromWHIDCat.TabIndex = 2;
@@ -2242,7 +2318,7 @@ namespace ArmyRep
 			// 
 			// rbFromWHtoPart
 			// 
-			this.rbFromWHtoPart.Location = new System.Drawing.Point(3, 49);
+			this.rbFromWHtoPart.Location = new System.Drawing.Point(341, 10);
 			this.rbFromWHtoPart.Name = "rbFromWHtoPart";
 			this.rbFromWHtoPart.Size = new System.Drawing.Size(121, 24);
 			this.rbFromWHtoPart.TabIndex = 3;
@@ -2254,7 +2330,7 @@ namespace ArmyRep
 			// rbFromWHtoDep
 			// 
 			this.rbFromWHtoDep.Checked = true;
-			this.rbFromWHtoDep.Location = new System.Drawing.Point(141, 48);
+			this.rbFromWHtoDep.Location = new System.Drawing.Point(481, 10);
 			this.rbFromWHtoDep.Name = "rbFromWHtoDep";
 			this.rbFromWHtoDep.Size = new System.Drawing.Size(162, 24);
 			this.rbFromWHtoDep.TabIndex = 4;
@@ -2266,7 +2342,7 @@ namespace ArmyRep
 			// dtpFromWHActDate
 			// 
 			this.dtpFromWHActDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-			this.dtpFromWHActDate.Location = new System.Drawing.Point(183, 148);
+			this.dtpFromWHActDate.Location = new System.Drawing.Point(136, 75);
 			this.dtpFromWHActDate.Name = "dtpFromWHActDate";
 			this.dtpFromWHActDate.Size = new System.Drawing.Size(120, 20);
 			this.dtpFromWHActDate.TabIndex = 24;
@@ -2274,64 +2350,56 @@ namespace ArmyRep
 			// cbFromWHToDep
 			// 
 			this.cbFromWHToDep.FormattingEnabled = true;
-			this.cbFromWHToDep.Location = new System.Drawing.Point(94, 82);
+			this.cbFromWHToDep.Location = new System.Drawing.Point(422, 45);
 			this.cbFromWHToDep.Name = "cbFromWHToDep";
-			this.cbFromWHToDep.Size = new System.Drawing.Size(209, 21);
+			this.cbFromWHToDep.Size = new System.Drawing.Size(282, 21);
 			this.cbFromWHToDep.TabIndex = 5;
 			this.cbFromWHToDep.SelectedIndexChanged += new System.EventHandler(this.CbFromWHToDepSelectedIndexChanged);
 			// 
 			// txFromWHActNum
 			// 
-			this.txFromWHActNum.Location = new System.Drawing.Point(183, 119);
+			this.txFromWHActNum.Location = new System.Drawing.Point(136, 45);
 			this.txFromWHActNum.Name = "txFromWHActNum";
 			this.txFromWHActNum.Size = new System.Drawing.Size(120, 20);
 			this.txFromWHActNum.TabIndex = 23;
 			// 
 			// lbFromWHToDep
 			// 
-			this.lbFromWHToDep.Location = new System.Drawing.Point(4, 82);
+			this.lbFromWHToDep.Location = new System.Drawing.Point(341, 43);
 			this.lbFromWHToDep.Name = "lbFromWHToDep";
-			this.lbFromWHToDep.Size = new System.Drawing.Size(84, 23);
+			this.lbFromWHToDep.Size = new System.Drawing.Size(75, 23);
 			this.lbFromWHToDep.TabIndex = 6;
 			this.lbFromWHToDep.Text = "Куда";
 			// 
 			// lbFromWHActDate
 			// 
-			this.lbFromWHActDate.Location = new System.Drawing.Point(4, 148);
+			this.lbFromWHActDate.Location = new System.Drawing.Point(11, 76);
 			this.lbFromWHActDate.Name = "lbFromWHActDate";
-			this.lbFromWHActDate.Size = new System.Drawing.Size(157, 23);
+			this.lbFromWHActDate.Size = new System.Drawing.Size(120, 23);
 			this.lbFromWHActDate.TabIndex = 22;
-			this.lbFromWHActDate.Text = "Дата акта приема-передачи";
+			this.lbFromWHActDate.Text = "Дата документа";
 			// 
 			// lbFromWHToIDDep
 			// 
-			this.lbFromWHToIDDep.Location = new System.Drawing.Point(309, 82);
+			this.lbFromWHToIDDep.Location = new System.Drawing.Point(709, 45);
 			this.lbFromWHToIDDep.Name = "lbFromWHToIDDep";
-			this.lbFromWHToIDDep.Size = new System.Drawing.Size(49, 23);
+			this.lbFromWHToIDDep.Size = new System.Drawing.Size(32, 23);
 			this.lbFromWHToIDDep.TabIndex = 7;
 			this.lbFromWHToIDDep.Text = "0";
 			// 
 			// lbFromWHActNum
 			// 
-			this.lbFromWHActNum.Location = new System.Drawing.Point(3, 119);
+			this.lbFromWHActNum.Location = new System.Drawing.Point(10, 45);
 			this.lbFromWHActNum.Name = "lbFromWHActNum";
-			this.lbFromWHActNum.Size = new System.Drawing.Size(158, 23);
+			this.lbFromWHActNum.Size = new System.Drawing.Size(120, 23);
 			this.lbFromWHActNum.TabIndex = 21;
-			this.lbFromWHActNum.Text = "Номер акта приема-передачи";
-			// 
-			// lbFromWHFindProd
-			// 
-			this.lbFromWHFindProd.Location = new System.Drawing.Point(3, 188);
-			this.lbFromWHFindProd.Name = "lbFromWHFindProd";
-			this.lbFromWHFindProd.Size = new System.Drawing.Size(86, 23);
-			this.lbFromWHFindProd.TabIndex = 8;
-			this.lbFromWHFindProd.Text = "Найти";
+			this.lbFromWHActNum.Text = "Номер документа";
 			// 
 			// btnFromWHChoiceProd
 			// 
-			this.btnFromWHChoiceProd.Location = new System.Drawing.Point(130, 373);
+			this.btnFromWHChoiceProd.Location = new System.Drawing.Point(262, 209);
 			this.btnFromWHChoiceProd.Name = "btnFromWHChoiceProd";
-			this.btnFromWHChoiceProd.Size = new System.Drawing.Size(80, 23);
+			this.btnFromWHChoiceProd.Size = new System.Drawing.Size(100, 23);
 			this.btnFromWHChoiceProd.TabIndex = 20;
 			this.btnFromWHChoiceProd.Text = "Выбрать ->";
 			this.btnFromWHChoiceProd.UseVisualStyleBackColor = true;
@@ -2339,7 +2407,7 @@ namespace ArmyRep
 			// 
 			// lbFromWHProdCount
 			// 
-			this.lbFromWHProdCount.Location = new System.Drawing.Point(130, 250);
+			this.lbFromWHProdCount.Location = new System.Drawing.Point(262, 110);
 			this.lbFromWHProdCount.Name = "lbFromWHProdCount";
 			this.lbFromWHProdCount.Size = new System.Drawing.Size(100, 23);
 			this.lbFromWHProdCount.TabIndex = 9;
@@ -2348,16 +2416,18 @@ namespace ArmyRep
 			// lsbFromWHProdTypes
 			// 
 			this.lsbFromWHProdTypes.FormattingEnabled = true;
-			this.lsbFromWHProdTypes.Location = new System.Drawing.Point(2, 275);
+			this.lsbFromWHProdTypes.HorizontalScrollbar = true;
+			this.lsbFromWHProdTypes.Location = new System.Drawing.Point(10, 155);
 			this.lsbFromWHProdTypes.Name = "lsbFromWHProdTypes";
+			this.lsbFromWHProdTypes.ScrollAlwaysVisible = true;
 			this.lsbFromWHProdTypes.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
-			this.lsbFromWHProdTypes.Size = new System.Drawing.Size(122, 121);
+			this.lsbFromWHProdTypes.Size = new System.Drawing.Size(246, 134);
 			this.lsbFromWHProdTypes.TabIndex = 10;
 			this.lsbFromWHProdTypes.SelectedIndexChanged += new System.EventHandler(this.LsbFromWHProdTypesSelectedIndexChanged);
 			// 
 			// lbFromWHPrice
 			// 
-			this.lbFromWHPrice.Location = new System.Drawing.Point(130, 308);
+			this.lbFromWHPrice.Location = new System.Drawing.Point(262, 155);
 			this.lbFromWHPrice.Name = "lbFromWHPrice";
 			this.lbFromWHPrice.Size = new System.Drawing.Size(100, 23);
 			this.lbFromWHPrice.TabIndex = 16;
@@ -2365,30 +2435,30 @@ namespace ArmyRep
 			// 
 			// txFromWHFindProd
 			// 
-			this.txFromWHFindProd.Location = new System.Drawing.Point(3, 214);
+			this.txFromWHFindProd.Location = new System.Drawing.Point(10, 130);
 			this.txFromWHFindProd.Name = "txFromWHFindProd";
-			this.txFromWHFindProd.Size = new System.Drawing.Size(121, 20);
+			this.txFromWHFindProd.Size = new System.Drawing.Size(246, 20);
 			this.txFromWHFindProd.TabIndex = 11;
 			this.txFromWHFindProd.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TxFromWHFindProdKeyUp);
 			// 
 			// txFromWHInvNum
 			// 
-			this.txFromWHInvNum.Location = new System.Drawing.Point(271, 275);
+			this.txFromWHInvNum.Location = new System.Drawing.Point(389, 130);
 			this.txFromWHInvNum.Name = "txFromWHInvNum";
 			this.txFromWHInvNum.Size = new System.Drawing.Size(100, 20);
 			this.txFromWHInvNum.TabIndex = 15;
 			// 
 			// lbFromWHProdTypes
 			// 
-			this.lbFromWHProdTypes.Location = new System.Drawing.Point(3, 250);
+			this.lbFromWHProdTypes.Location = new System.Drawing.Point(10, 110);
 			this.lbFromWHProdTypes.Name = "lbFromWHProdTypes";
 			this.lbFromWHProdTypes.Size = new System.Drawing.Size(121, 23);
 			this.lbFromWHProdTypes.TabIndex = 13;
-			this.lbFromWHProdTypes.Text = "Виды ценностей";
+			this.lbFromWHProdTypes.Text = "Виды предметов";
 			// 
 			// lbFromWHInvNum
 			// 
-			this.lbFromWHInvNum.Location = new System.Drawing.Point(271, 250);
+			this.lbFromWHInvNum.Location = new System.Drawing.Point(389, 110);
 			this.lbFromWHInvNum.Name = "lbFromWHInvNum";
 			this.lbFromWHInvNum.Size = new System.Drawing.Size(100, 23);
 			this.lbFromWHInvNum.TabIndex = 14;
@@ -2404,20 +2474,85 @@ namespace ArmyRep
 			// 
 			// scFromWHChoicedList.Panel1
 			// 
+			this.scFromWHChoicedList.Panel1.BackColor = System.Drawing.Color.Beige;
+			this.scFromWHChoicedList.Panel1.Controls.Add(this.label2);
+			this.scFromWHChoicedList.Panel1.Controls.Add(this.maskedTextBox3);
+			this.scFromWHChoicedList.Panel1.Controls.Add(this.maskedTextBox4);
+			this.scFromWHChoicedList.Panel1.Controls.Add(this.rbFromWHFindPrice);
+			this.scFromWHChoicedList.Panel1.Controls.Add(this.rbFromWHFindProd);
+			this.scFromWHChoicedList.Panel1.Controls.Add(this.textBox2);
+			this.scFromWHChoicedList.Panel1.Controls.Add(this.lbFromWHFindInDB);
 			this.scFromWHChoicedList.Panel1.Controls.Add(this.btnFromWHChoiceDel);
-			this.scFromWHChoicedList.Panel1.Controls.Add(this.lbFromWHChoicedProds);
 			this.scFromWHChoicedList.Panel1.Controls.Add(this.btnFromWHChoiceSave);
 			// 
 			// scFromWHChoicedList.Panel2
 			// 
 			this.scFromWHChoicedList.Panel2.Controls.Add(this.dgvFromWHChoicedProds);
 			this.scFromWHChoicedList.Size = new System.Drawing.Size(286, 25);
-			this.scFromWHChoicedList.SplitterDistance = 25;
+			this.scFromWHChoicedList.SplitterDistance = 130;
 			this.scFromWHChoicedList.TabIndex = 0;
+			// 
+			// label2
+			// 
+			this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.label2.Location = new System.Drawing.Point(154, 36);
+			this.label2.Name = "label2";
+			this.label2.Size = new System.Drawing.Size(15, 21);
+			this.label2.TabIndex = 49;
+			this.label2.Text = "...";
+			// 
+			// maskedTextBox3
+			// 
+			this.maskedTextBox3.Location = new System.Drawing.Point(171, 36);
+			this.maskedTextBox3.Name = "maskedTextBox3";
+			this.maskedTextBox3.Size = new System.Drawing.Size(85, 20);
+			this.maskedTextBox3.TabIndex = 48;
+			// 
+			// maskedTextBox4
+			// 
+			this.maskedTextBox4.Location = new System.Drawing.Point(68, 36);
+			this.maskedTextBox4.Name = "maskedTextBox4";
+			this.maskedTextBox4.Size = new System.Drawing.Size(85, 20);
+			this.maskedTextBox4.TabIndex = 47;
+			// 
+			// rbFromWHFindPrice
+			// 
+			this.rbFromWHFindPrice.Location = new System.Drawing.Point(262, 35);
+			this.rbFromWHFindPrice.Name = "rbFromWHFindPrice";
+			this.rbFromWHFindPrice.Size = new System.Drawing.Size(104, 24);
+			this.rbFromWHFindPrice.TabIndex = 30;
+			this.rbFromWHFindPrice.TabStop = true;
+			this.rbFromWHFindPrice.Text = "по цене";
+			this.rbFromWHFindPrice.UseVisualStyleBackColor = true;
+			// 
+			// rbFromWHFindProd
+			// 
+			this.rbFromWHFindProd.Location = new System.Drawing.Point(262, 10);
+			this.rbFromWHFindProd.Name = "rbFromWHFindProd";
+			this.rbFromWHFindProd.Size = new System.Drawing.Size(104, 24);
+			this.rbFromWHFindProd.TabIndex = 29;
+			this.rbFromWHFindProd.TabStop = true;
+			this.rbFromWHFindProd.Text = "по предмету";
+			this.rbFromWHFindProd.UseVisualStyleBackColor = true;
+			// 
+			// textBox2
+			// 
+			this.textBox2.Location = new System.Drawing.Point(68, 10);
+			this.textBox2.Name = "textBox2";
+			this.textBox2.Size = new System.Drawing.Size(188, 20);
+			this.textBox2.TabIndex = 28;
+			// 
+			// lbFromWHFindInDB
+			// 
+			this.lbFromWHFindInDB.Location = new System.Drawing.Point(10, 14);
+			this.lbFromWHFindInDB.Name = "lbFromWHFindInDB";
+			this.lbFromWHFindInDB.Size = new System.Drawing.Size(52, 23);
+			this.lbFromWHFindInDB.TabIndex = 27;
+			this.lbFromWHFindInDB.Text = "Найти";
 			// 
 			// btnFromWHChoiceDel
 			// 
-			this.btnFromWHChoiceDel.Location = new System.Drawing.Point(251, 11);
+			this.btnFromWHChoiceDel.Location = new System.Drawing.Point(136, 93);
 			this.btnFromWHChoiceDel.Name = "btnFromWHChoiceDel";
 			this.btnFromWHChoiceDel.Size = new System.Drawing.Size(153, 23);
 			this.btnFromWHChoiceDel.TabIndex = 26;
@@ -2425,19 +2560,10 @@ namespace ArmyRep
 			this.btnFromWHChoiceDel.UseVisualStyleBackColor = true;
 			this.btnFromWHChoiceDel.Click += new System.EventHandler(this.BtnFromWHChoiceDelClick);
 			// 
-			// lbFromWHChoicedProds
-			// 
-			this.lbFromWHChoicedProds.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.lbFromWHChoicedProds.Location = new System.Drawing.Point(4, 8);
-			this.lbFromWHChoicedProds.Name = "lbFromWHChoicedProds";
-			this.lbFromWHChoicedProds.Size = new System.Drawing.Size(100, 23);
-			this.lbFromWHChoicedProds.TabIndex = 19;
-			this.lbFromWHChoicedProds.Text = "Выбранные:";
-			// 
 			// btnFromWHChoiceSave
 			// 
 			this.btnFromWHChoiceSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.btnFromWHChoiceSave.Location = new System.Drawing.Point(130, 8);
+			this.btnFromWHChoiceSave.Location = new System.Drawing.Point(15, 90);
 			this.btnFromWHChoiceSave.Name = "btnFromWHChoiceSave";
 			this.btnFromWHChoiceSave.Size = new System.Drawing.Size(80, 28);
 			this.btnFromWHChoiceSave.TabIndex = 25;
@@ -2447,11 +2573,12 @@ namespace ArmyRep
 			// 
 			// dgvFromWHChoicedProds
 			// 
+			this.dgvFromWHChoicedProds.BackgroundColor = System.Drawing.Color.White;
 			this.dgvFromWHChoicedProds.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 			this.dgvFromWHChoicedProds.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.dgvFromWHChoicedProds.Location = new System.Drawing.Point(0, 0);
 			this.dgvFromWHChoicedProds.Name = "dgvFromWHChoicedProds";
-			this.dgvFromWHChoicedProds.Size = new System.Drawing.Size(286, 25);
+			this.dgvFromWHChoicedProds.Size = new System.Drawing.Size(952, 91);
 			this.dgvFromWHChoicedProds.TabIndex = 26;
 			// 
 			// tpWHWriteoff
@@ -2468,8 +2595,8 @@ namespace ArmyRep
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(1123, 562);
-			this.Controls.Add(this.tcEdit);
 			this.Controls.Add(this.tcWH);
+			this.Controls.Add(this.tcEdit);
 			this.Controls.Add(this.tcUse);
 			this.Controls.Add(this.tcDep);
 			this.Controls.Add(this.pnMenu);
@@ -2513,6 +2640,7 @@ namespace ArmyRep
 			((System.ComponentModel.ISupportInitialize)(this.scToWH)).EndInit();
 			this.scToWH.ResumeLayout(false);
 			this.scToWHChoicedList.Panel1.ResumeLayout(false);
+			this.scToWHChoicedList.Panel1.PerformLayout();
 			this.scToWHChoicedList.Panel2.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.scToWHChoicedList)).EndInit();
 			this.scToWHChoicedList.ResumeLayout(false);
@@ -2524,6 +2652,7 @@ namespace ArmyRep
 			((System.ComponentModel.ISupportInitialize)(this.scFromWH)).EndInit();
 			this.scFromWH.ResumeLayout(false);
 			this.scFromWHChoicedList.Panel1.ResumeLayout(false);
+			this.scFromWHChoicedList.Panel1.PerformLayout();
 			this.scFromWHChoicedList.Panel2.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.scFromWHChoicedList)).EndInit();
 			this.scFromWHChoicedList.ResumeLayout(false);

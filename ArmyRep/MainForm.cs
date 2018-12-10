@@ -1144,6 +1144,10 @@ namespace ArmyRep
 			CloseDataReadersOfDep();
 			CloseDataReadersOfUse();
 			
+			scToWH.SplitterDistance = lsbToWHProdtypes.Location.Y + lsbToWHProdtypes.Height + 15;
+			scToWHChoicedList.SplitterDistance = btnToWHChoiceSave.Location.Y + btnToWHChoiceSave.Height + 10;
+			
+			
 			//приход на склад
 			MakeReadyWHData("drToWH", "all");
 			//расход со склада
@@ -1701,6 +1705,84 @@ namespace ArmyRep
 					dgvToWHChoicedProds.Rows.Add(prod.ProdType.ID, prod.ProdType.TypeName, prod.ProdCount, prod.ProdPrice, prod.InvNum, prod.ProdCategory.CatName, prod.FromDep.DepName, prod.ToDep.DepTypeName + "(" + prod.ToDep.DepName + ")", prod.ActNum, prod.ActDate);
 					prod = null;
 				}
+				
+				/// <summary>
+				/// steps:
+				/// 1) insert into tAct, save newID
+				/// 2) insert into tActProd vales(choiced prods)
+				/// 4) insert into tDeptoDep --not need
+				/// </summary>
+				//insert new record
+				string sSQL = "";
+				string sIDAct = string.Empty;
+				string sActNum = txToWHActNum.Text;
+				string sActDate = dtpToWHActDate.Value.ToShortDateString();
+				string sIDDepFrom = lbToWHFromIDDep.Text;
+				
+				sSQL = "select * from tAct a where a.ActNum = '" + sActNum + "' and a.actdate = CDate('"+sActDate+"') and a.IDDepFrom = "+sIDDepFrom;
+				OleDbDataAdapter adapterAct = new OleDbDataAdapter(sSQL, connectionDB);
+				DbDataReader datareaderObjectSave;
+				
+				//try to find this act
+				datareaderObjectSave = adapterAct.SelectCommand.ExecuteReader();
+				if (datareaderObjectSave.Read())
+				{
+					sIDAct = datareaderObjectSave["ID"].ToString();
+					string sActN = datareaderObjectSave["ActNum"].ToString();
+				}
+				if (!datareaderObjectSave.IsClosed && datareaderObjectSave != null)
+				{
+					datareaderObjectSave.Close();
+				}
+				datareaderObjectSave = null;
+				
+				//if act is new, then create new act
+				if (sIDAct.Equals(string.Empty))
+				{
+					adapterAct.MissingSchemaAction = MissingSchemaAction.AddWithKey;
+					adapterAct.InsertCommand = new OleDbCommand(
+						        "INSERT INTO tAct (ActNum, ActDate, IDTransferType, IDDepFrom, IDDepTo) " +
+						        "VALUES ('"+sActNum+"', CDate('"+sActDate+"'), 1, "+sIDDepFrom+", "+sIDWHCurrent+")"
+						       );
+					adapterAct.InsertCommand.Connection = connectionDB;
+					//TODO: this line is error, I must fix it
+					//sIDAct = (string)adapter.InsertCommand.ExecuteScalar();
+					adapterAct.InsertCommand.ExecuteScalar();
+					
+					datareaderObjectSave = adapterAct.SelectCommand.ExecuteReader();
+					if (datareaderObjectSave.Read())
+					{
+						sIDAct = datareaderObjectSave["ID"].ToString();
+						string sActN = datareaderObjectSave["ActNum"].ToString();
+					}
+					if (!datareaderObjectSave.IsClosed && datareaderObjectSave != null)
+					{
+						datareaderObjectSave.Close();
+					}
+					datareaderObjectSave = null;
+				}
+				adapterAct.Dispose();
+				adapterAct = null;
+				
+				//add products for this act
+				sSQL = "select * from tActProd ap where ap.idact = " + sIDAct;
+				adapterAct = new OleDbDataAdapter(sSQL, connectionDB);
+				adapterAct.MissingSchemaAction = MissingSchemaAction.AddWithKey;
+				foreach (GivingProd pr in aToWHChoicedProdsList)
+				{
+					adapterAct.InsertCommand = new OleDbCommand(
+						        "INSERT INTO tActProd (IDAct, IDProdType, ProdPrice, ProdCount, InvNum, IDProdCat) " +
+						        "VALUES ("+sIDAct+", "+pr.ProdType.ID.ToString()+", "+pr.ProdPrice.ToString()+", "+pr.ProdCount+", "+((pr.InvNum.Equals(string.Empty)) ? "null" : pr.InvNum)+", "+pr.ProdCategory.ID+")"
+						       );
+					adapterAct.InsertCommand.Connection = connectionDB;
+					adapterAct.InsertCommand.ExecuteScalar();
+					adapterAct.InsertCommand.Dispose();
+					adapterAct.InsertCommand = null;
+				}
+				adapterAct.Dispose();
+				adapterAct = null;
+				
+				MessageBox.Show("Сохранил");
 			}
 		}
 		void LsbToWHProdtypesSelectedIndexChanged(object sender, EventArgs e)
@@ -2296,6 +2378,10 @@ namespace ArmyRep
 				tpUsingType.Hide();
 				tpCategory.Hide();
 			}
+		}
+		void UdToWHProdCountKeyPress(object sender, KeyPressEventArgs e)
+		{
+			
 		}
 	}
 }
