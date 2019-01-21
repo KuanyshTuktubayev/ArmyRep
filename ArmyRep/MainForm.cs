@@ -2383,5 +2383,105 @@ namespace ArmyRep
 		{
 			
 		}
+		void TcWHSelectedIndexChanged(object sender, EventArgs e)
+		{
+			string sSQL;
+			if (tcWH.SelectedTab.Equals(tpToWH))
+			{
+				if (dgvToWHChoicedProds.ColumnCount <= 10)
+				{
+					int nCol = dgvToWHChoicedProds.ColumnCount;
+					while (dgvToWHChoicedProds.ColumnCount < 10)
+					{
+						switch (nCol)
+						{
+							case 0:
+								dgvToWHChoicedProds.Columns.Add("IDProdType", "ID");
+								break;
+							case 1:
+								dgvToWHChoicedProds.Columns.Add("ProdTypeName", "Вид ценности");
+								break;
+							case 2:
+								dgvToWHChoicedProds.Columns.Add("ProdCount", "Количество");
+								break;
+							case 3:
+								dgvToWHChoicedProds.Columns.Add("ProdPrice", "Цена");
+								break;
+							case 4:
+								dgvToWHChoicedProds.Columns.Add("InvNum", "Инв номер");
+								break;
+							case 5:
+								dgvToWHChoicedProds.Columns.Add("CatName", "Категория");
+								break;
+							case 6:
+								dgvToWHChoicedProds.Columns.Add("FromDepName", "Отправитель");
+								break;
+							case 7:
+								dgvToWHChoicedProds.Columns.Add("ToDepName", "Получатель");
+								break;
+							case 8:
+								dgvToWHChoicedProds.Columns.Add("ActNum", "Номер акта");
+								break;
+							case 9:
+								dgvToWHChoicedProds.Columns.Add("ActDate", "Дата акта");
+								break;
+							default:
+								dgvToWHChoicedProds.Columns.Add("Column"+nCol.ToString(), "Столбец"+nCol.ToString());
+								break;
+						}
+						nCol++;
+					}
+				}
+				
+				sSQL = @"select
+							ap.IDProdType,
+							pt.Name ProdTypeName,
+							ap.ProdCount,
+							ap.ProdPrice,
+							ap.InvNum,
+							c.Name CatName,
+							dfr.Name FromDepName,
+							dto.Name ToDepName,
+							dt.Name ToDepType,
+							a.ActNum,
+							a.ActDate
+						from tActProd ap
+						left join tAct a on a.ID = ap.IDAct
+						left join tDep dfr on dfr.ID = a.IDDepFrom
+						left join tDep dto on dto.ID = a.IDDepTo
+						left join tDepType dt on dt.ID = dfr.IDDepType
+						left join tCat c on c.ID = ap.IDProdCat
+						left join tProdType pt on pt.ID = ap.IDProdType
+						";
+				OleDbDataAdapter adapter = new OleDbDataAdapter(sSQL, connectionDB);
+				DbDataReader datareaderObject;
+				
+				datareaderObject = adapter.SelectCommand.ExecuteReader();
+				while (datareaderObject.Read())
+				{
+					string sIDProdType = datareaderObject["IDProdType"].ToString();
+					string sProdTypeName = datareaderObject["ProdTypeName"].ToString();
+					string sProdCount = datareaderObject["ProdCount"].ToString();
+					string sProdPrice = datareaderObject["ProdPrice"].ToString();
+					string sInvNum = datareaderObject["InvNum"].ToString();
+					string sCatName = datareaderObject["CatName"].ToString();
+					string sFromDepName = datareaderObject["FromDepName"].ToString();
+					string sToDepType = datareaderObject["ToDepType"].ToString();
+					string sToDepName = datareaderObject["ToDepName"].ToString();
+					string sActNum = datareaderObject["ActNum"].ToString();
+					string sActDate = datareaderObject["ActDate"].ToString();
+					dgvToWHChoicedProds.Rows.Add(sIDProdType, sProdTypeName, sProdCount, sProdPrice, sInvNum,
+					                             sCatName, sFromDepName, sToDepType + "(" + sToDepName + ")", 
+					                             sActNum, sActDate);
+				}
+				if (!datareaderObject.IsClosed && datareaderObject != null)
+				{
+					datareaderObject.Close();
+				}
+				datareaderObject = null;
+				adapter.Dispose();
+				adapter = null;
+			}
+		}
 	}
 }

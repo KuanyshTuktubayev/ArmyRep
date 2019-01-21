@@ -1838,6 +1838,7 @@ namespace ArmyRep
 			this.tcWH.SelectedIndex = 0;
 			this.tcWH.Size = new System.Drawing.Size(966, 562);
 			this.tcWH.TabIndex = 4;
+			this.tcWH.SelectedIndexChanged += new System.EventHandler(this.TcWHSelectedIndexChanged);
 			// 
 			// tpToWH
 			// 
@@ -2219,7 +2220,7 @@ namespace ArmyRep
 			this.tpFromWH.Location = new System.Drawing.Point(4, 22);
 			this.tpFromWH.Name = "tpFromWH";
 			this.tpFromWH.Padding = new System.Windows.Forms.Padding(3);
-			this.tpFromWH.Size = new System.Drawing.Size(292, 174);
+			this.tpFromWH.Size = new System.Drawing.Size(958, 536);
 			this.tpFromWH.TabIndex = 0;
 			this.tpFromWH.Text = "Выдача со склада";
 			// 
@@ -2259,8 +2260,8 @@ namespace ArmyRep
 			// scFromWH.Panel2
 			// 
 			this.scFromWH.Panel2.Controls.Add(this.scFromWHChoicedList);
-			this.scFromWH.Size = new System.Drawing.Size(286, 168);
-			this.scFromWH.SplitterDistance = 301;
+			this.scFromWH.Size = new System.Drawing.Size(952, 530);
+			this.scFromWH.SplitterDistance = 139;
 			this.scFromWH.TabIndex = 29;
 			// 
 			// lbFromWHCat
@@ -2488,8 +2489,8 @@ namespace ArmyRep
 			// scFromWHChoicedList.Panel2
 			// 
 			this.scFromWHChoicedList.Panel2.Controls.Add(this.dgvFromWHChoicedProds);
-			this.scFromWHChoicedList.Size = new System.Drawing.Size(286, 25);
-			this.scFromWHChoicedList.SplitterDistance = 130;
+			this.scFromWHChoicedList.Size = new System.Drawing.Size(952, 387);
+			this.scFromWHChoicedList.SplitterDistance = 25;
 			this.scFromWHChoicedList.TabIndex = 0;
 			// 
 			// label2
@@ -2578,7 +2579,7 @@ namespace ArmyRep
 			this.dgvFromWHChoicedProds.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.dgvFromWHChoicedProds.Location = new System.Drawing.Point(0, 0);
 			this.dgvFromWHChoicedProds.Name = "dgvFromWHChoicedProds";
-			this.dgvFromWHChoicedProds.Size = new System.Drawing.Size(952, 91);
+			this.dgvFromWHChoicedProds.Size = new System.Drawing.Size(952, 358);
 			this.dgvFromWHChoicedProds.TabIndex = 26;
 			// 
 			// tpWHWriteoff
@@ -2586,7 +2587,7 @@ namespace ArmyRep
 			this.tpWHWriteoff.BackColor = System.Drawing.Color.Transparent;
 			this.tpWHWriteoff.Location = new System.Drawing.Point(4, 22);
 			this.tpWHWriteoff.Name = "tpWHWriteoff";
-			this.tpWHWriteoff.Size = new System.Drawing.Size(292, 174);
+			this.tpWHWriteoff.Size = new System.Drawing.Size(958, 536);
 			this.tpWHWriteoff.TabIndex = 2;
 			this.tpWHWriteoff.Text = "Списание";
 			// 
