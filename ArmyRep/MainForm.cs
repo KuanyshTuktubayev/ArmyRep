@@ -1413,6 +1413,8 @@ namespace ArmyRep
 					adapter = null;
 					//-----------------------
 				}
+				//get all data in WH
+				ShowDataOfWH("drToWH");
 			}
 			//TODO: finish this block:
 			else if (sWHTab == "drFromWH")
@@ -1522,6 +1524,8 @@ namespace ArmyRep
 					adapter = null;
 					//-----------------------
 				}
+				//get all data in WH
+				ShowDataOfWH("drFromWH");
 			}
 		}
 		
@@ -2385,8 +2389,19 @@ namespace ArmyRep
 		}
 		void TcWHSelectedIndexChanged(object sender, EventArgs e)
 		{
-			string sSQL;
 			if (tcWH.SelectedTab.Equals(tpToWH))
+			{
+				ShowDataOfWH("drToWH");
+			}
+			if (tcWH.SelectedTab.Equals(tpFromWH))
+			{
+				ShowDataOfWH("drFromWH");
+			}
+		}
+		void ShowDataOfWH(string selectedTabName)
+		{
+			string sSQL;
+			if (tcWH.SelectedTab.Equals(tpToWH) && (selectedTabName == "drToWH"))
 			{
 				if (dgvToWHChoicedProds.ColumnCount <= 10)
 				{
@@ -2433,25 +2448,29 @@ namespace ArmyRep
 					}
 				}
 				
-				sSQL = @"select
-							ap.IDProdType,
-							pt.Name ProdTypeName,
-							ap.ProdCount,
-							ap.ProdPrice,
-							ap.InvNum,
-							c.Name CatName,
-							dfr.Name FromDepName,
-							dto.Name ToDepName,
-							dt.Name ToDepType,
-							a.ActNum,
-							a.ActDate
-						from tActProd ap
-						left join tAct a on a.ID = ap.IDAct
-						left join tDep dfr on dfr.ID = a.IDDepFrom
-						left join tDep dto on dto.ID = a.IDDepTo
-						left join tDepType dt on dt.ID = dfr.IDDepType
-						left join tCat c on c.ID = ap.IDProdCat
-						left join tProdType pt on pt.ID = ap.IDProdType
+				sSQL = @"SELECT 
+						tActProd.ID AS IDProdType, 
+						tProdType.TypeName as ProdTypeName, 
+						tActProd.ProdCount, 
+						tActProd.ProdPrice, 
+						tActProd.InvNum, 
+						tCat.CatName, 
+						tDep.DepName as FromDepName, 
+						tDep_1.DepName as ToDepName, 
+						tDepType.TypeName as ToDepType, 
+						tAct.ActNum, 
+						tAct.ActDate
+						FROM ((tProdType 
+						INNER JOIN (tCat 
+						INNER JOIN (tAct 
+						INNER JOIN tActProd ON tAct.ID = tActProd.IDAct) 
+						ON tCat.ID = tActProd.IDProdCat) 
+						ON tProdType.ID = tActProd.IDProdType) 
+						INNER JOIN (tDepType 
+						INNER JOIN tDep ON (tDepType.ID = tDep.IDDepType) 
+						AND (tDepType.ID = tDep.IDDepType)) 
+						ON tAct.IDDepFrom = tDep.ID) 
+						INNER JOIN tDep AS tDep_1 ON tAct.IDDepTo = tDep_1.ID;
 						";
 				OleDbDataAdapter adapter = new OleDbDataAdapter(sSQL, connectionDB);
 				DbDataReader datareaderObject;
@@ -2470,6 +2489,7 @@ namespace ArmyRep
 					string sToDepName = datareaderObject["ToDepName"].ToString();
 					string sActNum = datareaderObject["ActNum"].ToString();
 					string sActDate = datareaderObject["ActDate"].ToString();
+					//if (dgvToWHChoicedProds.Rows.Contains(sIDProdType))
 					dgvToWHChoicedProds.Rows.Add(sIDProdType, sProdTypeName, sProdCount, sProdPrice, sInvNum,
 					                             sCatName, sFromDepName, sToDepType + "(" + sToDepName + ")", 
 					                             sActNum, sActDate);
