@@ -210,7 +210,7 @@ namespace ArmyRep
 		private System.Windows.Forms.Label lbEditDepDeptypeID;
 		private System.Windows.Forms.RadioButton rbToWHFindPrice;
 		private System.Windows.Forms.RadioButton rbToWHFindProd;
-		private System.Windows.Forms.TextBox textBox1;
+		private System.Windows.Forms.TextBox txFindProdInToWH;
 		private System.Windows.Forms.Label lbToWHFindInDB;
 		private System.Windows.Forms.RadioButton rbFromWHFindPrice;
 		private System.Windows.Forms.RadioButton rbFromWHFindProd;
@@ -412,7 +412,7 @@ namespace ArmyRep
 			this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
 			this.rbToWHFindPrice = new System.Windows.Forms.RadioButton();
 			this.rbToWHFindProd = new System.Windows.Forms.RadioButton();
-			this.textBox1 = new System.Windows.Forms.TextBox();
+			this.txFindProdInToWH = new System.Windows.Forms.TextBox();
 			this.lbToWHFindInDB = new System.Windows.Forms.Label();
 			this.BtnToWHChoiceDel = new System.Windows.Forms.Button();
 			this.btnToWHChoiceSave = new System.Windows.Forms.Button();
@@ -2111,7 +2111,7 @@ namespace ArmyRep
 			this.scToWHChoicedList.Panel1.Controls.Add(this.maskedTextBox1);
 			this.scToWHChoicedList.Panel1.Controls.Add(this.rbToWHFindPrice);
 			this.scToWHChoicedList.Panel1.Controls.Add(this.rbToWHFindProd);
-			this.scToWHChoicedList.Panel1.Controls.Add(this.textBox1);
+			this.scToWHChoicedList.Panel1.Controls.Add(this.txFindProdInToWH);
 			this.scToWHChoicedList.Panel1.Controls.Add(this.lbToWHFindInDB);
 			this.scToWHChoicedList.Panel1.Controls.Add(this.BtnToWHChoiceDel);
 			this.scToWHChoicedList.Panel1.Controls.Add(this.btnToWHChoiceSave);
@@ -2153,12 +2153,12 @@ namespace ArmyRep
 			this.rbToWHFindPrice.Name = "rbToWHFindPrice";
 			this.rbToWHFindPrice.Size = new System.Drawing.Size(104, 24);
 			this.rbToWHFindPrice.TabIndex = 43;
-			this.rbToWHFindPrice.TabStop = true;
 			this.rbToWHFindPrice.Text = "по цене";
 			this.rbToWHFindPrice.UseVisualStyleBackColor = true;
 			// 
 			// rbToWHFindProd
 			// 
+			this.rbToWHFindProd.Checked = true;
 			this.rbToWHFindProd.Location = new System.Drawing.Point(262, 10);
 			this.rbToWHFindProd.Name = "rbToWHFindProd";
 			this.rbToWHFindProd.Size = new System.Drawing.Size(104, 24);
@@ -2167,12 +2167,13 @@ namespace ArmyRep
 			this.rbToWHFindProd.Text = "по предмету";
 			this.rbToWHFindProd.UseVisualStyleBackColor = true;
 			// 
-			// textBox1
+			// txFindProdInToWH
 			// 
-			this.textBox1.Location = new System.Drawing.Point(68, 10);
-			this.textBox1.Name = "textBox1";
-			this.textBox1.Size = new System.Drawing.Size(188, 20);
-			this.textBox1.TabIndex = 41;
+			this.txFindProdInToWH.Location = new System.Drawing.Point(68, 10);
+			this.txFindProdInToWH.Name = "txFindProdInToWH";
+			this.txFindProdInToWH.Size = new System.Drawing.Size(188, 20);
+			this.txFindProdInToWH.TabIndex = 41;
+			this.txFindProdInToWH.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TxFindProdInToWHKeyUp);
 			// 
 			// lbToWHFindInDB
 			// 

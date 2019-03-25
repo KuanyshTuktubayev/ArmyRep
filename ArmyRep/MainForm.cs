@@ -2389,14 +2389,14 @@ namespace ArmyRep
 		}
 		void TcWHSelectedIndexChanged(object sender, EventArgs e)
 		{
-			if (tcWH.SelectedTab.Equals(tpToWH))
+			/*if (tcWH.SelectedTab.Equals(tpToWH))
 			{
 				ShowDataOfWH("drToWH");
 			}
 			if (tcWH.SelectedTab.Equals(tpFromWH))
 			{
 				ShowDataOfWH("drFromWH");
-			}
+			}*/
 		}
 		void ShowDataOfWH(string selectedTabName)
 		{
@@ -2448,29 +2448,134 @@ namespace ArmyRep
 					}
 				}
 				
-				sSQL = @"SELECT 
-						tActProd.ID AS IDProdType, 
-						tProdType.TypeName as ProdTypeName, 
-						tActProd.ProdCount, 
-						tActProd.ProdPrice, 
-						tActProd.InvNum, 
-						tCat.CatName, 
-						tDep.DepName as FromDepName, 
-						tDep_1.DepName as ToDepName, 
-						tDepType.TypeName as ToDepType, 
-						tAct.ActNum, 
-						tAct.ActDate
-						FROM ((tProdType 
-						INNER JOIN (tCat 
-						INNER JOIN (tAct 
-						INNER JOIN tActProd ON tAct.ID = tActProd.IDAct) 
-						ON tCat.ID = tActProd.IDProdCat) 
-						ON tProdType.ID = tActProd.IDProdType) 
-						INNER JOIN (tDepType 
-						INNER JOIN tDep ON (tDepType.ID = tDep.IDDepType) 
-						AND (tDepType.ID = tDep.IDDepType)) 
-						ON tAct.IDDepFrom = tDep.ID) 
-						INNER JOIN tDep AS tDep_1 ON tAct.IDDepTo = tDep_1.ID;
+				string sFindProd = "";
+				if (txFindProdInToWH.Text != "")
+				{
+					const string sKav = "\"";
+					sFindProd = " AND ((tProdType.TypeName) like "+sKav+"*"+txFindProdInToWH.Text+"*"+sKav+") ";
+				}
+				 
+				sSQL = @"SELECT tActProd.ID AS IDProdType,
+						       tProdType.TypeName AS ProdTypeName,
+						       tActProd.ProdCount,
+						       tActProd.ProdPrice,
+						       tActProd.InvNum,
+						       tCat.CatName,
+						       tDep.DepName AS FromDepName,
+						       tDep_1.DepName AS ToDepName,
+						       tDepType.TypeName AS ToDepType,
+						       tAct.ActNum,
+						       tAct.ActDate
+						FROM tProdType
+						INNER JOIN (tDepType
+						            INNER JOIN (tCat
+						                        INNER JOIN (((tAct
+						                                      INNER JOIN tDep ON tAct.IDDepFrom = tDep.ID)
+						                                     INNER JOIN tDep AS tDep_1 ON tAct.IDDepTo = tDep_1.ID)
+						                                    INNER JOIN tActProd ON tAct.ID = tActProd.IDAct) ON tCat.ID = tActProd.IDProdCat) ON (tDepType.ID = tDep.IDDepType)
+						            AND (tDepType.ID = tDep.IDDepType)) ON tProdType.ID = tActProd.IDProdType
+						WHERE ( ((tDepType.ID)=2) "+sFindProd+@");
+						";
+				OleDbDataAdapter adapter = new OleDbDataAdapter(sSQL, connectionDB);
+				DbDataReader datareaderObject;
+				
+				dgvToWHChoicedProds.Rows.Clear();
+				
+				datareaderObject = adapter.SelectCommand.ExecuteReader();
+				while (datareaderObject.Read())
+				{
+					string sIDProdType = datareaderObject["IDProdType"].ToString();
+					string sProdTypeName = datareaderObject["ProdTypeName"].ToString();
+					string sProdCount = datareaderObject["ProdCount"].ToString();
+					string sProdPrice = datareaderObject["ProdPrice"].ToString();
+					string sInvNum = datareaderObject["InvNum"].ToString();
+					string sCatName = datareaderObject["CatName"].ToString();
+					string sFromDepName = datareaderObject["FromDepName"].ToString();
+					string sToDepType = datareaderObject["ToDepType"].ToString();
+					string sToDepName = datareaderObject["ToDepName"].ToString();
+					string sActNum = datareaderObject["ActNum"].ToString();
+					string sActDate = datareaderObject["ActDate"].ToString();
+					dgvToWHChoicedProds.Rows.Add(sIDProdType, sProdTypeName, sProdCount, sProdPrice, sInvNum,
+					                             sCatName, sFromDepName,
+					                             sToDepName, /*sToDepType + "(" + sToDepName + ")",*/
+					                             sActNum, sActDate);
+				}
+				if (!datareaderObject.IsClosed && datareaderObject != null)
+				{
+					datareaderObject.Close();
+				}
+				datareaderObject = null;
+				adapter.Dispose();
+				adapter = null;
+			}
+			
+			if (tcWH.SelectedTab.Equals(tpFromWH) && (selectedTabName == "drFromWH"))
+			{
+				if (dgvFromWHChoicedProds.ColumnCount <= 10)
+				{
+					int nCol = dgvFromWHChoicedProds.ColumnCount;
+					while (dgvFromWHChoicedProds.ColumnCount < 10)
+					{
+						switch (nCol)
+						{
+							case 0:
+								dgvFromWHChoicedProds.Columns.Add("IDProdType", "ID");
+								break;
+							case 1:
+								dgvFromWHChoicedProds.Columns.Add("ProdTypeName", "Вид ценности");
+								break;
+							case 2:
+								dgvFromWHChoicedProds.Columns.Add("ProdCount", "Количество");
+								break;
+							case 3:
+								dgvFromWHChoicedProds.Columns.Add("ProdPrice", "Цена");
+								break;
+							case 4:
+								dgvFromWHChoicedProds.Columns.Add("InvNum", "Инв номер");
+								break;
+							case 5:
+								dgvFromWHChoicedProds.Columns.Add("CatName", "Категория");
+								break;
+							case 6:
+								dgvFromWHChoicedProds.Columns.Add("FromDepName", "Отправитель");
+								break;
+							case 7:
+								dgvFromWHChoicedProds.Columns.Add("ToDepName", "Получатель");
+								break;
+							case 8:
+								dgvFromWHChoicedProds.Columns.Add("ActNum", "Номер акта");
+								break;
+							case 9:
+								dgvFromWHChoicedProds.Columns.Add("ActDate", "Дата акта");
+								break;
+							default:
+								dgvFromWHChoicedProds.Columns.Add("Column"+nCol.ToString(), "Столбец"+nCol.ToString());
+								break;
+						}
+						nCol++;
+					}
+				}
+				
+				sSQL = @"SELECT tActProd.ID AS IDProdType,
+						       tProdType.TypeName AS ProdTypeName,
+						       tActProd.ProdCount,
+						       tActProd.ProdPrice,
+						       tActProd.InvNum,
+						       tCat.CatName,
+						       tDep.DepName AS FromDepName,
+						       tDep_1.DepName AS ToDepName,
+						       tDepType.TypeName AS ToDepType,
+						       tAct.ActNum,
+						       tAct.ActDate
+						FROM tProdType
+						INNER JOIN (tDepType
+						            INNER JOIN (tCat
+						                        INNER JOIN (((tAct
+						                                      INNER JOIN tDep ON tAct.IDDepFrom = tDep.ID)
+						                                     INNER JOIN tDep AS tDep_1 ON tAct.IDDepTo = tDep_1.ID)
+						                                    INNER JOIN tActProd ON tAct.ID = tActProd.IDAct) ON tCat.ID = tActProd.IDProdCat) ON (tDepType.ID = tDep_1.IDDepType)
+						            AND (tDepType.ID = tDep_1.IDDepType)) ON tProdType.ID = tActProd.IDProdType
+						WHERE (((tDepType.ID)=2));
 						";
 				OleDbDataAdapter adapter = new OleDbDataAdapter(sSQL, connectionDB);
 				DbDataReader datareaderObject;
@@ -2489,8 +2594,7 @@ namespace ArmyRep
 					string sToDepName = datareaderObject["ToDepName"].ToString();
 					string sActNum = datareaderObject["ActNum"].ToString();
 					string sActDate = datareaderObject["ActDate"].ToString();
-					//if (dgvToWHChoicedProds.Rows.Contains(sIDProdType))
-					dgvToWHChoicedProds.Rows.Add(sIDProdType, sProdTypeName, sProdCount, sProdPrice, sInvNum,
+					dgvFromWHChoicedProds.Rows.Add(sIDProdType, sProdTypeName, sProdCount, sProdPrice, sInvNum,
 					                             sCatName, sFromDepName, sToDepType + "(" + sToDepName + ")", 
 					                             sActNum, sActDate);
 				}
@@ -2503,5 +2607,10 @@ namespace ArmyRep
 				adapter = null;
 			}
 		}
+		void TxFindProdInToWHKeyUp(object sender, KeyEventArgs e)
+		{
+			ShowDataOfWH("drToWH");
+		}
+		
 	}
 }
