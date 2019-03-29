@@ -25,3 +25,12 @@ C:\Users\Dinara\Documents\Source\ArmyRep\ArmyRep\obj\Debug\ArmyRep.frmMain.resou
 C:\Users\Dinara\Documents\Source\ArmyRep\ArmyRep\obj\Debug\ArmyRep.csproj.GenerateResource.Cache
 C:\Users\Dinara\Documents\Source\ArmyRep\ArmyRep\obj\Debug\ArmyRep.exe
 C:\Users\Dinara\Documents\Source\ArmyRep\ArmyRep\obj\Debug\ArmyRep.pdb
+C:\Users\kuanysh.tuktubaev\Documents\My\ArmyRep-master\ArmyRep\bin\Debug\ArmyRep.exe.config
+C:\Users\kuanysh.tuktubaev\Documents\My\ArmyRep-master\ArmyRep\bin\Debug\ArmyRep.exe
+C:\Users\kuanysh.tuktubaev\Documents\My\ArmyRep-master\ArmyRep\bin\Debug\ArmyRep.pdb
+C:\Users\kuanysh.tuktubaev\Documents\My\ArmyRep-master\ArmyRep\obj\Debug\ArmyRep.csprojResolveAssemblyReference.cache
+C:\Users\kuanysh.tuktubaev\Documents\My\ArmyRep-master\ArmyRep\obj\Debug\ArmyRep.frmLogin.resources
+C:\Users\kuanysh.tuktubaev\Documents\My\ArmyRep-master\ArmyRep\obj\Debug\ArmyRep.frmMain.resources
+C:\Users\kuanysh.tuktubaev\Documents\My\ArmyRep-master\ArmyRep\obj\Debug\ArmyRep.csproj.GenerateResource.Cache
+C:\Users\kuanysh.tuktubaev\Documents\My\ArmyRep-master\ArmyRep\obj\Debug\ArmyRep.exe
+C:\Users\kuanysh.tuktubaev\Documents\My\ArmyRep-master\ArmyRep\obj\Debug\ArmyRep.pdb

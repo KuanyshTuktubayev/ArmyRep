@@ -210,18 +210,18 @@ namespace ArmyRep
 		private System.Windows.Forms.Label lbEditDepDeptypeID;
 		private System.Windows.Forms.RadioButton rbToWHFindPrice;
 		private System.Windows.Forms.RadioButton rbToWHFindProd;
-		private System.Windows.Forms.TextBox txFindProdInToWH;
+		private System.Windows.Forms.TextBox txToWHFindProds;
 		private System.Windows.Forms.Label lbToWHFindInDB;
 		private System.Windows.Forms.RadioButton rbFromWHFindPrice;
 		private System.Windows.Forms.RadioButton rbFromWHFindProd;
-		private System.Windows.Forms.TextBox textBox2;
+		private System.Windows.Forms.TextBox txFromWHFindProds;
 		private System.Windows.Forms.Label lbFromWHFindInDB;
 		private System.Windows.Forms.Label label1;
-		private System.Windows.Forms.MaskedTextBox maskedTextBox2;
-		private System.Windows.Forms.MaskedTextBox maskedTextBox1;
+		private System.Windows.Forms.MaskedTextBox mtxToWHPriceTo;
+		private System.Windows.Forms.MaskedTextBox mtxToWHPriceFrom;
 		private System.Windows.Forms.Label label2;
-		private System.Windows.Forms.MaskedTextBox maskedTextBox3;
-		private System.Windows.Forms.MaskedTextBox maskedTextBox4;
+		private System.Windows.Forms.MaskedTextBox mtxFromWHPriceTo;
+		private System.Windows.Forms.MaskedTextBox mtxFromWHPriceFrom;
 		
 		
 		/// <summary>
@@ -408,11 +408,11 @@ namespace ArmyRep
 			this.lbToWHPrice = new System.Windows.Forms.Label();
 			this.scToWHChoicedList = new System.Windows.Forms.SplitContainer();
 			this.label1 = new System.Windows.Forms.Label();
-			this.maskedTextBox2 = new System.Windows.Forms.MaskedTextBox();
-			this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
+			this.mtxToWHPriceTo = new System.Windows.Forms.MaskedTextBox();
+			this.mtxToWHPriceFrom = new System.Windows.Forms.MaskedTextBox();
 			this.rbToWHFindPrice = new System.Windows.Forms.RadioButton();
 			this.rbToWHFindProd = new System.Windows.Forms.RadioButton();
-			this.txFindProdInToWH = new System.Windows.Forms.TextBox();
+			this.txToWHFindProds = new System.Windows.Forms.TextBox();
 			this.lbToWHFindInDB = new System.Windows.Forms.Label();
 			this.BtnToWHChoiceDel = new System.Windows.Forms.Button();
 			this.btnToWHChoiceSave = new System.Windows.Forms.Button();
@@ -443,11 +443,11 @@ namespace ArmyRep
 			this.lbFromWHInvNum = new System.Windows.Forms.Label();
 			this.scFromWHChoicedList = new System.Windows.Forms.SplitContainer();
 			this.label2 = new System.Windows.Forms.Label();
-			this.maskedTextBox3 = new System.Windows.Forms.MaskedTextBox();
-			this.maskedTextBox4 = new System.Windows.Forms.MaskedTextBox();
+			this.mtxFromWHPriceTo = new System.Windows.Forms.MaskedTextBox();
+			this.mtxFromWHPriceFrom = new System.Windows.Forms.MaskedTextBox();
 			this.rbFromWHFindPrice = new System.Windows.Forms.RadioButton();
 			this.rbFromWHFindProd = new System.Windows.Forms.RadioButton();
-			this.textBox2 = new System.Windows.Forms.TextBox();
+			this.txFromWHFindProds = new System.Windows.Forms.TextBox();
 			this.lbFromWHFindInDB = new System.Windows.Forms.Label();
 			this.btnFromWHChoiceDel = new System.Windows.Forms.Button();
 			this.btnFromWHChoiceSave = new System.Windows.Forms.Button();
@@ -2107,11 +2107,11 @@ namespace ArmyRep
 			this.scToWHChoicedList.Panel1.AutoScroll = true;
 			this.scToWHChoicedList.Panel1.BackColor = System.Drawing.Color.Beige;
 			this.scToWHChoicedList.Panel1.Controls.Add(this.label1);
-			this.scToWHChoicedList.Panel1.Controls.Add(this.maskedTextBox2);
-			this.scToWHChoicedList.Panel1.Controls.Add(this.maskedTextBox1);
+			this.scToWHChoicedList.Panel1.Controls.Add(this.mtxToWHPriceTo);
+			this.scToWHChoicedList.Panel1.Controls.Add(this.mtxToWHPriceFrom);
 			this.scToWHChoicedList.Panel1.Controls.Add(this.rbToWHFindPrice);
 			this.scToWHChoicedList.Panel1.Controls.Add(this.rbToWHFindProd);
-			this.scToWHChoicedList.Panel1.Controls.Add(this.txFindProdInToWH);
+			this.scToWHChoicedList.Panel1.Controls.Add(this.txToWHFindProds);
 			this.scToWHChoicedList.Panel1.Controls.Add(this.lbToWHFindInDB);
 			this.scToWHChoicedList.Panel1.Controls.Add(this.BtnToWHChoiceDel);
 			this.scToWHChoicedList.Panel1.Controls.Add(this.btnToWHChoiceSave);
@@ -2133,19 +2133,21 @@ namespace ArmyRep
 			this.label1.TabIndex = 46;
 			this.label1.Text = "...";
 			// 
-			// maskedTextBox2
+			// mtxToWHPriceTo
 			// 
-			this.maskedTextBox2.Location = new System.Drawing.Point(171, 35);
-			this.maskedTextBox2.Name = "maskedTextBox2";
-			this.maskedTextBox2.Size = new System.Drawing.Size(85, 20);
-			this.maskedTextBox2.TabIndex = 45;
+			this.mtxToWHPriceTo.Location = new System.Drawing.Point(171, 35);
+			this.mtxToWHPriceTo.Name = "mtxToWHPriceTo";
+			this.mtxToWHPriceTo.Size = new System.Drawing.Size(85, 20);
+			this.mtxToWHPriceTo.TabIndex = 45;
+			this.mtxToWHPriceTo.KeyUp += new System.Windows.Forms.KeyEventHandler(this.MtxToWHPriceToKeyUp);
 			// 
-			// maskedTextBox1
+			// mtxToWHPriceFrom
 			// 
-			this.maskedTextBox1.Location = new System.Drawing.Point(68, 35);
-			this.maskedTextBox1.Name = "maskedTextBox1";
-			this.maskedTextBox1.Size = new System.Drawing.Size(85, 20);
-			this.maskedTextBox1.TabIndex = 44;
+			this.mtxToWHPriceFrom.Location = new System.Drawing.Point(68, 35);
+			this.mtxToWHPriceFrom.Name = "mtxToWHPriceFrom";
+			this.mtxToWHPriceFrom.Size = new System.Drawing.Size(85, 20);
+			this.mtxToWHPriceFrom.TabIndex = 44;
+			this.mtxToWHPriceFrom.KeyUp += new System.Windows.Forms.KeyEventHandler(this.MtxToWHPriceFromKeyUp);
 			// 
 			// rbToWHFindPrice
 			// 
@@ -2155,6 +2157,7 @@ namespace ArmyRep
 			this.rbToWHFindPrice.TabIndex = 43;
 			this.rbToWHFindPrice.Text = "по цене";
 			this.rbToWHFindPrice.UseVisualStyleBackColor = true;
+			this.rbToWHFindPrice.CheckedChanged += new System.EventHandler(this.RbToWHFindPriceCheckedChanged);
 			// 
 			// rbToWHFindProd
 			// 
@@ -2166,14 +2169,15 @@ namespace ArmyRep
 			this.rbToWHFindProd.TabStop = true;
 			this.rbToWHFindProd.Text = "по предмету";
 			this.rbToWHFindProd.UseVisualStyleBackColor = true;
+			this.rbToWHFindProd.CheckedChanged += new System.EventHandler(this.RbToWHFindProdCheckedChanged);
 			// 
-			// txFindProdInToWH
+			// txToWHFindProds
 			// 
-			this.txFindProdInToWH.Location = new System.Drawing.Point(68, 10);
-			this.txFindProdInToWH.Name = "txFindProdInToWH";
-			this.txFindProdInToWH.Size = new System.Drawing.Size(188, 20);
-			this.txFindProdInToWH.TabIndex = 41;
-			this.txFindProdInToWH.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TxFindProdInToWHKeyUp);
+			this.txToWHFindProds.Location = new System.Drawing.Point(68, 10);
+			this.txToWHFindProds.Name = "txToWHFindProds";
+			this.txToWHFindProds.Size = new System.Drawing.Size(188, 20);
+			this.txToWHFindProds.TabIndex = 41;
+			this.txToWHFindProds.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TxFindProdInToWHKeyUp);
 			// 
 			// lbToWHFindInDB
 			// 
@@ -2262,7 +2266,7 @@ namespace ArmyRep
 			// 
 			this.scFromWH.Panel2.Controls.Add(this.scFromWHChoicedList);
 			this.scFromWH.Size = new System.Drawing.Size(952, 530);
-			this.scFromWH.SplitterDistance = 139;
+			this.scFromWH.SplitterDistance = 296;
 			this.scFromWH.TabIndex = 29;
 			// 
 			// lbFromWHCat
@@ -2478,11 +2482,11 @@ namespace ArmyRep
 			// 
 			this.scFromWHChoicedList.Panel1.BackColor = System.Drawing.Color.Beige;
 			this.scFromWHChoicedList.Panel1.Controls.Add(this.label2);
-			this.scFromWHChoicedList.Panel1.Controls.Add(this.maskedTextBox3);
-			this.scFromWHChoicedList.Panel1.Controls.Add(this.maskedTextBox4);
+			this.scFromWHChoicedList.Panel1.Controls.Add(this.mtxFromWHPriceTo);
+			this.scFromWHChoicedList.Panel1.Controls.Add(this.mtxFromWHPriceFrom);
 			this.scFromWHChoicedList.Panel1.Controls.Add(this.rbFromWHFindPrice);
 			this.scFromWHChoicedList.Panel1.Controls.Add(this.rbFromWHFindProd);
-			this.scFromWHChoicedList.Panel1.Controls.Add(this.textBox2);
+			this.scFromWHChoicedList.Panel1.Controls.Add(this.txFromWHFindProds);
 			this.scFromWHChoicedList.Panel1.Controls.Add(this.lbFromWHFindInDB);
 			this.scFromWHChoicedList.Panel1.Controls.Add(this.btnFromWHChoiceDel);
 			this.scFromWHChoicedList.Panel1.Controls.Add(this.btnFromWHChoiceSave);
@@ -2490,8 +2494,8 @@ namespace ArmyRep
 			// scFromWHChoicedList.Panel2
 			// 
 			this.scFromWHChoicedList.Panel2.Controls.Add(this.dgvFromWHChoicedProds);
-			this.scFromWHChoicedList.Size = new System.Drawing.Size(952, 387);
-			this.scFromWHChoicedList.SplitterDistance = 25;
+			this.scFromWHChoicedList.Size = new System.Drawing.Size(952, 230);
+			this.scFromWHChoicedList.SplitterDistance = 126;
 			this.scFromWHChoicedList.TabIndex = 0;
 			// 
 			// label2
@@ -2503,19 +2507,19 @@ namespace ArmyRep
 			this.label2.TabIndex = 49;
 			this.label2.Text = "...";
 			// 
-			// maskedTextBox3
+			// mtxFromWHPriceTo
 			// 
-			this.maskedTextBox3.Location = new System.Drawing.Point(171, 36);
-			this.maskedTextBox3.Name = "maskedTextBox3";
-			this.maskedTextBox3.Size = new System.Drawing.Size(85, 20);
-			this.maskedTextBox3.TabIndex = 48;
+			this.mtxFromWHPriceTo.Location = new System.Drawing.Point(171, 36);
+			this.mtxFromWHPriceTo.Name = "mtxFromWHPriceTo";
+			this.mtxFromWHPriceTo.Size = new System.Drawing.Size(85, 20);
+			this.mtxFromWHPriceTo.TabIndex = 48;
 			// 
-			// maskedTextBox4
+			// mtxFromWHPriceFrom
 			// 
-			this.maskedTextBox4.Location = new System.Drawing.Point(68, 36);
-			this.maskedTextBox4.Name = "maskedTextBox4";
-			this.maskedTextBox4.Size = new System.Drawing.Size(85, 20);
-			this.maskedTextBox4.TabIndex = 47;
+			this.mtxFromWHPriceFrom.Location = new System.Drawing.Point(68, 36);
+			this.mtxFromWHPriceFrom.Name = "mtxFromWHPriceFrom";
+			this.mtxFromWHPriceFrom.Size = new System.Drawing.Size(85, 20);
+			this.mtxFromWHPriceFrom.TabIndex = 47;
 			// 
 			// rbFromWHFindPrice
 			// 
@@ -2526,6 +2530,7 @@ namespace ArmyRep
 			this.rbFromWHFindPrice.TabStop = true;
 			this.rbFromWHFindPrice.Text = "по цене";
 			this.rbFromWHFindPrice.UseVisualStyleBackColor = true;
+			this.rbFromWHFindPrice.CheckedChanged += new System.EventHandler(this.RbFromWHFindPriceCheckedChanged);
 			// 
 			// rbFromWHFindProd
 			// 
@@ -2536,13 +2541,15 @@ namespace ArmyRep
 			this.rbFromWHFindProd.TabStop = true;
 			this.rbFromWHFindProd.Text = "по предмету";
 			this.rbFromWHFindProd.UseVisualStyleBackColor = true;
+			this.rbFromWHFindProd.CheckedChanged += new System.EventHandler(this.RbFromWHFindProdCheckedChanged);
 			// 
-			// textBox2
+			// txFromWHFindProds
 			// 
-			this.textBox2.Location = new System.Drawing.Point(68, 10);
-			this.textBox2.Name = "textBox2";
-			this.textBox2.Size = new System.Drawing.Size(188, 20);
-			this.textBox2.TabIndex = 28;
+			this.txFromWHFindProds.Location = new System.Drawing.Point(68, 10);
+			this.txFromWHFindProds.Name = "txFromWHFindProds";
+			this.txFromWHFindProds.Size = new System.Drawing.Size(188, 20);
+			this.txFromWHFindProds.TabIndex = 28;
+			this.txFromWHFindProds.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TxFromWHFindProdsKeyUp);
 			// 
 			// lbFromWHFindInDB
 			// 
@@ -2580,7 +2587,7 @@ namespace ArmyRep
 			this.dgvFromWHChoicedProds.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.dgvFromWHChoicedProds.Location = new System.Drawing.Point(0, 0);
 			this.dgvFromWHChoicedProds.Name = "dgvFromWHChoicedProds";
-			this.dgvFromWHChoicedProds.Size = new System.Drawing.Size(952, 358);
+			this.dgvFromWHChoicedProds.Size = new System.Drawing.Size(952, 100);
 			this.dgvFromWHChoicedProds.TabIndex = 26;
 			// 
 			// tpWHWriteoff

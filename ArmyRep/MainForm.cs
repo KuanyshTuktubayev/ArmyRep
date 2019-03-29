@@ -1,6 +1,6 @@
 ﻿/*
  * Created by SharpDevelop.
- * User: KuanyshMadina
+ * User: Kuanysh Tuktubayev
  * Date: 21.04.2018
  * Time: 10:57
  * 
@@ -42,6 +42,8 @@ namespace ArmyRep
 		string sSQLEditProdtype = "";
 		string sSQLEditUsingtype = "";
 		string sSQLEditPerson = "";
+		
+		int nShowPageEditPart = 1;
 		
 		//string sSQLToWH = "";
 		//string sSQLFromWH = "";
@@ -98,6 +100,14 @@ namespace ArmyRep
             }
             //sIDPartCurrent = System.Configuration.ConfigurationSettings.AppSettings["IDPartCurrent"]; //old version
             sIDPartCurrent = System.Configuration.ConfigurationManager.AppSettings["IDPartCurrent"]; //new version
+            
+            try
+            {
+            	nShowPageEditPart = int.Parse(System.Configuration.ConfigurationManager.AppSettings["showPageEditPart"]);
+            }
+            catch
+            {}
+            
 			sSQLEditDep = "SELECT d.ID, d.DepName, d.IDDepType, d.IDParent, d.IDMRPerson, p.Lastname +' '+ p.Firstname +' '+ p.Patronymic as MRFIO FROM tDep d left join tPerson p on d.IDMRPerson = p.ID where d.IDParent = " + sIDPartCurrent + " and d.IDDeptype = 2 and d.IDStatus = 1";
 			sSQLEditPart = "SELECT d.ID, d.DepName, d.IDDepType FROM tDep d where d.IDParent is null and d.IDDeptype = 3 and d.IDStatus = 1";
 			sSQLEditRank = "SELECT r.ID, r.RankName FROM tRank r where r.IDStatus = 1";
@@ -123,7 +133,6 @@ namespace ArmyRep
 			{
 				if ((pFieldType == "WH") && (!string.IsNullOrEmpty(pFieldValue)))
 				{
-					//TODO: return result of - select ID from tDep where deptype = warehouse and id = CurrentPartID
 					string sSQL = "select ID from tDep d where d.idparent = " + sIDPartCurrent + " and d.iddeptype = 1 and d.idstatus = 1";
 					int nID = -1;
 					OleDbDataAdapter adapter = new OleDbDataAdapter(sSQL, connectionDB);
@@ -268,6 +277,16 @@ namespace ArmyRep
 			MakeDataReader("drEditPart", sSQLEditPart);
 			//Человек
 			MakeDataReader("drEditPerson", sSQLEditPerson);
+			
+			if (nShowPageEditPart.Equals(0))
+			{
+				//tcEdit.SelectedTab = tpPart;
+				tpPart.Hide();
+			}
+			else
+			{
+				tpPart.Show();
+			}
 			
 			tpDepType.Hide();
 			tpUsingType.Hide();
@@ -2449,10 +2468,28 @@ namespace ArmyRep
 				}
 				
 				string sFindProd = "";
-				if (txFindProdInToWH.Text != "")
+				if (rbToWHFindProd.Checked)
 				{
-					const string sKav = "\"";
-					sFindProd = " AND ((tProdType.TypeName) like "+sKav+"*"+txFindProdInToWH.Text+"*"+sKav+") ";
+					if (txToWHFindProds.Text != "")
+					{
+						const string sKav = "\"";
+						sFindProd = " AND ((tProdType.TypeName) like "+sKav+"%"+txToWHFindProds.Text+"%"+sKav+") ";
+					}
+				}
+				else if (rbToWHFindPrice.Checked)
+				{
+					if ((!mtxToWHPriceFrom.Text.Length.Equals(0)) && (mtxToWHPriceTo.Text.Length.Equals(0)))
+					{
+						sFindProd = " AND ((tActProd.ProdPrice) >= "+mtxToWHPriceFrom.Text+") ";
+					}
+					else if ((mtxToWHPriceFrom.Text.Length.Equals(0)) && (!mtxToWHPriceTo.Text.Length.Equals(0)))
+					{
+						sFindProd = " AND ((tActProd.ProdPrice) <= "+mtxToWHPriceTo.Text+") ";
+					}
+					else if ((!mtxToWHPriceFrom.Text.Length.Equals(0)) && (!mtxToWHPriceTo.Text.Length.Equals(0)))
+					{
+						sFindProd = " AND ((tActProd.ProdPrice) >= "+mtxToWHPriceFrom.Text+") " + " AND ((tActProd.ProdPrice) <= "+mtxToWHPriceTo.Text+") ";
+					}
 				}
 				 
 				sSQL = @"SELECT tActProd.ID AS IDProdType,
@@ -2556,6 +2593,31 @@ namespace ArmyRep
 					}
 				}
 				
+				string sFindProd = "";
+				if (rbFromWHFindProd.Checked)
+				{
+					if (txFromWHFindProds.Text != "")
+					{
+						const string sKav = "\"";
+						sFindProd = " AND ((tProdType.TypeName) like "+sKav+"%"+txFromWHFindProds.Text+"%"+sKav+") ";
+					}
+				}
+				else if (rbFromWHFindPrice.Checked)
+				{
+					if ((!mtxFromWHPriceFrom.Text.Length.Equals(0)) && (mtxFromWHPriceTo.Text.Length.Equals(0)))
+					{
+						sFindProd = " AND ((tActProd.ProdPrice) >= "+mtxFromWHPriceFrom.Text+") ";
+					}
+					else if ((mtxFromWHPriceFrom.Text.Length.Equals(0)) && (!mtxFromWHPriceTo.Text.Length.Equals(0)))
+					{
+						sFindProd = " AND ((tActProd.ProdPrice) <= "+mtxFromWHPriceTo.Text+") ";
+					}
+					else if ((!mtxFromWHPriceFrom.Text.Length.Equals(0)) && (!mtxFromWHPriceTo.Text.Length.Equals(0)))
+					{
+						sFindProd = " AND ((tActProd.ProdPrice) >= "+mtxFromWHPriceFrom.Text+") " + " AND ((tActProd.ProdPrice) <= "+mtxFromWHPriceTo.Text+") ";
+					}
+				}
+				
 				sSQL = @"SELECT tActProd.ID AS IDProdType,
 						       tProdType.TypeName AS ProdTypeName,
 						       tActProd.ProdCount,
@@ -2575,7 +2637,7 @@ namespace ArmyRep
 						                                     INNER JOIN tDep AS tDep_1 ON tAct.IDDepTo = tDep_1.ID)
 						                                    INNER JOIN tActProd ON tAct.ID = tActProd.IDAct) ON tCat.ID = tActProd.IDProdCat) ON (tDepType.ID = tDep_1.IDDepType)
 						            AND (tDepType.ID = tDep_1.IDDepType)) ON tProdType.ID = tActProd.IDProdType
-						WHERE (((tDepType.ID)=2));
+						WHERE (((tDepType.ID)=2) "+sFindProd+@");
 						";
 				OleDbDataAdapter adapter = new OleDbDataAdapter(sSQL, connectionDB);
 				DbDataReader datareaderObject;
@@ -2610,6 +2672,34 @@ namespace ArmyRep
 		void TxFindProdInToWHKeyUp(object sender, KeyEventArgs e)
 		{
 			ShowDataOfWH("drToWH");
+		}
+		void MtxToWHPriceFromKeyUp(object sender, KeyEventArgs e)
+		{
+			ShowDataOfWH("drToWH");
+		}
+		void MtxToWHPriceToKeyUp(object sender, KeyEventArgs e)
+		{
+			ShowDataOfWH("drToWH");
+		}
+		void TxFromWHFindProdsKeyUp(object sender, KeyEventArgs e)
+		{
+			ShowDataOfWH("drFromWH");
+		}
+		void RbToWHFindPriceCheckedChanged(object sender, EventArgs e)
+		{
+			ShowDataOfWH("drToWH");
+		}
+		void RbToWHFindProdCheckedChanged(object sender, EventArgs e)
+		{
+			ShowDataOfWH("drToWH");
+		}
+		void RbFromWHFindPriceCheckedChanged(object sender, EventArgs e)
+		{
+			ShowDataOfWH("drFromWH");
+		}
+		void RbFromWHFindProdCheckedChanged(object sender, EventArgs e)
+		{
+			ShowDataOfWH("drFromWH");
 		}
 		
 	}
