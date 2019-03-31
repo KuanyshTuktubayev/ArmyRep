@@ -204,7 +204,7 @@ namespace ArmyRep
 		private System.Windows.Forms.SplitContainer scFromWH;
 		private System.Windows.Forms.SplitContainer scFromWHChoicedList;
 		private System.Windows.Forms.Button btnFromWHChoiceDel;
-		private System.Windows.Forms.Button button1;
+		private System.Windows.Forms.Button btnEditDepDeptypeEdit;
 		private System.Windows.Forms.ComboBox cbEditDepDeptype;
 		private System.Windows.Forms.Label lbEditDepDeptype;
 		private System.Windows.Forms.Label lbEditDepDeptypeID;
@@ -222,6 +222,9 @@ namespace ArmyRep
 		private System.Windows.Forms.Label label2;
 		private System.Windows.Forms.MaskedTextBox mtxFromWHPriceTo;
 		private System.Windows.Forms.MaskedTextBox mtxFromWHPriceFrom;
+		private System.Windows.Forms.SplitContainer scEditPerson;
+		private System.Windows.Forms.SplitContainer scMain;
+		private System.Windows.Forms.Button btnEditPersonRankEdit;
 		
 		
 		/// <summary>
@@ -254,6 +257,33 @@ namespace ArmyRep
 			this.btnEdit = new System.Windows.Forms.Button();
 			this.tcEdit = new System.Windows.Forms.TabControl();
 			this.tpPerson = new System.Windows.Forms.TabPage();
+			this.scEditPerson = new System.Windows.Forms.SplitContainer();
+			this.lbEditPersonLastname = new System.Windows.Forms.Label();
+			this.rbEditPersonGenderF = new System.Windows.Forms.RadioButton();
+			this.txEditPersonLastname = new System.Windows.Forms.TextBox();
+			this.rbEditPersonGenderM = new System.Windows.Forms.RadioButton();
+			this.lbEditPersonFirstname = new System.Windows.Forms.Label();
+			this.gbEditPersonRank = new System.Windows.Forms.GroupBox();
+			this.btnEditPersonRankEdit = new System.Windows.Forms.Button();
+			this.lbEditPIDRank = new System.Windows.Forms.Label();
+			this.cbEditPersonRankName = new System.Windows.Forms.ComboBox();
+			this.dtpEditPersonRankDatefrom = new System.Windows.Forms.DateTimePicker();
+			this.lbEditPersonRankDatefrom = new System.Windows.Forms.Label();
+			this.lbEditPersonRankName = new System.Windows.Forms.Label();
+			this.txEditPersonFirstname = new System.Windows.Forms.TextBox();
+			this.btnEditPersonFind = new System.Windows.Forms.Button();
+			this.lbEditPersonPatronymic = new System.Windows.Forms.Label();
+			this.txEditPersonPatronymic = new System.Windows.Forms.TextBox();
+			this.lsbEditPersonList = new System.Windows.Forms.ListBox();
+			this.lbEditPersonBirthdate = new System.Windows.Forms.Label();
+			this.btnEditPersonNew = new System.Windows.Forms.Button();
+			this.dtpEditPersonBirthdate = new System.Windows.Forms.DateTimePicker();
+			this.btnEditPersonDelete = new System.Windows.Forms.Button();
+			this.lbEditPersonDeathdate = new System.Windows.Forms.Label();
+			this.btnEditPersonSave = new System.Windows.Forms.Button();
+			this.dtpEditPersonDeathdate = new System.Windows.Forms.DateTimePicker();
+			this.chbEditPersonDeath = new System.Windows.Forms.CheckBox();
+			this.lbEditIDPerson = new System.Windows.Forms.Label();
 			this.dgvEditPersonList = new System.Windows.Forms.DataGridView();
 			this.id = new System.Windows.Forms.DataGridViewButtonColumn();
 			this.lastname = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -264,34 +294,9 @@ namespace ArmyRep
 			this.deathdate = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.rankname = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.rankdate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.rbEditPersonGenderF = new System.Windows.Forms.RadioButton();
-			this.rbEditPersonGenderM = new System.Windows.Forms.RadioButton();
-			this.gbEditPersonRank = new System.Windows.Forms.GroupBox();
-			this.lbEditPIDRank = new System.Windows.Forms.Label();
-			this.cbEditPersonRankName = new System.Windows.Forms.ComboBox();
-			this.dtpEditPersonRankDatefrom = new System.Windows.Forms.DateTimePicker();
-			this.lbEditPersonRankDatefrom = new System.Windows.Forms.Label();
-			this.lbEditPersonRankName = new System.Windows.Forms.Label();
-			this.btnEditPersonFind = new System.Windows.Forms.Button();
-			this.lbEditIDPerson = new System.Windows.Forms.Label();
-			this.lsbEditPersonList = new System.Windows.Forms.ListBox();
-			this.btnEditPersonNew = new System.Windows.Forms.Button();
-			this.btnEditPersonDelete = new System.Windows.Forms.Button();
-			this.btnEditPersonSave = new System.Windows.Forms.Button();
-			this.chbEditPersonDeath = new System.Windows.Forms.CheckBox();
-			this.dtpEditPersonDeathdate = new System.Windows.Forms.DateTimePicker();
-			this.lbEditPersonDeathdate = new System.Windows.Forms.Label();
-			this.dtpEditPersonBirthdate = new System.Windows.Forms.DateTimePicker();
-			this.lbEditPersonBirthdate = new System.Windows.Forms.Label();
-			this.txEditPersonPatronymic = new System.Windows.Forms.TextBox();
-			this.lbEditPersonPatronymic = new System.Windows.Forms.Label();
-			this.txEditPersonFirstname = new System.Windows.Forms.TextBox();
-			this.lbEditPersonFirstname = new System.Windows.Forms.Label();
-			this.txEditPersonLastname = new System.Windows.Forms.TextBox();
-			this.lbEditPersonLastname = new System.Windows.Forms.Label();
 			this.tpDep = new System.Windows.Forms.TabPage();
 			this.lbEditDepDeptypeID = new System.Windows.Forms.Label();
-			this.button1 = new System.Windows.Forms.Button();
+			this.btnEditDepDeptypeEdit = new System.Windows.Forms.Button();
 			this.cbEditDepDeptype = new System.Windows.Forms.ComboBox();
 			this.lbEditDepDeptype = new System.Windows.Forms.Label();
 			this.btnEditDepNew = new System.Windows.Forms.Button();
@@ -453,11 +458,16 @@ namespace ArmyRep
 			this.btnFromWHChoiceSave = new System.Windows.Forms.Button();
 			this.dgvFromWHChoicedProds = new System.Windows.Forms.DataGridView();
 			this.tpWHWriteoff = new System.Windows.Forms.TabPage();
+			this.scMain = new System.Windows.Forms.SplitContainer();
 			this.pnMenu.SuspendLayout();
 			this.tcEdit.SuspendLayout();
 			this.tpPerson.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.dgvEditPersonList)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.scEditPerson)).BeginInit();
+			this.scEditPerson.Panel1.SuspendLayout();
+			this.scEditPerson.Panel2.SuspendLayout();
+			this.scEditPerson.SuspendLayout();
 			this.gbEditPersonRank.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.dgvEditPersonList)).BeginInit();
 			this.tpDep.SuspendLayout();
 			this.tpCategory.SuspendLayout();
 			this.tpProductType.SuspendLayout();
@@ -491,6 +501,10 @@ namespace ArmyRep
 			this.scFromWHChoicedList.Panel2.SuspendLayout();
 			this.scFromWHChoicedList.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dgvFromWHChoicedProds)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.scMain)).BeginInit();
+			this.scMain.Panel1.SuspendLayout();
+			this.scMain.Panel2.SuspendLayout();
+			this.scMain.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// pnMenu
@@ -502,8 +516,7 @@ namespace ArmyRep
 			this.pnMenu.Controls.Add(this.btnDep);
 			this.pnMenu.Controls.Add(this.btnWH);
 			this.pnMenu.Controls.Add(this.btnEdit);
-			this.pnMenu.Dock = System.Windows.Forms.DockStyle.Left;
-			this.pnMenu.Location = new System.Drawing.Point(0, 0);
+			this.pnMenu.Location = new System.Drawing.Point(3, 10);
 			this.pnMenu.Name = "pnMenu";
 			this.pnMenu.Size = new System.Drawing.Size(157, 562);
 			this.pnMenu.TabIndex = 0;
@@ -591,42 +604,297 @@ namespace ArmyRep
 			this.tcEdit.Controls.Add(this.tpRank);
 			this.tcEdit.Controls.Add(this.tpDepType);
 			this.tcEdit.Controls.Add(this.tpPart);
-			this.tcEdit.Location = new System.Drawing.Point(250, 10);
+			this.tcEdit.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.tcEdit.Location = new System.Drawing.Point(0, 0);
 			this.tcEdit.Name = "tcEdit";
 			this.tcEdit.SelectedIndex = 0;
-			this.tcEdit.Size = new System.Drawing.Size(300, 200);
+			this.tcEdit.Size = new System.Drawing.Size(956, 562);
 			this.tcEdit.TabIndex = 1;
 			this.tcEdit.SelectedIndexChanged += new System.EventHandler(this.TcEditSelectedIndexChanged);
 			// 
 			// tpPerson
 			// 
 			this.tpPerson.BackColor = System.Drawing.Color.YellowGreen;
-			this.tpPerson.Controls.Add(this.dgvEditPersonList);
-			this.tpPerson.Controls.Add(this.rbEditPersonGenderF);
-			this.tpPerson.Controls.Add(this.rbEditPersonGenderM);
-			this.tpPerson.Controls.Add(this.gbEditPersonRank);
-			this.tpPerson.Controls.Add(this.btnEditPersonFind);
-			this.tpPerson.Controls.Add(this.lbEditIDPerson);
-			this.tpPerson.Controls.Add(this.lsbEditPersonList);
-			this.tpPerson.Controls.Add(this.btnEditPersonNew);
-			this.tpPerson.Controls.Add(this.btnEditPersonDelete);
-			this.tpPerson.Controls.Add(this.btnEditPersonSave);
-			this.tpPerson.Controls.Add(this.chbEditPersonDeath);
-			this.tpPerson.Controls.Add(this.dtpEditPersonDeathdate);
-			this.tpPerson.Controls.Add(this.lbEditPersonDeathdate);
-			this.tpPerson.Controls.Add(this.dtpEditPersonBirthdate);
-			this.tpPerson.Controls.Add(this.lbEditPersonBirthdate);
-			this.tpPerson.Controls.Add(this.txEditPersonPatronymic);
-			this.tpPerson.Controls.Add(this.lbEditPersonPatronymic);
-			this.tpPerson.Controls.Add(this.txEditPersonFirstname);
-			this.tpPerson.Controls.Add(this.lbEditPersonFirstname);
-			this.tpPerson.Controls.Add(this.txEditPersonLastname);
-			this.tpPerson.Controls.Add(this.lbEditPersonLastname);
+			this.tpPerson.Controls.Add(this.scEditPerson);
 			this.tpPerson.Location = new System.Drawing.Point(4, 22);
 			this.tpPerson.Name = "tpPerson";
-			this.tpPerson.Size = new System.Drawing.Size(292, 174);
+			this.tpPerson.Size = new System.Drawing.Size(948, 536);
 			this.tpPerson.TabIndex = 3;
 			this.tpPerson.Text = "Человек";
+			// 
+			// scEditPerson
+			// 
+			this.scEditPerson.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.scEditPerson.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
+			this.scEditPerson.Location = new System.Drawing.Point(0, 0);
+			this.scEditPerson.Name = "scEditPerson";
+			this.scEditPerson.Orientation = System.Windows.Forms.Orientation.Horizontal;
+			// 
+			// scEditPerson.Panel1
+			// 
+			this.scEditPerson.Panel1.AutoScroll = true;
+			this.scEditPerson.Panel1.Controls.Add(this.lbEditPersonLastname);
+			this.scEditPerson.Panel1.Controls.Add(this.rbEditPersonGenderF);
+			this.scEditPerson.Panel1.Controls.Add(this.txEditPersonLastname);
+			this.scEditPerson.Panel1.Controls.Add(this.rbEditPersonGenderM);
+			this.scEditPerson.Panel1.Controls.Add(this.lbEditPersonFirstname);
+			this.scEditPerson.Panel1.Controls.Add(this.gbEditPersonRank);
+			this.scEditPerson.Panel1.Controls.Add(this.txEditPersonFirstname);
+			this.scEditPerson.Panel1.Controls.Add(this.btnEditPersonFind);
+			this.scEditPerson.Panel1.Controls.Add(this.lbEditPersonPatronymic);
+			this.scEditPerson.Panel1.Controls.Add(this.txEditPersonPatronymic);
+			this.scEditPerson.Panel1.Controls.Add(this.lsbEditPersonList);
+			this.scEditPerson.Panel1.Controls.Add(this.lbEditPersonBirthdate);
+			this.scEditPerson.Panel1.Controls.Add(this.btnEditPersonNew);
+			this.scEditPerson.Panel1.Controls.Add(this.dtpEditPersonBirthdate);
+			this.scEditPerson.Panel1.Controls.Add(this.btnEditPersonDelete);
+			this.scEditPerson.Panel1.Controls.Add(this.lbEditPersonDeathdate);
+			this.scEditPerson.Panel1.Controls.Add(this.btnEditPersonSave);
+			this.scEditPerson.Panel1.Controls.Add(this.dtpEditPersonDeathdate);
+			this.scEditPerson.Panel1.Controls.Add(this.chbEditPersonDeath);
+			this.scEditPerson.Panel1.Controls.Add(this.lbEditIDPerson);
+			// 
+			// scEditPerson.Panel2
+			// 
+			this.scEditPerson.Panel2.Controls.Add(this.dgvEditPersonList);
+			this.scEditPerson.Size = new System.Drawing.Size(948, 536);
+			this.scEditPerson.SplitterDistance = 273;
+			this.scEditPerson.TabIndex = 21;
+			// 
+			// lbEditPersonLastname
+			// 
+			this.lbEditPersonLastname.Location = new System.Drawing.Point(6, 14);
+			this.lbEditPersonLastname.Name = "lbEditPersonLastname";
+			this.lbEditPersonLastname.Size = new System.Drawing.Size(70, 23);
+			this.lbEditPersonLastname.TabIndex = 0;
+			this.lbEditPersonLastname.Text = "Фамилия";
+			// 
+			// rbEditPersonGenderF
+			// 
+			this.rbEditPersonGenderF.Location = new System.Drawing.Point(177, 86);
+			this.rbEditPersonGenderF.Name = "rbEditPersonGenderF";
+			this.rbEditPersonGenderF.Size = new System.Drawing.Size(75, 24);
+			this.rbEditPersonGenderF.TabIndex = 19;
+			this.rbEditPersonGenderF.TabStop = true;
+			this.rbEditPersonGenderF.Text = "жен";
+			this.rbEditPersonGenderF.UseVisualStyleBackColor = true;
+			// 
+			// txEditPersonLastname
+			// 
+			this.txEditPersonLastname.Location = new System.Drawing.Point(110, 11);
+			this.txEditPersonLastname.Name = "txEditPersonLastname";
+			this.txEditPersonLastname.Size = new System.Drawing.Size(142, 20);
+			this.txEditPersonLastname.TabIndex = 1;
+			// 
+			// rbEditPersonGenderM
+			// 
+			this.rbEditPersonGenderM.Checked = true;
+			this.rbEditPersonGenderM.Location = new System.Drawing.Point(110, 87);
+			this.rbEditPersonGenderM.Name = "rbEditPersonGenderM";
+			this.rbEditPersonGenderM.Size = new System.Drawing.Size(61, 24);
+			this.rbEditPersonGenderM.TabIndex = 18;
+			this.rbEditPersonGenderM.TabStop = true;
+			this.rbEditPersonGenderM.Text = "муж";
+			this.rbEditPersonGenderM.UseVisualStyleBackColor = true;
+			// 
+			// lbEditPersonFirstname
+			// 
+			this.lbEditPersonFirstname.Location = new System.Drawing.Point(6, 37);
+			this.lbEditPersonFirstname.Name = "lbEditPersonFirstname";
+			this.lbEditPersonFirstname.Size = new System.Drawing.Size(70, 23);
+			this.lbEditPersonFirstname.TabIndex = 2;
+			this.lbEditPersonFirstname.Text = "Имя";
+			// 
+			// gbEditPersonRank
+			// 
+			this.gbEditPersonRank.Controls.Add(this.btnEditPersonRankEdit);
+			this.gbEditPersonRank.Controls.Add(this.lbEditPIDRank);
+			this.gbEditPersonRank.Controls.Add(this.cbEditPersonRankName);
+			this.gbEditPersonRank.Controls.Add(this.dtpEditPersonRankDatefrom);
+			this.gbEditPersonRank.Controls.Add(this.lbEditPersonRankDatefrom);
+			this.gbEditPersonRank.Controls.Add(this.lbEditPersonRankName);
+			this.gbEditPersonRank.Location = new System.Drawing.Point(276, 11);
+			this.gbEditPersonRank.Name = "gbEditPersonRank";
+			this.gbEditPersonRank.Size = new System.Drawing.Size(312, 108);
+			this.gbEditPersonRank.TabIndex = 17;
+			this.gbEditPersonRank.TabStop = false;
+			this.gbEditPersonRank.Text = "Звание сейчас";
+			// 
+			// btnEditPersonRankEdit
+			// 
+			this.btnEditPersonRankEdit.Location = new System.Drawing.Point(277, 23);
+			this.btnEditPersonRankEdit.Name = "btnEditPersonRankEdit";
+			this.btnEditPersonRankEdit.Size = new System.Drawing.Size(21, 23);
+			this.btnEditPersonRankEdit.TabIndex = 6;
+			this.btnEditPersonRankEdit.Text = "...";
+			this.btnEditPersonRankEdit.UseVisualStyleBackColor = true;
+			this.btnEditPersonRankEdit.Click += new System.EventHandler(this.BtnEditPersonRankEditClick);
+			// 
+			// lbEditPIDRank
+			// 
+			this.lbEditPIDRank.Location = new System.Drawing.Point(10, 44);
+			this.lbEditPIDRank.Name = "lbEditPIDRank";
+			this.lbEditPIDRank.Size = new System.Drawing.Size(56, 21);
+			this.lbEditPIDRank.TabIndex = 5;
+			this.lbEditPIDRank.Text = "0";
+			// 
+			// cbEditPersonRankName
+			// 
+			this.cbEditPersonRankName.FormattingEnabled = true;
+			this.cbEditPersonRankName.Location = new System.Drawing.Point(116, 23);
+			this.cbEditPersonRankName.Name = "cbEditPersonRankName";
+			this.cbEditPersonRankName.Size = new System.Drawing.Size(162, 21);
+			this.cbEditPersonRankName.TabIndex = 4;
+			this.cbEditPersonRankName.SelectedIndexChanged += new System.EventHandler(this.CbEditPersonRankNameSelectedIndexChanged);
+			// 
+			// dtpEditPersonRankDatefrom
+			// 
+			this.dtpEditPersonRankDatefrom.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+			this.dtpEditPersonRankDatefrom.Location = new System.Drawing.Point(166, 62);
+			this.dtpEditPersonRankDatefrom.Name = "dtpEditPersonRankDatefrom";
+			this.dtpEditPersonRankDatefrom.Size = new System.Drawing.Size(112, 20);
+			this.dtpEditPersonRankDatefrom.TabIndex = 3;
+			// 
+			// lbEditPersonRankDatefrom
+			// 
+			this.lbEditPersonRankDatefrom.Location = new System.Drawing.Point(6, 65);
+			this.lbEditPersonRankDatefrom.Name = "lbEditPersonRankDatefrom";
+			this.lbEditPersonRankDatefrom.Size = new System.Drawing.Size(144, 23);
+			this.lbEditPersonRankDatefrom.TabIndex = 2;
+			this.lbEditPersonRankDatefrom.Text = "Дата получения звания";
+			// 
+			// lbEditPersonRankName
+			// 
+			this.lbEditPersonRankName.Location = new System.Drawing.Point(6, 26);
+			this.lbEditPersonRankName.Name = "lbEditPersonRankName";
+			this.lbEditPersonRankName.Size = new System.Drawing.Size(104, 23);
+			this.lbEditPersonRankName.TabIndex = 0;
+			this.lbEditPersonRankName.Text = "Воинское Звание";
+			// 
+			// txEditPersonFirstname
+			// 
+			this.txEditPersonFirstname.Location = new System.Drawing.Point(110, 37);
+			this.txEditPersonFirstname.Name = "txEditPersonFirstname";
+			this.txEditPersonFirstname.Size = new System.Drawing.Size(142, 20);
+			this.txEditPersonFirstname.TabIndex = 3;
+			// 
+			// btnEditPersonFind
+			// 
+			this.btnEditPersonFind.Location = new System.Drawing.Point(15, 240);
+			this.btnEditPersonFind.Name = "btnEditPersonFind";
+			this.btnEditPersonFind.Size = new System.Drawing.Size(75, 23);
+			this.btnEditPersonFind.TabIndex = 16;
+			this.btnEditPersonFind.Text = "Найти";
+			this.btnEditPersonFind.UseVisualStyleBackColor = true;
+			this.btnEditPersonFind.Click += new System.EventHandler(this.BtnEditPersonFindClick);
+			// 
+			// lbEditPersonPatronymic
+			// 
+			this.lbEditPersonPatronymic.Location = new System.Drawing.Point(6, 60);
+			this.lbEditPersonPatronymic.Name = "lbEditPersonPatronymic";
+			this.lbEditPersonPatronymic.Size = new System.Drawing.Size(70, 23);
+			this.lbEditPersonPatronymic.TabIndex = 4;
+			this.lbEditPersonPatronymic.Text = "Отчество";
+			// 
+			// txEditPersonPatronymic
+			// 
+			this.txEditPersonPatronymic.Location = new System.Drawing.Point(110, 60);
+			this.txEditPersonPatronymic.Name = "txEditPersonPatronymic";
+			this.txEditPersonPatronymic.Size = new System.Drawing.Size(142, 20);
+			this.txEditPersonPatronymic.TabIndex = 5;
+			// 
+			// lsbEditPersonList
+			// 
+			this.lsbEditPersonList.FormattingEnabled = true;
+			this.lsbEditPersonList.Location = new System.Drawing.Point(276, 133);
+			this.lsbEditPersonList.Name = "lsbEditPersonList";
+			this.lsbEditPersonList.Size = new System.Drawing.Size(298, 121);
+			this.lsbEditPersonList.TabIndex = 14;
+			this.lsbEditPersonList.Visible = false;
+			this.lsbEditPersonList.SelectedIndexChanged += new System.EventHandler(this.LsbEditPersonListSelectedIndexChanged);
+			// 
+			// lbEditPersonBirthdate
+			// 
+			this.lbEditPersonBirthdate.Location = new System.Drawing.Point(6, 120);
+			this.lbEditPersonBirthdate.Name = "lbEditPersonBirthdate";
+			this.lbEditPersonBirthdate.Size = new System.Drawing.Size(86, 23);
+			this.lbEditPersonBirthdate.TabIndex = 6;
+			this.lbEditPersonBirthdate.Text = "Дата рождения";
+			// 
+			// btnEditPersonNew
+			// 
+			this.btnEditPersonNew.Location = new System.Drawing.Point(15, 211);
+			this.btnEditPersonNew.Name = "btnEditPersonNew";
+			this.btnEditPersonNew.Size = new System.Drawing.Size(75, 23);
+			this.btnEditPersonNew.TabIndex = 13;
+			this.btnEditPersonNew.Text = "Новый";
+			this.btnEditPersonNew.UseVisualStyleBackColor = true;
+			this.btnEditPersonNew.Click += new System.EventHandler(this.BtnEditPersonNewClick);
+			// 
+			// dtpEditPersonBirthdate
+			// 
+			this.dtpEditPersonBirthdate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+			this.dtpEditPersonBirthdate.Location = new System.Drawing.Point(110, 120);
+			this.dtpEditPersonBirthdate.Name = "dtpEditPersonBirthdate";
+			this.dtpEditPersonBirthdate.Size = new System.Drawing.Size(142, 20);
+			this.dtpEditPersonBirthdate.TabIndex = 7;
+			// 
+			// btnEditPersonDelete
+			// 
+			this.btnEditPersonDelete.Location = new System.Drawing.Point(96, 211);
+			this.btnEditPersonDelete.Name = "btnEditPersonDelete";
+			this.btnEditPersonDelete.Size = new System.Drawing.Size(75, 23);
+			this.btnEditPersonDelete.TabIndex = 12;
+			this.btnEditPersonDelete.Text = "Удалить";
+			this.btnEditPersonDelete.UseVisualStyleBackColor = true;
+			this.btnEditPersonDelete.Click += new System.EventHandler(this.BtnEditPersonDeleteClick);
+			// 
+			// lbEditPersonDeathdate
+			// 
+			this.lbEditPersonDeathdate.Location = new System.Drawing.Point(6, 173);
+			this.lbEditPersonDeathdate.Name = "lbEditPersonDeathdate";
+			this.lbEditPersonDeathdate.Size = new System.Drawing.Size(100, 23);
+			this.lbEditPersonDeathdate.TabIndex = 8;
+			this.lbEditPersonDeathdate.Text = "Дата смерти";
+			this.lbEditPersonDeathdate.Visible = false;
+			// 
+			// btnEditPersonSave
+			// 
+			this.btnEditPersonSave.Location = new System.Drawing.Point(177, 211);
+			this.btnEditPersonSave.Name = "btnEditPersonSave";
+			this.btnEditPersonSave.Size = new System.Drawing.Size(75, 23);
+			this.btnEditPersonSave.TabIndex = 11;
+			this.btnEditPersonSave.Text = "Сохранить";
+			this.btnEditPersonSave.UseVisualStyleBackColor = true;
+			this.btnEditPersonSave.Click += new System.EventHandler(this.BtnEditPersonSaveClick);
+			// 
+			// dtpEditPersonDeathdate
+			// 
+			this.dtpEditPersonDeathdate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+			this.dtpEditPersonDeathdate.Location = new System.Drawing.Point(110, 174);
+			this.dtpEditPersonDeathdate.Name = "dtpEditPersonDeathdate";
+			this.dtpEditPersonDeathdate.Size = new System.Drawing.Size(142, 20);
+			this.dtpEditPersonDeathdate.TabIndex = 9;
+			this.dtpEditPersonDeathdate.Value = new System.DateTime(2018, 5, 10, 14, 34, 33, 0);
+			this.dtpEditPersonDeathdate.Visible = false;
+			// 
+			// chbEditPersonDeath
+			// 
+			this.chbEditPersonDeath.Location = new System.Drawing.Point(6, 144);
+			this.chbEditPersonDeath.Name = "chbEditPersonDeath";
+			this.chbEditPersonDeath.Size = new System.Drawing.Size(104, 24);
+			this.chbEditPersonDeath.TabIndex = 10;
+			this.chbEditPersonDeath.Text = "Исключить";
+			this.chbEditPersonDeath.UseVisualStyleBackColor = true;
+			this.chbEditPersonDeath.CheckedChanged += new System.EventHandler(this.ChbEditPersonDeathCheckedChanged);
+			// 
+			// lbEditIDPerson
+			// 
+			this.lbEditIDPerson.Location = new System.Drawing.Point(6, 196);
+			this.lbEditIDPerson.Name = "lbEditIDPerson";
+			this.lbEditIDPerson.Size = new System.Drawing.Size(43, 23);
+			this.lbEditIDPerson.TabIndex = 15;
+			this.lbEditIDPerson.Text = "0";
 			// 
 			// dgvEditPersonList
 			// 
@@ -644,13 +912,14 @@ namespace ArmyRep
 			this.deathdate,
 			this.rankname,
 			this.rankdate});
-			this.dgvEditPersonList.Location = new System.Drawing.Point(10, 345);
+			this.dgvEditPersonList.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.dgvEditPersonList.Location = new System.Drawing.Point(0, 0);
 			this.dgvEditPersonList.Name = "dgvEditPersonList";
 			this.dgvEditPersonList.ReadOnly = true;
 			this.dgvEditPersonList.RowTemplate.ReadOnly = true;
 			this.dgvEditPersonList.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
 			this.dgvEditPersonList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-			this.dgvEditPersonList.Size = new System.Drawing.Size(568, 112);
+			this.dgvEditPersonList.Size = new System.Drawing.Size(948, 259);
 			this.dgvEditPersonList.TabIndex = 20;
 			this.dgvEditPersonList.SelectionChanged += new System.EventHandler(this.DgvEditPersonListSelectionChanged);
 			// 
@@ -713,235 +982,11 @@ namespace ArmyRep
 			this.rankdate.Name = "rankdate";
 			this.rankdate.ReadOnly = true;
 			// 
-			// rbEditPersonGenderF
-			// 
-			this.rbEditPersonGenderF.Location = new System.Drawing.Point(181, 89);
-			this.rbEditPersonGenderF.Name = "rbEditPersonGenderF";
-			this.rbEditPersonGenderF.Size = new System.Drawing.Size(75, 24);
-			this.rbEditPersonGenderF.TabIndex = 19;
-			this.rbEditPersonGenderF.TabStop = true;
-			this.rbEditPersonGenderF.Text = "жен";
-			this.rbEditPersonGenderF.UseVisualStyleBackColor = true;
-			// 
-			// rbEditPersonGenderM
-			// 
-			this.rbEditPersonGenderM.Checked = true;
-			this.rbEditPersonGenderM.Location = new System.Drawing.Point(114, 90);
-			this.rbEditPersonGenderM.Name = "rbEditPersonGenderM";
-			this.rbEditPersonGenderM.Size = new System.Drawing.Size(61, 24);
-			this.rbEditPersonGenderM.TabIndex = 18;
-			this.rbEditPersonGenderM.TabStop = true;
-			this.rbEditPersonGenderM.Text = "муж";
-			this.rbEditPersonGenderM.UseVisualStyleBackColor = true;
-			// 
-			// gbEditPersonRank
-			// 
-			this.gbEditPersonRank.Controls.Add(this.lbEditPIDRank);
-			this.gbEditPersonRank.Controls.Add(this.cbEditPersonRankName);
-			this.gbEditPersonRank.Controls.Add(this.dtpEditPersonRankDatefrom);
-			this.gbEditPersonRank.Controls.Add(this.lbEditPersonRankDatefrom);
-			this.gbEditPersonRank.Controls.Add(this.lbEditPersonRankName);
-			this.gbEditPersonRank.Location = new System.Drawing.Point(280, 14);
-			this.gbEditPersonRank.Name = "gbEditPersonRank";
-			this.gbEditPersonRank.Size = new System.Drawing.Size(298, 108);
-			this.gbEditPersonRank.TabIndex = 17;
-			this.gbEditPersonRank.TabStop = false;
-			this.gbEditPersonRank.Text = "Звание сейчас";
-			// 
-			// lbEditPIDRank
-			// 
-			this.lbEditPIDRank.Location = new System.Drawing.Point(10, 44);
-			this.lbEditPIDRank.Name = "lbEditPIDRank";
-			this.lbEditPIDRank.Size = new System.Drawing.Size(56, 21);
-			this.lbEditPIDRank.TabIndex = 5;
-			this.lbEditPIDRank.Text = "0";
-			// 
-			// cbEditPersonRankName
-			// 
-			this.cbEditPersonRankName.FormattingEnabled = true;
-			this.cbEditPersonRankName.Location = new System.Drawing.Point(116, 23);
-			this.cbEditPersonRankName.Name = "cbEditPersonRankName";
-			this.cbEditPersonRankName.Size = new System.Drawing.Size(162, 21);
-			this.cbEditPersonRankName.TabIndex = 4;
-			this.cbEditPersonRankName.SelectedIndexChanged += new System.EventHandler(this.CbEditPersonRankNameSelectedIndexChanged);
-			// 
-			// dtpEditPersonRankDatefrom
-			// 
-			this.dtpEditPersonRankDatefrom.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-			this.dtpEditPersonRankDatefrom.Location = new System.Drawing.Point(166, 62);
-			this.dtpEditPersonRankDatefrom.Name = "dtpEditPersonRankDatefrom";
-			this.dtpEditPersonRankDatefrom.Size = new System.Drawing.Size(112, 20);
-			this.dtpEditPersonRankDatefrom.TabIndex = 3;
-			// 
-			// lbEditPersonRankDatefrom
-			// 
-			this.lbEditPersonRankDatefrom.Location = new System.Drawing.Point(6, 65);
-			this.lbEditPersonRankDatefrom.Name = "lbEditPersonRankDatefrom";
-			this.lbEditPersonRankDatefrom.Size = new System.Drawing.Size(144, 23);
-			this.lbEditPersonRankDatefrom.TabIndex = 2;
-			this.lbEditPersonRankDatefrom.Text = "Дата получения звания";
-			// 
-			// lbEditPersonRankName
-			// 
-			this.lbEditPersonRankName.Location = new System.Drawing.Point(6, 26);
-			this.lbEditPersonRankName.Name = "lbEditPersonRankName";
-			this.lbEditPersonRankName.Size = new System.Drawing.Size(104, 23);
-			this.lbEditPersonRankName.TabIndex = 0;
-			this.lbEditPersonRankName.Text = "Воинское Звание";
-			// 
-			// btnEditPersonFind
-			// 
-			this.btnEditPersonFind.Location = new System.Drawing.Point(19, 243);
-			this.btnEditPersonFind.Name = "btnEditPersonFind";
-			this.btnEditPersonFind.Size = new System.Drawing.Size(75, 23);
-			this.btnEditPersonFind.TabIndex = 16;
-			this.btnEditPersonFind.Text = "Найти";
-			this.btnEditPersonFind.UseVisualStyleBackColor = true;
-			this.btnEditPersonFind.Click += new System.EventHandler(this.BtnEditPersonFindClick);
-			// 
-			// lbEditIDPerson
-			// 
-			this.lbEditIDPerson.Location = new System.Drawing.Point(10, 199);
-			this.lbEditIDPerson.Name = "lbEditIDPerson";
-			this.lbEditIDPerson.Size = new System.Drawing.Size(43, 23);
-			this.lbEditIDPerson.TabIndex = 15;
-			this.lbEditIDPerson.Text = "0";
-			// 
-			// lsbEditPersonList
-			// 
-			this.lsbEditPersonList.FormattingEnabled = true;
-			this.lsbEditPersonList.Location = new System.Drawing.Point(280, 214);
-			this.lsbEditPersonList.Name = "lsbEditPersonList";
-			this.lsbEditPersonList.Size = new System.Drawing.Size(298, 121);
-			this.lsbEditPersonList.TabIndex = 14;
-			this.lsbEditPersonList.Visible = false;
-			this.lsbEditPersonList.SelectedIndexChanged += new System.EventHandler(this.LsbEditPersonListSelectedIndexChanged);
-			// 
-			// btnEditPersonNew
-			// 
-			this.btnEditPersonNew.Location = new System.Drawing.Point(19, 214);
-			this.btnEditPersonNew.Name = "btnEditPersonNew";
-			this.btnEditPersonNew.Size = new System.Drawing.Size(75, 23);
-			this.btnEditPersonNew.TabIndex = 13;
-			this.btnEditPersonNew.Text = "Новый";
-			this.btnEditPersonNew.UseVisualStyleBackColor = true;
-			this.btnEditPersonNew.Click += new System.EventHandler(this.BtnEditPersonNewClick);
-			// 
-			// btnEditPersonDelete
-			// 
-			this.btnEditPersonDelete.Location = new System.Drawing.Point(100, 214);
-			this.btnEditPersonDelete.Name = "btnEditPersonDelete";
-			this.btnEditPersonDelete.Size = new System.Drawing.Size(75, 23);
-			this.btnEditPersonDelete.TabIndex = 12;
-			this.btnEditPersonDelete.Text = "Удалить";
-			this.btnEditPersonDelete.UseVisualStyleBackColor = true;
-			this.btnEditPersonDelete.Click += new System.EventHandler(this.BtnEditPersonDeleteClick);
-			// 
-			// btnEditPersonSave
-			// 
-			this.btnEditPersonSave.Location = new System.Drawing.Point(181, 214);
-			this.btnEditPersonSave.Name = "btnEditPersonSave";
-			this.btnEditPersonSave.Size = new System.Drawing.Size(75, 23);
-			this.btnEditPersonSave.TabIndex = 11;
-			this.btnEditPersonSave.Text = "Сохранить";
-			this.btnEditPersonSave.UseVisualStyleBackColor = true;
-			this.btnEditPersonSave.Click += new System.EventHandler(this.BtnEditPersonSaveClick);
-			// 
-			// chbEditPersonDeath
-			// 
-			this.chbEditPersonDeath.Location = new System.Drawing.Point(10, 147);
-			this.chbEditPersonDeath.Name = "chbEditPersonDeath";
-			this.chbEditPersonDeath.Size = new System.Drawing.Size(104, 24);
-			this.chbEditPersonDeath.TabIndex = 10;
-			this.chbEditPersonDeath.Text = "Исключить";
-			this.chbEditPersonDeath.UseVisualStyleBackColor = true;
-			this.chbEditPersonDeath.CheckedChanged += new System.EventHandler(this.ChbEditPersonDeathCheckedChanged);
-			// 
-			// dtpEditPersonDeathdate
-			// 
-			this.dtpEditPersonDeathdate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-			this.dtpEditPersonDeathdate.Location = new System.Drawing.Point(114, 177);
-			this.dtpEditPersonDeathdate.Name = "dtpEditPersonDeathdate";
-			this.dtpEditPersonDeathdate.Size = new System.Drawing.Size(142, 20);
-			this.dtpEditPersonDeathdate.TabIndex = 9;
-			this.dtpEditPersonDeathdate.Value = new System.DateTime(2018, 5, 10, 14, 34, 33, 0);
-			this.dtpEditPersonDeathdate.Visible = false;
-			// 
-			// lbEditPersonDeathdate
-			// 
-			this.lbEditPersonDeathdate.Location = new System.Drawing.Point(10, 176);
-			this.lbEditPersonDeathdate.Name = "lbEditPersonDeathdate";
-			this.lbEditPersonDeathdate.Size = new System.Drawing.Size(100, 23);
-			this.lbEditPersonDeathdate.TabIndex = 8;
-			this.lbEditPersonDeathdate.Text = "Дата смерти";
-			this.lbEditPersonDeathdate.Visible = false;
-			// 
-			// dtpEditPersonBirthdate
-			// 
-			this.dtpEditPersonBirthdate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-			this.dtpEditPersonBirthdate.Location = new System.Drawing.Point(114, 123);
-			this.dtpEditPersonBirthdate.Name = "dtpEditPersonBirthdate";
-			this.dtpEditPersonBirthdate.Size = new System.Drawing.Size(142, 20);
-			this.dtpEditPersonBirthdate.TabIndex = 7;
-			// 
-			// lbEditPersonBirthdate
-			// 
-			this.lbEditPersonBirthdate.Location = new System.Drawing.Point(10, 123);
-			this.lbEditPersonBirthdate.Name = "lbEditPersonBirthdate";
-			this.lbEditPersonBirthdate.Size = new System.Drawing.Size(86, 23);
-			this.lbEditPersonBirthdate.TabIndex = 6;
-			this.lbEditPersonBirthdate.Text = "Дата рождения";
-			// 
-			// txEditPersonPatronymic
-			// 
-			this.txEditPersonPatronymic.Location = new System.Drawing.Point(114, 63);
-			this.txEditPersonPatronymic.Name = "txEditPersonPatronymic";
-			this.txEditPersonPatronymic.Size = new System.Drawing.Size(142, 20);
-			this.txEditPersonPatronymic.TabIndex = 5;
-			// 
-			// lbEditPersonPatronymic
-			// 
-			this.lbEditPersonPatronymic.Location = new System.Drawing.Point(10, 63);
-			this.lbEditPersonPatronymic.Name = "lbEditPersonPatronymic";
-			this.lbEditPersonPatronymic.Size = new System.Drawing.Size(70, 23);
-			this.lbEditPersonPatronymic.TabIndex = 4;
-			this.lbEditPersonPatronymic.Text = "Отчество";
-			// 
-			// txEditPersonFirstname
-			// 
-			this.txEditPersonFirstname.Location = new System.Drawing.Point(114, 40);
-			this.txEditPersonFirstname.Name = "txEditPersonFirstname";
-			this.txEditPersonFirstname.Size = new System.Drawing.Size(142, 20);
-			this.txEditPersonFirstname.TabIndex = 3;
-			// 
-			// lbEditPersonFirstname
-			// 
-			this.lbEditPersonFirstname.Location = new System.Drawing.Point(10, 40);
-			this.lbEditPersonFirstname.Name = "lbEditPersonFirstname";
-			this.lbEditPersonFirstname.Size = new System.Drawing.Size(70, 23);
-			this.lbEditPersonFirstname.TabIndex = 2;
-			this.lbEditPersonFirstname.Text = "Имя";
-			// 
-			// txEditPersonLastname
-			// 
-			this.txEditPersonLastname.Location = new System.Drawing.Point(114, 14);
-			this.txEditPersonLastname.Name = "txEditPersonLastname";
-			this.txEditPersonLastname.Size = new System.Drawing.Size(142, 20);
-			this.txEditPersonLastname.TabIndex = 1;
-			// 
-			// lbEditPersonLastname
-			// 
-			this.lbEditPersonLastname.Location = new System.Drawing.Point(10, 17);
-			this.lbEditPersonLastname.Name = "lbEditPersonLastname";
-			this.lbEditPersonLastname.Size = new System.Drawing.Size(70, 23);
-			this.lbEditPersonLastname.TabIndex = 0;
-			this.lbEditPersonLastname.Text = "Фамилия";
-			// 
 			// tpDep
 			// 
 			this.tpDep.BackColor = System.Drawing.Color.YellowGreen;
 			this.tpDep.Controls.Add(this.lbEditDepDeptypeID);
-			this.tpDep.Controls.Add(this.button1);
+			this.tpDep.Controls.Add(this.btnEditDepDeptypeEdit);
 			this.tpDep.Controls.Add(this.cbEditDepDeptype);
 			this.tpDep.Controls.Add(this.lbEditDepDeptype);
 			this.tpDep.Controls.Add(this.btnEditDepNew);
@@ -954,7 +999,7 @@ namespace ArmyRep
 			this.tpDep.Location = new System.Drawing.Point(4, 22);
 			this.tpDep.Name = "tpDep";
 			this.tpDep.Padding = new System.Windows.Forms.Padding(3);
-			this.tpDep.Size = new System.Drawing.Size(292, 174);
+			this.tpDep.Size = new System.Drawing.Size(948, 536);
 			this.tpDep.TabIndex = 0;
 			this.tpDep.Text = "Подразделение";
 			// 
@@ -966,14 +1011,16 @@ namespace ArmyRep
 			this.lbEditDepDeptypeID.TabIndex = 10;
 			this.lbEditDepDeptypeID.Text = "0";
 			// 
-			// button1
+			// btnEditDepDeptypeEdit
 			// 
-			this.button1.Location = new System.Drawing.Point(297, 55);
-			this.button1.Name = "button1";
-			this.button1.Size = new System.Drawing.Size(25, 23);
-			this.button1.TabIndex = 9;
-			this.button1.Text = "...";
-			this.button1.UseVisualStyleBackColor = true;
+			this.btnEditDepDeptypeEdit.Location = new System.Drawing.Point(297, 55);
+			this.btnEditDepDeptypeEdit.Name = "btnEditDepDeptypeEdit";
+			this.btnEditDepDeptypeEdit.Size = new System.Drawing.Size(25, 23);
+			this.btnEditDepDeptypeEdit.TabIndex = 9;
+			this.btnEditDepDeptypeEdit.Text = "...";
+			this.btnEditDepDeptypeEdit.UseVisualStyleBackColor = true;
+			this.btnEditDepDeptypeEdit.Visible = false;
+			this.btnEditDepDeptypeEdit.Click += new System.EventHandler(this.BtnEditDepDeptypeEditClick);
 			// 
 			// cbEditDepDeptype
 			// 
@@ -1067,7 +1114,7 @@ namespace ArmyRep
 			this.tpCategory.Controls.Add(this.lbEditCatName);
 			this.tpCategory.Location = new System.Drawing.Point(4, 22);
 			this.tpCategory.Name = "tpCategory";
-			this.tpCategory.Size = new System.Drawing.Size(292, 174);
+			this.tpCategory.Size = new System.Drawing.Size(948, 536);
 			this.tpCategory.TabIndex = 2;
 			this.tpCategory.Text = "Категории";
 			// 
@@ -1149,7 +1196,7 @@ namespace ArmyRep
 			this.tpProductType.Controls.Add(this.lbEditProdtypeName);
 			this.tpProductType.Location = new System.Drawing.Point(4, 22);
 			this.tpProductType.Name = "tpProductType";
-			this.tpProductType.Size = new System.Drawing.Size(292, 174);
+			this.tpProductType.Size = new System.Drawing.Size(948, 536);
 			this.tpProductType.TabIndex = 5;
 			this.tpProductType.Text = "Виды предметов";
 			// 
@@ -1161,6 +1208,7 @@ namespace ArmyRep
 			this.btnEditUsingtypesEdit.TabIndex = 10;
 			this.btnEditUsingtypesEdit.Text = "...";
 			this.btnEditUsingtypesEdit.UseVisualStyleBackColor = true;
+			this.btnEditUsingtypesEdit.Visible = false;
 			this.btnEditUsingtypesEdit.Click += new System.EventHandler(this.BtnEditUsingtypesEditClick);
 			// 
 			// lbEditPTIDUsingtype
@@ -1262,7 +1310,7 @@ namespace ArmyRep
 			this.tpUsingType.Controls.Add(this.lbEditUsingtypeName);
 			this.tpUsingType.Location = new System.Drawing.Point(4, 22);
 			this.tpUsingType.Name = "tpUsingType";
-			this.tpUsingType.Size = new System.Drawing.Size(292, 174);
+			this.tpUsingType.Size = new System.Drawing.Size(948, 536);
 			this.tpUsingType.TabIndex = 6;
 			this.tpUsingType.Text = "Виды пользования";
 			// 
@@ -1341,7 +1389,7 @@ namespace ArmyRep
 			this.tpRank.Location = new System.Drawing.Point(4, 22);
 			this.tpRank.Name = "tpRank";
 			this.tpRank.Padding = new System.Windows.Forms.Padding(3);
-			this.tpRank.Size = new System.Drawing.Size(292, 174);
+			this.tpRank.Size = new System.Drawing.Size(948, 536);
 			this.tpRank.TabIndex = 1;
 			this.tpRank.Text = "Звания";
 			// 
@@ -1421,7 +1469,7 @@ namespace ArmyRep
 			this.tpDepType.Controls.Add(this.lbEditDeptypeName);
 			this.tpDepType.Location = new System.Drawing.Point(4, 22);
 			this.tpDepType.Name = "tpDepType";
-			this.tpDepType.Size = new System.Drawing.Size(292, 174);
+			this.tpDepType.Size = new System.Drawing.Size(948, 536);
 			this.tpDepType.TabIndex = 4;
 			this.tpDepType.Text = "Типы подразделений";
 			// 
@@ -1499,7 +1547,7 @@ namespace ArmyRep
 			this.tpPart.Controls.Add(this.lbEditPartName);
 			this.tpPart.Location = new System.Drawing.Point(4, 22);
 			this.tpPart.Name = "tpPart";
-			this.tpPart.Size = new System.Drawing.Size(292, 174);
+			this.tpPart.Size = new System.Drawing.Size(948, 536);
 			this.tpPart.TabIndex = 7;
 			this.tpPart.Text = "Военчасть";
 			// 
@@ -1569,10 +1617,11 @@ namespace ArmyRep
 			// 
 			this.tcDep.Controls.Add(this.tpDepToDep);
 			this.tcDep.Controls.Add(this.tpDepFromDep);
-			this.tcDep.Location = new System.Drawing.Point(600, 10);
+			this.tcDep.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.tcDep.Location = new System.Drawing.Point(0, 0);
 			this.tcDep.Name = "tcDep";
 			this.tcDep.SelectedIndex = 0;
-			this.tcDep.Size = new System.Drawing.Size(300, 200);
+			this.tcDep.Size = new System.Drawing.Size(956, 562);
 			this.tcDep.TabIndex = 3;
 			// 
 			// tpDepToDep
@@ -1600,7 +1649,7 @@ namespace ArmyRep
 			this.tpDepToDep.Location = new System.Drawing.Point(4, 22);
 			this.tpDepToDep.Name = "tpDepToDep";
 			this.tpDepToDep.Padding = new System.Windows.Forms.Padding(3);
-			this.tpDepToDep.Size = new System.Drawing.Size(292, 174);
+			this.tpDepToDep.Size = new System.Drawing.Size(948, 536);
 			this.tpDepToDep.TabIndex = 2;
 			this.tpDepToDep.Text = "Приход в подразделение";
 			// 
@@ -1764,7 +1813,7 @@ namespace ArmyRep
 			this.tpDepFromDep.Location = new System.Drawing.Point(4, 22);
 			this.tpDepFromDep.Name = "tpDepFromDep";
 			this.tpDepFromDep.Padding = new System.Windows.Forms.Padding(3);
-			this.tpDepFromDep.Size = new System.Drawing.Size(292, 174);
+			this.tpDepFromDep.Size = new System.Drawing.Size(948, 536);
 			this.tpDepFromDep.TabIndex = 1;
 			this.tpDepFromDep.Text = "Выдача с подразделенрия";
 			// 
@@ -1776,7 +1825,7 @@ namespace ArmyRep
 			this.tpUseToDep.Location = new System.Drawing.Point(4, 22);
 			this.tpUseToDep.Name = "tpUseToDep";
 			this.tpUseToDep.Padding = new System.Windows.Forms.Padding(3);
-			this.tpUseToDep.Size = new System.Drawing.Size(292, 174);
+			this.tpUseToDep.Size = new System.Drawing.Size(948, 536);
 			this.tpUseToDep.TabIndex = 0;
 			this.tpUseToDep.Text = "Возврат в подразделение";
 			// 
@@ -1801,10 +1850,11 @@ namespace ArmyRep
 			this.tcUse.Controls.Add(this.tpUseToDep);
 			this.tcUse.Controls.Add(this.tpUseToUse);
 			this.tcUse.Controls.Add(this.tpUseToWH);
-			this.tcUse.Location = new System.Drawing.Point(600, 250);
+			this.tcUse.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.tcUse.Location = new System.Drawing.Point(0, 0);
 			this.tcUse.Name = "tcUse";
 			this.tcUse.SelectedIndex = 0;
-			this.tcUse.Size = new System.Drawing.Size(300, 200);
+			this.tcUse.Size = new System.Drawing.Size(956, 562);
 			this.tcUse.TabIndex = 2;
 			// 
 			// tpUseToUse
@@ -1813,7 +1863,7 @@ namespace ArmyRep
 			this.tpUseToUse.Location = new System.Drawing.Point(4, 22);
 			this.tpUseToUse.Name = "tpUseToUse";
 			this.tpUseToUse.Padding = new System.Windows.Forms.Padding(3);
-			this.tpUseToUse.Size = new System.Drawing.Size(292, 174);
+			this.tpUseToUse.Size = new System.Drawing.Size(948, 536);
 			this.tpUseToUse.TabIndex = 0;
 			this.tpUseToUse.Text = "На личное пользование";
 			// 
@@ -1823,7 +1873,7 @@ namespace ArmyRep
 			this.tpUseToWH.Location = new System.Drawing.Point(4, 22);
 			this.tpUseToWH.Name = "tpUseToWH";
 			this.tpUseToWH.Padding = new System.Windows.Forms.Padding(3);
-			this.tpUseToWH.Size = new System.Drawing.Size(292, 174);
+			this.tpUseToWH.Size = new System.Drawing.Size(948, 536);
 			this.tpUseToWH.TabIndex = 1;
 			this.tpUseToWH.Text = "Возврат на склад";
 			// 
@@ -1833,10 +1883,10 @@ namespace ArmyRep
 			this.tcWH.Controls.Add(this.tpFromWH);
 			this.tcWH.Controls.Add(this.tpWHWriteoff);
 			this.tcWH.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.tcWH.Location = new System.Drawing.Point(157, 0);
+			this.tcWH.Location = new System.Drawing.Point(0, 0);
 			this.tcWH.Name = "tcWH";
 			this.tcWH.SelectedIndex = 0;
-			this.tcWH.Size = new System.Drawing.Size(966, 562);
+			this.tcWH.Size = new System.Drawing.Size(956, 562);
 			this.tcWH.TabIndex = 4;
 			this.tcWH.SelectedIndexChanged += new System.EventHandler(this.TcWHSelectedIndexChanged);
 			// 
@@ -1848,7 +1898,7 @@ namespace ArmyRep
 			this.tpToWH.Location = new System.Drawing.Point(4, 22);
 			this.tpToWH.Name = "tpToWH";
 			this.tpToWH.Padding = new System.Windows.Forms.Padding(3);
-			this.tpToWH.Size = new System.Drawing.Size(958, 536);
+			this.tpToWH.Size = new System.Drawing.Size(948, 536);
 			this.tpToWH.TabIndex = 1;
 			this.tpToWH.Text = "Приход на склад";
 			// 
@@ -1891,8 +1941,8 @@ namespace ArmyRep
 			// 
 			this.scToWH.Panel2.AutoScroll = true;
 			this.scToWH.Panel2.Controls.Add(this.scToWHChoicedList);
-			this.scToWH.Size = new System.Drawing.Size(952, 530);
-			this.scToWH.SplitterDistance = 306;
+			this.scToWH.Size = new System.Drawing.Size(942, 530);
+			this.scToWH.SplitterDistance = 300;
 			this.scToWH.TabIndex = 46;
 			// 
 			// lbToWHCat
@@ -2120,8 +2170,8 @@ namespace ArmyRep
 			// 
 			this.scToWHChoicedList.Panel2.AutoScroll = true;
 			this.scToWHChoicedList.Panel2.Controls.Add(this.dgvToWHChoicedProds);
-			this.scToWHChoicedList.Size = new System.Drawing.Size(952, 220);
-			this.scToWHChoicedList.SplitterDistance = 128;
+			this.scToWHChoicedList.Size = new System.Drawing.Size(942, 226);
+			this.scToWHChoicedList.SplitterDistance = 131;
 			this.scToWHChoicedList.TabIndex = 0;
 			// 
 			// label1
@@ -2215,7 +2265,7 @@ namespace ArmyRep
 			this.dgvToWHChoicedProds.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.dgvToWHChoicedProds.Location = new System.Drawing.Point(0, 0);
 			this.dgvToWHChoicedProds.Name = "dgvToWHChoicedProds";
-			this.dgvToWHChoicedProds.Size = new System.Drawing.Size(950, 86);
+			this.dgvToWHChoicedProds.Size = new System.Drawing.Size(940, 89);
 			this.dgvToWHChoicedProds.TabIndex = 43;
 			// 
 			// tpFromWH
@@ -2225,7 +2275,7 @@ namespace ArmyRep
 			this.tpFromWH.Location = new System.Drawing.Point(4, 22);
 			this.tpFromWH.Name = "tpFromWH";
 			this.tpFromWH.Padding = new System.Windows.Forms.Padding(3);
-			this.tpFromWH.Size = new System.Drawing.Size(958, 536);
+			this.tpFromWH.Size = new System.Drawing.Size(948, 536);
 			this.tpFromWH.TabIndex = 0;
 			this.tpFromWH.Text = "Выдача со склада";
 			// 
@@ -2265,8 +2315,8 @@ namespace ArmyRep
 			// scFromWH.Panel2
 			// 
 			this.scFromWH.Panel2.Controls.Add(this.scFromWHChoicedList);
-			this.scFromWH.Size = new System.Drawing.Size(952, 530);
-			this.scFromWH.SplitterDistance = 296;
+			this.scFromWH.Size = new System.Drawing.Size(942, 530);
+			this.scFromWH.SplitterDistance = 139;
 			this.scFromWH.TabIndex = 29;
 			// 
 			// lbFromWHCat
@@ -2494,8 +2544,8 @@ namespace ArmyRep
 			// scFromWHChoicedList.Panel2
 			// 
 			this.scFromWHChoicedList.Panel2.Controls.Add(this.dgvFromWHChoicedProds);
-			this.scFromWHChoicedList.Size = new System.Drawing.Size(952, 230);
-			this.scFromWHChoicedList.SplitterDistance = 126;
+			this.scFromWHChoicedList.Size = new System.Drawing.Size(942, 387);
+			this.scFromWHChoicedList.SplitterDistance = 25;
 			this.scFromWHChoicedList.TabIndex = 0;
 			// 
 			// label2
@@ -2587,7 +2637,7 @@ namespace ArmyRep
 			this.dgvFromWHChoicedProds.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.dgvFromWHChoicedProds.Location = new System.Drawing.Point(0, 0);
 			this.dgvFromWHChoicedProds.Name = "dgvFromWHChoicedProds";
-			this.dgvFromWHChoicedProds.Size = new System.Drawing.Size(952, 100);
+			this.dgvFromWHChoicedProds.Size = new System.Drawing.Size(942, 358);
 			this.dgvFromWHChoicedProds.TabIndex = 26;
 			// 
 			// tpWHWriteoff
@@ -2595,20 +2645,37 @@ namespace ArmyRep
 			this.tpWHWriteoff.BackColor = System.Drawing.Color.Transparent;
 			this.tpWHWriteoff.Location = new System.Drawing.Point(4, 22);
 			this.tpWHWriteoff.Name = "tpWHWriteoff";
-			this.tpWHWriteoff.Size = new System.Drawing.Size(958, 536);
+			this.tpWHWriteoff.Size = new System.Drawing.Size(948, 536);
 			this.tpWHWriteoff.TabIndex = 2;
 			this.tpWHWriteoff.Text = "Списание";
+			// 
+			// scMain
+			// 
+			this.scMain.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.scMain.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
+			this.scMain.Location = new System.Drawing.Point(0, 0);
+			this.scMain.Name = "scMain";
+			// 
+			// scMain.Panel1
+			// 
+			this.scMain.Panel1.Controls.Add(this.pnMenu);
+			// 
+			// scMain.Panel2
+			// 
+			this.scMain.Panel2.Controls.Add(this.tcWH);
+			this.scMain.Panel2.Controls.Add(this.tcUse);
+			this.scMain.Panel2.Controls.Add(this.tcDep);
+			this.scMain.Panel2.Controls.Add(this.tcEdit);
+			this.scMain.Size = new System.Drawing.Size(1123, 562);
+			this.scMain.SplitterDistance = 163;
+			this.scMain.TabIndex = 5;
 			// 
 			// frmMain
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(1123, 562);
-			this.Controls.Add(this.tcWH);
-			this.Controls.Add(this.tcEdit);
-			this.Controls.Add(this.tcUse);
-			this.Controls.Add(this.tcDep);
-			this.Controls.Add(this.pnMenu);
+			this.Controls.Add(this.scMain);
 			this.Name = "frmMain";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "ArmyRep";
@@ -2618,9 +2685,13 @@ namespace ArmyRep
 			this.pnMenu.ResumeLayout(false);
 			this.tcEdit.ResumeLayout(false);
 			this.tpPerson.ResumeLayout(false);
-			this.tpPerson.PerformLayout();
-			((System.ComponentModel.ISupportInitialize)(this.dgvEditPersonList)).EndInit();
+			this.scEditPerson.Panel1.ResumeLayout(false);
+			this.scEditPerson.Panel1.PerformLayout();
+			this.scEditPerson.Panel2.ResumeLayout(false);
+			((System.ComponentModel.ISupportInitialize)(this.scEditPerson)).EndInit();
+			this.scEditPerson.ResumeLayout(false);
 			this.gbEditPersonRank.ResumeLayout(false);
+			((System.ComponentModel.ISupportInitialize)(this.dgvEditPersonList)).EndInit();
 			this.tpDep.ResumeLayout(false);
 			this.tpDep.PerformLayout();
 			this.tpCategory.ResumeLayout(false);
@@ -2666,6 +2737,10 @@ namespace ArmyRep
 			((System.ComponentModel.ISupportInitialize)(this.scFromWHChoicedList)).EndInit();
 			this.scFromWHChoicedList.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.dgvFromWHChoicedProds)).EndInit();
+			this.scMain.Panel1.ResumeLayout(false);
+			this.scMain.Panel2.ResumeLayout(false);
+			((System.ComponentModel.ISupportInitialize)(this.scMain)).EndInit();
+			this.scMain.ResumeLayout(false);
 			this.ResumeLayout(false);
 
 		}

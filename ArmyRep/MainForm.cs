@@ -44,6 +44,9 @@ namespace ArmyRep
 		string sSQLEditPerson = "";
 		
 		int nShowPageEditPart = 1;
+		int nShowPageEditCategory = 1;
+		int nShowPageEditDeptype = 1;
+		int nShowPageEditUsingtype = 1;
 		
 		//string sSQLToWH = "";
 		//string sSQLFromWH = "";
@@ -104,6 +107,27 @@ namespace ArmyRep
             try
             {
             	nShowPageEditPart = int.Parse(System.Configuration.ConfigurationManager.AppSettings["showPageEditPart"]);
+            }
+            catch
+            {}
+            
+            try
+            {
+            	nShowPageEditCategory = int.Parse(System.Configuration.ConfigurationManager.AppSettings["showPageEditCategory"]);
+            }
+            catch
+            {}
+            
+            try
+            {
+            	nShowPageEditDeptype = int.Parse(System.Configuration.ConfigurationManager.AppSettings["showPageEditDeptype"]);
+            }
+            catch
+            {}
+            
+            try
+            {
+            	nShowPageEditUsingtype = int.Parse(System.Configuration.ConfigurationManager.AppSettings["showPageEditUsetype"]);
             }
             catch
             {}
@@ -278,19 +302,24 @@ namespace ArmyRep
 			//Человек
 			MakeDataReader("drEditPerson", sSQLEditPerson);
 			
+			scEditPerson.SplitterDistance = btnEditPersonFind.Location.Y + btnEditPersonFind.Height + 15;
+			
 			if (nShowPageEditPart.Equals(0))
 			{
-				//tcEdit.SelectedTab = tpPart;
-				tpPart.Hide();
+				tcEdit.TabPages.Remove(tpPart);
 			}
-			else
+			if (nShowPageEditCategory.Equals(0))
 			{
-				tpPart.Show();
+				tcEdit.TabPages.Remove(tpCategory);
 			}
-			
-			tpDepType.Hide();
-			tpUsingType.Hide();
-			tpCategory.Hide();
+			if (nShowPageEditDeptype.Equals(0))
+			{
+				tcEdit.TabPages.Remove(tpDepType);
+			}
+			if (nShowPageEditUsingtype.Equals(0))
+			{
+				tcEdit.TabPages.Remove(tpUsingType);
+			}
 		}
 		void MakeDataReader(string datareaderName, string sSQL)
 		{
@@ -2265,7 +2294,7 @@ namespace ArmyRep
 			adapter.Dispose();
 			adapter = null;
 			
-			MessageBox.Show("Сохранил");
+			//MessageBox.Show("Сохранил");
 		}
 		void BtnFromWHChoiceSaveClick(object sender, EventArgs e)
 		{
@@ -2700,6 +2729,22 @@ namespace ArmyRep
 		void RbFromWHFindProdCheckedChanged(object sender, EventArgs e)
 		{
 			ShowDataOfWH("drFromWH");
+		}
+		void BtnEditPersonRankEditClick(object sender, EventArgs e)
+		{
+			if (tcEdit.TabPages.Contains(tpRank))
+			{
+				tpRank.Show();
+				tcEdit.SelectedTab = tpRank;
+			}
+		}
+		void BtnEditDepDeptypeEditClick(object sender, EventArgs e)
+		{
+			if (tcEdit.TabPages.Contains(tpDepType))
+			{
+				tpDepType.Show();
+				tcEdit.SelectedTab = tpDepType;
+			}
 		}
 		
 	}
