@@ -34,3 +34,12 @@ C:\Users\kuanysh.tuktubaev\Documents\My\ArmyRep-master\ArmyRep\obj\Debug\ArmyRep
 C:\Users\kuanysh.tuktubaev\Documents\My\ArmyRep-master\ArmyRep\obj\Debug\ArmyRep.csproj.GenerateResource.Cache
 C:\Users\kuanysh.tuktubaev\Documents\My\ArmyRep-master\ArmyRep\obj\Debug\ArmyRep.exe
 C:\Users\kuanysh.tuktubaev\Documents\My\ArmyRep-master\ArmyRep\obj\Debug\ArmyRep.pdb
+C:\Users\Kuanysh\Documents\Source\ArmyRep\ArmyRep\bin\Debug\ArmyRep.exe.config
+C:\Users\Kuanysh\Documents\Source\ArmyRep\ArmyRep\bin\Debug\ArmyRep.exe
+C:\Users\Kuanysh\Documents\Source\ArmyRep\ArmyRep\bin\Debug\ArmyRep.pdb
+C:\Users\Kuanysh\Documents\Source\ArmyRep\ArmyRep\obj\Debug\ArmyRep.csprojResolveAssemblyReference.cache
+C:\Users\Kuanysh\Documents\Source\ArmyRep\ArmyRep\obj\Debug\ArmyRep.frmLogin.resources
+C:\Users\Kuanysh\Documents\Source\ArmyRep\ArmyRep\obj\Debug\ArmyRep.frmMain.resources
+C:\Users\Kuanysh\Documents\Source\ArmyRep\ArmyRep\obj\Debug\ArmyRep.csproj.GenerateResource.Cache
+C:\Users\Kuanysh\Documents\Source\ArmyRep\ArmyRep\obj\Debug\ArmyRep.exe
+C:\Users\Kuanysh\Documents\Source\ArmyRep\ArmyRep\obj\Debug\ArmyRep.pdb

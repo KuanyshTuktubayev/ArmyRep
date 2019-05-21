@@ -2662,10 +2662,10 @@ namespace ArmyRep
 			// 
 			// scMain.Panel2
 			// 
+			this.scMain.Panel2.Controls.Add(this.tcEdit);
 			this.scMain.Panel2.Controls.Add(this.tcWH);
 			this.scMain.Panel2.Controls.Add(this.tcUse);
 			this.scMain.Panel2.Controls.Add(this.tcDep);
-			this.scMain.Panel2.Controls.Add(this.tcEdit);
 			this.scMain.Size = new System.Drawing.Size(1123, 562);
 			this.scMain.SplitterDistance = 163;
 			this.scMain.TabIndex = 5;

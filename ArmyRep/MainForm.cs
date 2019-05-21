@@ -590,12 +590,34 @@ namespace ArmyRep
 					{
 						rbEditPersonGenderF.Checked = true;
 					}
-					dtpEditPersonBirthdate.Value = dtBirthdate.Date;
+					
+					if (dtBirthdate == DateTime.MaxValue.Date)
+					{
+						dtpEditPersonBirthdate.Value = dtpEditPersonBirthdate.MaxDate.Date;
+						dtBirthdate = dtpEditPersonBirthdate.MaxDate.Date;
+					}
+					else if (dtBirthdate == DateTime.MinValue.Date)
+					{
+						dtpEditPersonBirthdate.Value = dtpEditPersonBirthdate.MinDate.Date;
+						dtBirthdate = dtpEditPersonBirthdate.MinDate.Date;
+					}
+					else
+					{
+						dtpEditPersonBirthdate.Value = dtBirthdate.Date;
+						chbEditPersonDeath.Checked = true;
+					}
+					
 					if (dtDeathdate == DateTime.MaxValue.Date)
 					{
 						dtpEditPersonDeathdate.Value = dtpEditPersonDeathdate.MaxDate.Date;
-						chbEditPersonDeath.Checked = false;
 						dtDeathdate = dtpEditPersonDeathdate.MaxDate.Date;
+						chbEditPersonDeath.Checked = false;
+					}
+					else if (dtDeathdate == DateTime.MinValue.Date)
+					{
+						dtpEditPersonDeathdate.Value = dtpEditPersonDeathdate.MinDate.Date;
+						dtDeathdate = dtpEditPersonDeathdate.MinDate.Date;
+						chbEditPersonDeath.Checked = false;
 					}
 					else
 					{
@@ -609,7 +631,22 @@ namespace ArmyRep
 					lsbEditPersonList.Items.Add(sFIO);
 					lbEditIDPerson.Text = sID;
 					cbEditPersonRankName.SelectedIndex = cbEditPersonRankName.Items.IndexOf(sRankNameOfPerson);
-					dtpEditPersonRankDatefrom.Value = dtRankDateOfPerson.Date;
+					
+					if (dtRankDateOfPerson == DateTime.MaxValue.Date)
+					{
+						dtpEditPersonRankDatefrom.Value = dtpEditPersonRankDatefrom.MaxDate.Date;
+						dtRankDateOfPerson = dtpEditPersonRankDatefrom.MaxDate.Date;
+					}
+					else if (dtRankDateOfPerson == DateTime.MinValue.Date)
+					{
+						dtpEditPersonRankDatefrom.Value = dtpEditPersonRankDatefrom.MinDate.Date;
+						dtRankDateOfPerson = dtpEditPersonRankDatefrom.MinDate.Date;
+					}
+					else
+					{
+						dtpEditPersonRankDatefrom.Value = dtRankDateOfPerson.Date;
+					}
+					
 					Person person = new Person();
 					person.ItemIndex = lsbEditPersonList.Items.IndexOf(sFIO);
 					person.ID = Int32.Parse(sID);
@@ -619,7 +656,10 @@ namespace ArmyRep
 					person.Gender = bGender;
 					person.Birthdate = dtBirthdate.Date;
 					person.Deathdate = dtDeathdate.Date;
-					person.IDRank = int.Parse(sIDRankOfPerson);
+					//person.IDRank = int.Parse(sIDRankOfPerson);
+					if (int.TryParse(sIDRankOfPerson, out person.IDRank))
+					{
+					}
 					person.RankName = sRankNameOfPerson;
 					person.RankDateFrom = dtRankDateOfPerson.Date;
 					aEditPersonList.Add(person);
@@ -1984,7 +2024,7 @@ namespace ArmyRep
 				//int nIDRank = aEditPersonList.Find(items => items.ItemIndex == lsbEditPersonList.SelectedIndex).IDRank;
 				int nIDRank = aEditPersonList.Find(items => items.ID == Convert.ToInt32(dgvEditPersonList.CurrentRow.Cells["IDPerson"].Value)).IDRank;
 				
-				cbEditPersonRankName.SelectedIndex = aEditRankList.Find(item => item.ID.Equals(nIDRank)).ItemIndex;
+				cbEditPersonRankName.SelectedIndex = (nIDRank.Equals(0)||nIDRank.Equals(null)) ? 1 : aEditRankList.Find(item => item.ID.Equals(nIDRank)).ItemIndex;
 				lbEditPIDRank.Text = nIDRank.ToString();
 				//dtpEditPersonRankDatefrom.Value = aEditPersonList.Find(items => items.ItemIndex == lsbEditPersonList.SelectedIndex).RankDateFrom;
 				dtpEditPersonRankDatefrom.Value = aEditPersonList.Find(items => items.ID == Convert.ToInt32(dgvEditPersonList.CurrentRow.Cells["IDPerson"].Value)).RankDateFrom;
