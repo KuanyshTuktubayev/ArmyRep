@@ -340,7 +340,10 @@ namespace ArmyRep
 					dep.ItemIndex = lsbEditDepList.Items.IndexOf(txEditDepName.Text);
 					dep.ID = Int32.Parse(sID);
 					dep.DepName = sName;
-					aEditDepList.Add(dep);
+					if (!aEditDepList.Contains(dep))
+					{
+						aEditDepList.Add(dep);
+					}
 					dep = null;
 				}
 			
